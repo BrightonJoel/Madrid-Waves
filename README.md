@@ -1,4 +1,8 @@
-# Blanco Central
+# Madrid Waves
 
-This project was created for the Conevo Intership project. :smile:
+## Tech Stack used
 
+- Figma ( Design )
+- React ( Frontend )
+- Strapi ( Headless CMS )
+- Styled Components
