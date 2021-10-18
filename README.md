@@ -8,9 +8,8 @@
 - Styled Components
 
 #colours Used
-
-red  - #
-blue - #
-yellow - #
+blue - #004797
+yellow - #FCC000
 white - #ffffff
-greyShade - #
+greyShade - #F1F1F1
+orange - #E72142
