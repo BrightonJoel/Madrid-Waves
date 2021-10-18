@@ -7,7 +7,7 @@
 - Strapi ( Headless CMS )
 - Styled Components
 
-#colors Used
+#colours Used
 
 red  - #
 blue - #
