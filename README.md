@@ -7,9 +7,9 @@
 - Strapi ( Headless CMS )
 - Styled Components
 
-#colours Used
-blue - #004797
-yellow - #FCC000
-white - #ffffff
-greyShade - #F1F1F1
-orange - #E72142
+# Colors Used
+- blue - #004797
+- yellow - #FCC000
+- white - #ffffff
+- greyShade - #F1F1F1
+- orange - #E72142
