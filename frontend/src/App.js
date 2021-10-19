@@ -1,5 +1,12 @@
+import HomePage from "./pages/HomePage"
+import Theme from "./styles/theme"
+
 function App() {
-  return <div className='App'>Hello World</div>
+  return (
+    <Theme>
+      <HomePage />
+    </Theme>
+  )
 }
 
 export default App
