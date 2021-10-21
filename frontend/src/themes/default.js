@@ -12,6 +12,7 @@ const theme = {
     red: "#E72142",
     neutral: "#FFFFFF",
     yellow: "#FCC000",
+    text: "#316B83",
   },
 }
 
