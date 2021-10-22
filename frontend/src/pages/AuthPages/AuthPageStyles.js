@@ -7,7 +7,6 @@ export const Container = styled.main`
   background-color: ${({ theme }) => theme.colors.neutral};
   padding: 40px 20px;
   border-radius: 12px;
-  color: ${({ theme }) => theme.colors.text};
 
   h2 {
     text-align: left;

@@ -39,22 +39,22 @@ export default function SignUp() {
       password: passwordRef.current.value,
     }
 
-    try {
-      setErrorMsg("")
-      setLoading(true)
-      const data = await signUp(userDetails)
-      console.log(data)
+    const { loading, error, data } = await signUp(userDetails)
+    console.log(data, error)
+
+    if (error) {
+      setLoading(loading)
+      setErrorMsg(error)
+    } else {
+      setLoading(loading)
       history.push("/login")
-    } catch {
-      setErrorMsg("Cannot create account right now")
     }
   }
-
-  if (loading) return <p>Loading... </p>
 
   return (
     <Container>
       <Wrapper>
+        {loading && <p>loading.....</p>}
         <h2>Sign up to Madrid waves</h2>
         {errorMsg && <ErrorWrapper>{errorMsg}</ErrorWrapper>}
         <form onSubmit={handleSubmit}>

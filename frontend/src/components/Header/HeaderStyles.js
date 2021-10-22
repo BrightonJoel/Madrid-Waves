@@ -11,9 +11,19 @@ export const Head = styled.header`
     color: ${({ theme }) => theme.colors.neutral};
   }
 
+  img {
+    height: 132px;
+    width: 132px;
+  }
+
   @media (max-width: 768px) {
     h1 {
       display: none;
+    }
+
+    img {
+      height: 105px;
+      width: 105px;
     }
   }
 `

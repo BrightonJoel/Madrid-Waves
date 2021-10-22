@@ -1,6 +1,6 @@
-import React, { useContext } from "react"
-import { registerApi } from "../hooks/registerApi"
+import React, { useContext, useState } from "react"
 import { callApi } from "../hooks/callApi"
+import { registerApi } from "../hooks/registerApi"
 
 const AuthContext = React.createContext()
 
@@ -9,6 +9,12 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null)
+
+  function saveUser(user) {
+    setUser(user)
+  }
+  console.log(user)
   async function signUp(userDetails) {
     const path = "auth/local/register"
     return await registerApi(path, "POST", userDetails)
@@ -21,6 +27,8 @@ export function AuthProvider({ children }) {
   const value = {
     signUp,
     login,
+    saveUser,
+    user,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

@@ -1,8 +1,11 @@
 export const registerApi = async (path, method, body) => {
   const url = "http://localhost:1337/"
   let data = null
+  let error = null
+  let loading = false
 
   try {
+    loading = true
     const res = await fetch(`${url}${path}`, {
       method,
       headers: {
@@ -10,10 +13,16 @@ export const registerApi = async (path, method, body) => {
       },
       body: JSON.stringify(body),
     })
-    data = await res.json()
+    if (res.status >= 200 && res.status <= 299) {
+      data = await res.json()
+    } else {
+      error = "Please check your username and password"
+    }
+    loading = false
   } catch (err) {
-    data = err
+    error = err
+    loading = false
   }
 
-  return data
+  return { loading, error, data }
 }

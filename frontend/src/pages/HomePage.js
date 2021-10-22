@@ -1,5 +1,9 @@
 import React from "react"
 
+import { useAuth } from "../context/AuthContext"
+
 export default function HomePage() {
-  return <div>Iam from homepage</div>
+  const { user } = useAuth()
+
+  return <div>Welcome to the homepage {user.jwt}</div>
 }

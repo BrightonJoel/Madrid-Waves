@@ -14,11 +14,11 @@ import {
 import { Button } from "../../styles/GlobalComponents/Button"
 import { Link } from "react-router-dom"
 
-export default function SignUp() {
+export default function Login() {
   const emailRef = useRef()
   const passwordRef = useRef()
 
-  const { login } = useAuth()
+  const { login, saveUser } = useAuth()
   const history = useHistory()
 
   const [errorMsg, setErrorMsg] = useState(null)
@@ -32,21 +32,18 @@ export default function SignUp() {
       password: passwordRef.current.value,
     }
 
-    try {
-      setErrorMsg("")
-      setLoading(true)
-      const { data, err } = await login(userDetails)
-      if (err == null) history.push("/")
-      else {
-        setErrorMsg(err)
-      }
-      console.log(data, err)
-    } catch {
-      setErrorMsg("failed to log in")
+    const { loading, error, data } = await login(userDetails)
+    saveUser(data)
+    console.log(data, error)
+
+    if (error) {
+      setLoading(loading)
+      setErrorMsg(error)
+    } else {
+      setLoading(loading)
+      history.push("/")
     }
   }
-
-  if (loading) return <p>Loading... </p>
 
   return (
     <Container>
@@ -60,6 +57,7 @@ export default function SignUp() {
           <Input type='password' ref={passwordRef} />
           <Button
             type='submit'
+            disabled={loading}
             bg={({ theme }) => theme.colors.primaryBlue}
             clr={({ theme }) => theme.colors.neutral}
             w='100%'
@@ -69,7 +67,7 @@ export default function SignUp() {
         </form>
 
         <p>New to the page?</p>
-        <Link to='/singup'>Sign in</Link>
+        <Link to='/signup'>Sign in</Link>
       </Wrapper>
     </Container>
   )

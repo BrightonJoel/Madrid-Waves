@@ -13,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
     html {
         scroll-behavior: smooth;
         font-family: ${({ theme }) => theme.fonts.secondary};
+        color: ${({ theme }) => theme.colors.text};
     }
 
     body {
