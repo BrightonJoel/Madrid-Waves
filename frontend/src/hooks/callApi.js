@@ -16,6 +16,8 @@ export const callApi = async (path, method, body) => {
     })
     if (res.status >= 200 && res.status <= 299) {
       data = await res.json()
+    } else if (res.status === 403) {
+      error = "Logout and try again"
     } else {
       error = "Please check your username and password"
     }
