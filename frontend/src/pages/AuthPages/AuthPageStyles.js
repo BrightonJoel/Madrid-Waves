@@ -60,4 +60,8 @@ export const Input = styled.input`
 export const ErrorWrapper = styled.div`
   padding: 15px;
   border: 2px dotted ${({ theme }) => theme.colors.red};
+
+  button {
+    margin-left: 10px;
+  }
 `

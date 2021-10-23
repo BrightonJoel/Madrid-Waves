@@ -5,7 +5,7 @@ export const Head = styled.header`
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.primaryBlue};
-  height: 15vh;
+  height: 150px;
 
   h1 {
     color: ${({ theme }) => theme.colors.neutral};

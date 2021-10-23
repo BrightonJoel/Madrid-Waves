@@ -39,8 +39,8 @@ export default function SignUp() {
       password: passwordRef.current.value,
     }
 
-    const { loading, error, data } = await signUp(userDetails)
-    console.log(data, error)
+    setLoading(true)
+    const { loading, error } = await signUp(userDetails)
 
     if (error) {
       setLoading(loading)
@@ -63,17 +63,31 @@ export default function SignUp() {
           <Label>Email</Label>
           <Input type='email' ref={emailRef} required />
           <Label>Password</Label>
-          <Input type='password' ref={passwordRef} />
+          <Input type='password' ref={passwordRef} required />
           <Label>Confirm Password</Label>
-          <Input type='password' ref={passwordConfirmRef} />
-          <Button
-            type='submit'
-            bg={({ theme }) => theme.colors.primaryBlue}
-            clr={({ theme }) => theme.colors.neutral}
-            w='100%'
-          >
-            Create Account
-          </Button>
+          <Input type='password' ref={passwordConfirmRef} required />
+
+          {loading ? (
+            <Button
+              type='submit'
+              bg={({ theme }) => theme.colors.primaryBlue}
+              clr={({ theme }) => theme.colors.neutral}
+              mt='30px'
+              w='100%'
+            >
+              Loading...
+            </Button>
+          ) : (
+            <Button
+              type='submit'
+              bg={({ theme }) => theme.colors.primaryBlue}
+              clr={({ theme }) => theme.colors.neutral}
+              mt='30px'
+              w='100%'
+            >
+              Create Account
+            </Button>
+          )}
         </form>
 
         <p>Already have an account?</p>

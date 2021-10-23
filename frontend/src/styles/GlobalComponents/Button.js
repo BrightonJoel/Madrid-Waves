@@ -5,7 +5,7 @@ export const Button = styled.button`
   background-color: ${({ bg }) => bg};
   border-radius: 12px;
   color: ${({ clr }) => clr};
-  margin: 30px 0px;
+  margin: ${({ mt }) => mt} 0px;
   width: ${({ w }) => w};
   font-size: 24px;
   border: none;

@@ -25,6 +25,12 @@ export default function Login() {
   const [navigateLink, setNavigateLink] = useState(null)
   const [loading, setLoading] = useState(false)
 
+  async function handleLogout(e) {
+    const error = await logout()
+    setNavigateLink(null)
+    setErrorMsg(error)
+  }
+
   async function handleSubmit(e) {
     e.preventDefault()
 
@@ -33,9 +39,9 @@ export default function Login() {
       password: passwordRef.current.value,
     }
 
+    setLoading(true)
     const { loading, error, data } = await login(userDetails)
     saveUser(data)
-    console.log(data, error)
 
     if (error === "Logout and try again") {
       setNavigateLink("/logout")
@@ -56,24 +62,48 @@ export default function Login() {
         <h2>Log in to Madrid Waves</h2>
         {errorMsg && (
           <ErrorWrapper>
-            {errorMsg} -
-            {navigateLink && <button onClick={logout}>Logout</button>}
+            {errorMsg}
+            {navigateLink && (
+              <Button
+                bg={({ theme }) => theme.colors.red}
+                clr={({ theme }) => theme.colors.neutral}
+                mt='0px'
+                onClick={handleLogout}
+              >
+                Logout
+              </Button>
+            )}
           </ErrorWrapper>
         )}
         <form onSubmit={handleSubmit}>
           <Label>Email</Label>
           <Input type='email' ref={emailRef} required />
           <Label>Password</Label>
-          <Input type='password' ref={passwordRef} />
-          <Button
-            type='submit'
-            disabled={loading}
-            bg={({ theme }) => theme.colors.primaryBlue}
-            clr={({ theme }) => theme.colors.neutral}
-            w='100%'
-          >
-            Login
-          </Button>
+          <Input type='password' ref={passwordRef} required />
+
+          {loading ? (
+            <Button
+              type='submit'
+              disabled={loading}
+              bg={({ theme }) => theme.colors.primaryBlue}
+              clr={({ theme }) => theme.colors.neutral}
+              mt='30px'
+              w='100%'
+            >
+              Loding...
+            </Button>
+          ) : (
+            <Button
+              type='submit'
+              disabled={loading}
+              bg={({ theme }) => theme.colors.primaryBlue}
+              clr={({ theme }) => theme.colors.neutral}
+              mt='30px'
+              w='100%'
+            >
+              Login
+            </Button>
+          )}
         </form>
 
         <p>New to the page?</p>
