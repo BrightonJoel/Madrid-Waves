@@ -1,5 +1,5 @@
 export const callApi = async (path, method, body) => {
-  const url = "http://localhost:1337/"
+  const url = process.env.REACT_APP_BACKEND_URL
   let data = null
   let error = null
   let loading = false

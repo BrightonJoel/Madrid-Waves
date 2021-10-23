@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react"
 import { useHistory } from "react-router"
+
 import { callApi } from "../hooks/callApi"
 import { registerApi } from "../hooks/registerApi"
 
@@ -17,27 +18,26 @@ export function AuthProvider({ children }) {
     if (user !== null) {
       localStorage.setItem("user", JSON.stringify(user.user))
       setUser(user)
-      console.log(user)
     }
     return
   }
 
   async function signUp(userDetails) {
-    const path = "auth/local/register"
+    const path = process.env.REACT_APP_SIGNUP_PATH
     return await registerApi(path, "POST", userDetails)
   }
 
   async function login(userDetails) {
-    const path = "auth/local"
+    const path = process.env.REACT_APP_LOGIN_PATH
     return await callApi(path, "POST", userDetails)
   }
 
   async function logout() {
-    const path = "logout"
+    const path = process.env.REACT_APP_LOGOUT
     localStorage.clear()
-    const res = await callApi(path, "POST")
-    console.log(res)
+    const { error } = await callApi(path, "POST")
     history.push("/login")
+    return error
   }
 
   const value = {
