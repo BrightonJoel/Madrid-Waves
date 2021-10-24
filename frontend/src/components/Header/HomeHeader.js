@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../../styles/GlobalComponents/Button";
 import {Link} from "react-router-dom"
+import {FaSearch} from "react-icons/fa"
 
 
 
@@ -40,7 +41,7 @@ export default function HomeHeader() {
           bg ={({theme}) => theme.colors.red}
           clr={({theme}) => theme.colors.neutral}
           >
-            Search
+            Search <span><FaSearch/></span>
           </Button>
       </Row1>
     </MainDiv>

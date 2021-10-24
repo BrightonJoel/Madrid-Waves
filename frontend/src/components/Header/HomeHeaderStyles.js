@@ -65,14 +65,20 @@ export const Row1 = styled.div`
 
     input{
         width:50%;
-        height: 36.5px;
+        height: 41px;
         border-radius: 5px 0 0 5px;
         border:None;
         outline:None;
         padding: 10px;
     }
     button{
-        font-size:15px;
+        font-size:18px;
         border-radius: 0 5px 5px 0;
+    }
+    span{
+        
+        padding: 0 5px;
+        display:inline-block;
+        transform: translateY(2px);
     }
  `
