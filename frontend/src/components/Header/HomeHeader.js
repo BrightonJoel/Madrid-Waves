@@ -1,18 +1,48 @@
-import React from "react"
+import React from "react";
+import { Button } from "../../styles/GlobalComponents/Button";
+import {Link} from "react-router-dom"
+
+
 
 // styles
-import { MainDiv } from "./HomeHeaderStyles"
-import { Item1, Item2, Item3 } from "./HomeHeaderStyles"
-export default function HomeHeader() {
-    return (
-        <MainDiv>
-            <div>
-                    <Item1><div>1</div></Item1>
-                    <Item2><div>2</div></Item2>
-                    <Item3><div>3</div></Item3>
-                
-            </div>
-        </MainDiv>
+import { MainDiv } from "./HomeHeaderStyles";
+import { Item1, Item2, Item3, Row1} from "./HomeHeaderStyles";
 
-    )
+
+export default function HomeHeader() {
+  return (
+    <MainDiv>
+      <Item1>
+        
+          <img src="/img/Logo-Transparent.svg" alt="Logo" />
+          <h1>Madrid Waves</h1>
+        
+      </Item1>
+      <Item2>
+        
+        <Link to="/create">Create</Link>
+        <Link to="/myblogs">MyBlogs</Link>
+        <Link to="/about">About</Link>
+        
+      </Item2>
+      <Item3>
+        <Button
+          bg={({ theme }) => theme.colors.red}
+          clr={({ theme }) => theme.colors.neutral}
+        >
+          Login/signup
+        </Button>
+      </Item3>
+
+      <Row1>
+        <input type="text" ></input>
+        <Button
+          bg ={({theme}) => theme.colors.red}
+          clr={({theme}) => theme.colors.neutral}
+          >
+            Search
+          </Button>
+      </Row1>
+    </MainDiv>
+  );
 }
