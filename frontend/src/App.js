@@ -8,6 +8,7 @@ import Header from "./components/Header/Header"
 import HomeHeader from "./components/Header/HomeHeader"
 import CreateBlog from "./pages/BlogPages/CreateBlog"
 import MyBlogs from "./pages/BlogPages/MyBlogs"
+import BlogsDetails from "./pages/BlogPages/BlogDetails"
 import About from "./pages/About"
 import Theme from "./styles/theme"
 
@@ -43,6 +44,10 @@ function App() {
             <Route path='/about'>
               <HomeHeader/>
               <About/>
+            </Route>
+            <Route path='/details'>
+              <HomeHeader/>
+              <BlogsDetails/>
             </Route>
 
             <Route exact path='/'>
