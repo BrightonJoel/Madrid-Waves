@@ -57,7 +57,8 @@ export const CreateForm = styled.div`
     border-radius:5px;
     
     height: 40px;
-    margin-right: 20px;
+    margin: 10px  20px 10px 0;
+    width: 200px;
   }
   span{
     
