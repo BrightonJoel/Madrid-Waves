@@ -1,12 +1,25 @@
 import styled from "styled-components"
 
+export const Background = styled.div`
+  background-image: url(/img/flat-mountains.svg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  padding: 0px;
+  height: 780px;
+  @media (max-width: 768px) {
+    background: none;
+  }
+`
+
 export const Container = styled.main`
   margin: 48px auto;
   width: 600px;
   max-width: 90%;
   background-color: ${({ theme }) => theme.colors.neutral};
   padding: 40px 20px;
-  border-radius: 12px;
+  border-radius: 6px;
 
   h2 {
     text-align: left;
@@ -37,7 +50,7 @@ export const Wrapper = styled.div`
 export const Label = styled.label`
   display: block;
   font-size: 24px;
-  padding: 30px 0;
+  padding: 25px 0;
 
   @media (max-width: 768px) {
     font-size: 18px;
@@ -50,7 +63,7 @@ export const Input = styled.input`
   padding: 10px 20px;
   background-color: #f1f1f1;
   border: none;
-  border-radius: 12px;
+  border-radius: 6px;
 
   &:focus {
     outline: 2px dotted ${({ theme }) => theme.colors.primaryBlue};
