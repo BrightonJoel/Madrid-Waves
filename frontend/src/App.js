@@ -36,7 +36,6 @@ function App() {
             <Route path='/myblogs'>
               <HomeHeader />
               <MyBlogs />
-              <Footer />
             </Route>
             <Route path='/about'>
               <HomeHeader />

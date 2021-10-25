@@ -36,7 +36,7 @@ export const NavLinks = styled.div`
   align-items: center; /* for single line flex container */
   align-content: center; /* for multi-line flex container */
   color: ${({ theme }) => theme.colors.neutral};
-  grid-column: 2 / 3;
+  grid-column: 2 / 2;
 
   a {
     padding: 0 20px;
