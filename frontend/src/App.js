@@ -4,11 +4,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import HomePage from "./pages/HomePage"
 import SignUp from "./pages/AuthPages/SignUp"
 import Login from "./pages/AuthPages/Login"
-import Theme from "./styles/theme"
+import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
+import HomeHeader from "./components/Header/HomeHeader"
+import CreateBlog from "./pages/BlogPages/CreateBlog"
+import MyBlogs from "./pages/BlogPages/MyBlogs"
+import BlogsDetails from "./pages/BlogPages/BlogDetails"
+import About from "./pages/About"
+import Theme from "./styles/theme"
 
 import { AuthProvider } from "./context/AuthContext"
-import Header from "./components/Header/Header"
 
 function App() {
   return (
@@ -24,7 +29,25 @@ function App() {
               <Header />
               <Login />
             </Route>
+            <Route path='/create'>
+              <HomeHeader />
+              <CreateBlog />
+            </Route>
+            <Route path='/myblogs'>
+              <HomeHeader />
+              <MyBlogs />
+              <Footer />
+            </Route>
+            <Route path='/about'>
+              <HomeHeader />
+              <About />
+            </Route>
+            <Route path='/details'>
+              <HomeHeader />
+              <BlogsDetails />
+            </Route>
             <Route exact path='/'>
+              <HomeHeader />
               <HomePage />
             </Route>
           </Switch>
