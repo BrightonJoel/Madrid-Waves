@@ -1,84 +1,88 @@
 import styled from "styled-components"
 
-export const MainDiv = styled.header`
-    display: grid;
-    background-color: ${({ theme }) => theme.colors.primaryBlue};
-    height: 250px;
-    grid-template-columns: 33% 33% 33%;
-    grid-template-rows: auto, auto
+export const NavContainer = styled.header`
+  display: grid;
+  background-color: ${({ theme }) => theme.colors.primaryBlue};
+  height: 250px;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto, auto;
 `
-export const Item1 = styled.div`
-    grid-column: 1 / 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;        /* for single line flex container */
-    align-content: center;      /* for multi-line flex container */
-    color: ${({theme}) => theme.colors.neutral};
-    font-size:12px;
-    img{
-        height: 100px;
-        width: 100px;
-    }
-    h1{
-        display:inline-block;
-    }
-`
-export const Item2 = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;        /* for single line flex container */
-    align-content: center;      /* for multi-line flex container */
-    color: ${({theme}) => theme.colors.neutral};
-    grid-column: 2 / 3;
+export const Logo = styled.div`
+  grid-column: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* for single line flex container */
+  align-content: center; /* for multi-line flex container */
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.neutral};
+  font-size: 12px;
+  img {
+    height: 100px;
+    width: 100px;
+  }
+  h1 {
+    display: inline-block;
+  }
 
-    a{
-        padding:0 20px;
-        color: ${({theme}) => theme.colors.neutral};
-        font-size: 20px;
+  @media (max-width: 768px) {
+    h1 {
+      display: none;
     }
-    a:hover{
-        color: ${({theme}) => theme.colors.red};
-    }
+  }
 `
-export const Item3 = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;        /* for single line flex container */
-    align-content: center;      /* for multi-line flex container */
-    color: ${({theme}) => theme.colors.neutral};
-    font-size:12px;
-    grid-column: 3 / 3; 
+export const NavLinks = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center; /* for single line flex container */
+  align-content: center; /* for multi-line flex container */
+  color: ${({ theme }) => theme.colors.neutral};
+  grid-column: 2 / 3;
 
-    button{
-        margin-right:10px;
-        font-size:18px;
-        border-radius: 5px;
-    }
+  a {
+    padding: 0 20px;
+    color: ${({ theme }) => theme.colors.neutral};
+    font-size: 20px;
+  }
 `
-export const Row1 = styled.div`
-    justify-content: center;
-    display: flex;
-    align-items: center;        /* for single line flex container */
-    align-content: center;      /* for multi-line flex container */
-    grid-row: 2 / 2;
-    grid-column: 2/2;
+export const Profile = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center; /* for single line flex container */
+  align-content: center; /* for multi-line flex container */
+  color: ${({ theme }) => theme.colors.neutral};
+  font-size: 12px;
+  grid-column: 3 / 3;
 
-    input{
-        width:50%;
-        height: 41px;
-        border-radius: 5px 0 0 5px;
-        border:None;
-        outline:None;
-        padding: 10px;
-    }
-    button{
-        font-size:18px;
-        border-radius: 0 5px 5px 0;
-    }
-    span{
-        
-        padding: 0 5px;
-        display:inline-block;
-        transform: translateY(2px);
-    }
- `
+  button {
+    margin-right: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+`
+export const SearchBar = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center; /* for single line flex container */
+  grid-row: 2 / 2;
+  grid-column: 2 / 2;
+  padding: 30px 0px;
+
+  input {
+    width: 50%;
+    border-radius: 5px 0 0 5px;
+    background-color: ${({ theme }) => theme.colors.lightGrey};
+    border: None;
+    outline: None;
+    padding: 11px 20px;
+  }
+  button {
+    font-size: 18px;
+    border-radius: 0 5px 5px 0;
+    transform: translateY(0.5px);
+  }
+  span {
+    padding: 0 5px;
+    display: inline-block;
+    transform: translateY(2px);
+  }
+`

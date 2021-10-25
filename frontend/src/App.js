@@ -5,11 +5,11 @@ import HomePage from "./pages/HomePage"
 import SignUp from "./pages/AuthPages/SignUp"
 import Login from "./pages/AuthPages/Login"
 import Header from "./components/Header/Header"
+import Footer from "./components/Footer/Footer"
 import HomeHeader from "./components/Header/HomeHeader"
 import CreateBlog from "./pages/BlogPages/CreateBlog"
 import MyBlogs from "./pages/BlogPages/MyBlogs"
 import BlogsDetails from "./pages/BlogPages/BlogDetails"
-import Footer from "./components/Footer"
 import About from "./pages/About"
 import Theme from "./styles/theme"
 
@@ -21,49 +21,37 @@ function App() {
       <AuthProvider>
         <Theme>
           <Switch>
-
             <Route path='/signup'>
-              <Header/>
+              <Header />
               <SignUp />
-              <Footer/>
             </Route>
-
             <Route path='/login'>
-              <Header/>
+              <Header />
               <Login />
-              <Footer/>
             </Route>
-
             <Route path='/create'>
-              <HomeHeader/>
-              <CreateBlog/>
-              <Footer/>
+              <HomeHeader />
+              <CreateBlog />
             </Route>
-
             <Route path='/myblogs'>
-              <HomeHeader/>
-              <MyBlogs/>
-              <Footer/>
+              <HomeHeader />
+              <MyBlogs />
+              <Footer />
             </Route>
-
             <Route path='/about'>
-              <HomeHeader/>
-              <About/>
-              <Footer/>
+              <HomeHeader />
+              <About />
             </Route>
             <Route path='/details'>
-              <HomeHeader/>
-              <BlogsDetails/>
-              <Footer/>
+              <HomeHeader />
+              <BlogsDetails />
             </Route>
-
             <Route exact path='/'>
-              <HomeHeader/>
+              <HomeHeader />
               <HomePage />
-              <Footer/>
             </Route>
-
           </Switch>
+          <Footer />
         </Theme>
       </AuthProvider>
     </Router>

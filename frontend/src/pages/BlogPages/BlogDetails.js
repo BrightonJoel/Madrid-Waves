@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import {
   MainDiv,
   Post,
@@ -6,7 +6,7 @@ import {
   Views,
   CommenTitle,
   CommentBox,
-} from "./BlogDetailsStyles";
+} from "./BlogDetailsStyles"
 import {
   FaFacebook,
   FaTwitter,
@@ -14,8 +14,8 @@ import {
   FaEye,
   FaHeart,
   FaTelegramPlane,
-} from "react-icons/fa";
-import { Button } from "../../styles/GlobalComponents/Button";
+} from "react-icons/fa"
+import { Button } from "../../styles/GlobalComponents/Button"
 
 export default function BlogsDetails() {
   return (
@@ -25,7 +25,7 @@ export default function BlogsDetails() {
         tellus et libero tincidunt
       </h1>
       <br />
-      <p> //username// | Oct 18, 2021, 6:45pm CEST</p>
+      <p> username | Oct 18, 2021, 6:45pm CEST</p>
       <br />
 
       <h3>
@@ -39,7 +39,7 @@ export default function BlogsDetails() {
       </h4>
 
       <Post>
-        <img src="/img/footballpost.png" alt="BlogImage not loaded" />
+        <img src='/img/footballPost.png' alt='BlogImage not loaded' />
         <p>
           Quisque maximus tempus eleifend. Curabitur quis odio rutrum, sodales
           risus nec, mollis turpis. Sed quis tellus porta justo lacinia
@@ -98,15 +98,15 @@ export default function BlogsDetails() {
           scelerisque mauris tortor, vitae aliquet nunc egestas eget.
         </p>
         <Heart>
-          <FaHeart /> <p> 126 </p>{" "}
+          <FaHeart /> <p> 126 </p>
         </Heart>
         <Views>
-          <FaEye /> <p> 4.5k</p>{" "}
+          <FaEye /> <p> 4.5k</p>
         </Views>
       </Post>
       <CommenTitle>Comments</CommenTitle>
       <br />
-      <textarea rows="7"></textarea>
+      <textarea rows='7'></textarea>
       <h6>
         <Button
           bg={({ theme }) => theme.colors.yellow}
@@ -152,5 +152,5 @@ export default function BlogsDetails() {
         </p>
       </CommentBox>
     </MainDiv>
-  );
+  )
 }

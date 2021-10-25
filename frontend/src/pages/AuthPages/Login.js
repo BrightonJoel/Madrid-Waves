@@ -6,6 +6,7 @@ import { useAuth } from "../../context/AuthContext"
 
 // styles
 import {
+  Background,
   Container,
   Wrapper,
   Label,
@@ -44,10 +45,14 @@ export default function Login() {
     saveUser(data)
 
     if (error === "Logout and try again") {
+      emailRef.current.value = ""
+      passwordRef.current.value = ""
       setNavigateLink("/logout")
       setErrorMsg(error)
       setLoading(loading)
     } else if (error) {
+      emailRef.current.value = ""
+      passwordRef.current.value = ""
       setLoading(loading)
       setErrorMsg(error)
     } else {
@@ -57,58 +62,60 @@ export default function Login() {
   }
 
   return (
-    <Container>
-      <Wrapper>
-        <h2>Log in to Madrid Waves</h2>
-        {errorMsg && (
-          <ErrorWrapper>
-            {errorMsg}
-            {navigateLink && (
+    <Background>
+      <Container>
+        <Wrapper>
+          <h2>Log in to Madrid Waves</h2>
+          {errorMsg && (
+            <ErrorWrapper>
+              {errorMsg}
+              {navigateLink && (
+                <Button
+                  bg={({ theme }) => theme.colors.red}
+                  clr={({ theme }) => theme.colors.neutral}
+                  mt='0px'
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Button>
+              )}
+            </ErrorWrapper>
+          )}
+          <form onSubmit={handleSubmit}>
+            <Label>Email</Label>
+            <Input type='email' ref={emailRef} required />
+            <Label>Password</Label>
+            <Input type='password' ref={passwordRef} required />
+
+            {loading ? (
               <Button
-                bg={({ theme }) => theme.colors.red}
+                type='submit'
+                disabled={loading}
+                bg={({ theme }) => theme.colors.primaryBlue}
                 clr={({ theme }) => theme.colors.neutral}
-                mt='0px'
-                onClick={handleLogout}
+                mt='30px'
+                w='100%'
               >
-                Logout
+                Loding...
+              </Button>
+            ) : (
+              <Button
+                type='submit'
+                disabled={loading}
+                bg={({ theme }) => theme.colors.primaryBlue}
+                clr={({ theme }) => theme.colors.neutral}
+                mt='30px'
+                w='100%'
+              >
+                Login
               </Button>
             )}
-          </ErrorWrapper>
-        )}
-        <form onSubmit={handleSubmit}>
-          <Label>Email</Label>
-          <Input type='email' ref={emailRef} required />
-          <Label>Password</Label>
-          <Input type='password' ref={passwordRef} required />
+          </form>
 
-          {loading ? (
-            <Button
-              type='submit'
-              disabled={loading}
-              bg={({ theme }) => theme.colors.primaryBlue}
-              clr={({ theme }) => theme.colors.neutral}
-              mt='30px'
-              w='100%'
-            >
-              Loding...
-            </Button>
-          ) : (
-            <Button
-              type='submit'
-              disabled={loading}
-              bg={({ theme }) => theme.colors.primaryBlue}
-              clr={({ theme }) => theme.colors.neutral}
-              mt='30px'
-              w='100%'
-            >
-              Login
-            </Button>
-          )}
-        </form>
-
-        <p>New to the page?</p>
-        <Link to='/signup'>Sign in</Link>
-      </Wrapper>
-    </Container>
+          <p>New to the page?</p>
+          <Link to='/signup'>Sign in</Link>
+        </Wrapper>
+      </Container>
+    </Background>
   )
 }

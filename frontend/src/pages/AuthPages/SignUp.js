@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthContext"
 
 // styles
 import {
+  Background,
   Container,
   Wrapper,
   Label,
@@ -52,47 +53,49 @@ export default function SignUp() {
   }
 
   return (
-    <Container>
-      <Wrapper>
-        {loading && <p>loading.....</p>}
-        <h2>Sign up to Madrid waves</h2>
-        {errorMsg && <ErrorWrapper>{errorMsg}</ErrorWrapper>}
-        <form onSubmit={handleSubmit}>
-          <Label>Username</Label>
-          <Input type='text' ref={usernameRef} required />
-          <Label>Email</Label>
-          <Input type='email' ref={emailRef} required />
-          <Label>Password</Label>
-          <Input type='password' ref={passwordRef} required />
-          <Label>Confirm Password</Label>
-          <Input type='password' ref={passwordConfirmRef} required />
+    <Background>
+      <Container>
+        <Wrapper>
+          {loading && <p>loading.....</p>}
+          <h2>Sign up to Madrid waves</h2>
+          {errorMsg && <ErrorWrapper>{errorMsg}</ErrorWrapper>}
+          <form onSubmit={handleSubmit}>
+            <Label>Username</Label>
+            <Input type='text' ref={usernameRef} required />
+            <Label>Email</Label>
+            <Input type='email' ref={emailRef} required />
+            <Label>Password</Label>
+            <Input type='password' ref={passwordRef} required />
+            <Label>Confirm Password</Label>
+            <Input type='password' ref={passwordConfirmRef} required />
 
-          {loading ? (
-            <Button
-              type='submit'
-              bg={({ theme }) => theme.colors.primaryBlue}
-              clr={({ theme }) => theme.colors.neutral}
-              mt='30px'
-              w='100%'
-            >
-              Loading...
-            </Button>
-          ) : (
-            <Button
-              type='submit'
-              bg={({ theme }) => theme.colors.primaryBlue}
-              clr={({ theme }) => theme.colors.neutral}
-              mt='30px'
-              w='100%'
-            >
-              Create Account
-            </Button>
-          )}
-        </form>
+            {loading ? (
+              <Button
+                type='submit'
+                bg={({ theme }) => theme.colors.primaryBlue}
+                clr={({ theme }) => theme.colors.neutral}
+                mt='30px'
+                w='100%'
+              >
+                Loading...
+              </Button>
+            ) : (
+              <Button
+                type='submit'
+                bg={({ theme }) => theme.colors.primaryBlue}
+                clr={({ theme }) => theme.colors.neutral}
+                mt='30px'
+                w='100%'
+              >
+                Create Account
+              </Button>
+            )}
+          </form>
 
-        <p>Already have an account?</p>
-        <Link to='/login'>Login</Link>
-      </Wrapper>
-    </Container>
+          <p>Already have an account?</p>
+          <Link to='/login'>Login</Link>
+        </Wrapper>
+      </Container>
+    </Background>
   )
 }

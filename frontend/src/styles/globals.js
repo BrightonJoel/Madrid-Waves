@@ -19,10 +19,9 @@ const GlobalStyles = createGlobalStyle`
     body {
         background: ${({ theme }) => theme.colors.lightGrey};
         cursor: default;
-        
     }
 
-    h1, h2, h3, h4, h5, h6, button {
+    h1, h2, h3, h4, h5, h6 {
         margin: 0;
         font-family: ${({ theme }) => theme.fonts.primary};
         font-weight: 700;
@@ -30,6 +29,10 @@ const GlobalStyles = createGlobalStyle`
     
     a {
         text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     li {
