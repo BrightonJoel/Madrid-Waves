@@ -6,6 +6,12 @@ export const NavContainer = styled.header`
   height: 250px;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: auto, auto;
+  transition-delay: 1s;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto, auto, auto;
+  }
 `
 export const Logo = styled.div`
   grid-column: 1 / 1;
@@ -24,7 +30,7 @@ export const Logo = styled.div`
     display: inline-block;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1074px) {
     h1 {
       display: none;
     }
@@ -43,6 +49,21 @@ export const NavLinks = styled.div`
     color: ${({ theme }) => theme.colors.neutral};
     font-size: 20px;
   }
+  li {
+    display: inline-block;
+  }
+  &.active {
+    display: flex;
+  }
+  @media (max-width: 768px) {
+    grid-row: 2 / 2;
+    grid-column: 1 / 4;
+    display: none;
+
+    li {
+      margin: 10px 0;
+    }
+  }
 `
 export const Profile = styled.div`
   display: flex;
@@ -57,6 +78,17 @@ export const Profile = styled.div`
     margin-right: 10px;
     font-size: 18px;
     border-radius: 5px;
+  }
+  .Hamburger {
+    font-size: 30px;
+    display: none;
+  }
+  @media (max-width: 768px) {
+    grid-column: 2 / 4;
+
+    .Hamburger {
+      display: block;
+    }
   }
 `
 export const SearchBar = styled.div`
@@ -84,5 +116,9 @@ export const SearchBar = styled.div`
     padding: 0 5px;
     display: inline-block;
     transform: translateY(2px);
+  }
+  @media (max-width: 768px) {
+    grid-row: 3 / 3;
+    grid-column: 1 / 4;
   }
 `
