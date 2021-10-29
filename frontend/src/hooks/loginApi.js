@@ -1,4 +1,4 @@
-export const callApi = async (path, method, body) => {
+export const loginApi = async (path, method, body) => {
   const url = process.env.REACT_APP_BACKEND_URL
   let data = null
   let error = null

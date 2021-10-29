@@ -6,15 +6,13 @@ export const NavContainer = styled.header`
   height: 250px;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: auto, auto;
-  transition-delay: 1s;
 
-  @media (max-width: 768px){
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto, auto,auto;
-
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto, auto, auto;
   }
 `
-export const Logo = styled.div`
+export const Logo = styled.nav`
   grid-column: 1 / 1;
   display: flex;
   justify-content: center;
@@ -37,71 +35,100 @@ export const Logo = styled.div`
     }
   }
 `
-export const NavLinks = styled.div`
+export const NavLinks = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center; /* for single line flex container */
   align-content: center; /* for multi-line flex container */
   color: ${({ theme }) => theme.colors.neutral};
   grid-column: 2 / 2;
-  
+
   a {
     padding: 0 20px;
     color: ${({ theme }) => theme.colors.neutral};
     font-size: 20px;
   }
-  li{
+  li {
     display: inline-block;
-    
   }
-  &.active{
-    display:flex;
-    
-  
+  &.active {
+    display: flex;
   }
   @media (max-width: 768px) {
-    
     grid-row: 2 / 2;
     grid-column: 1 / 4;
-    display:none;
-    
-    li{
-      margin: 10px 0;
+    display: none;
 
+    li {
+      margin: 10px 0;
     }
-    
-    
   }
-  
-  
 `
-export const Profile = styled.div`
+export const Profile = styled.nav`
   display: flex;
   justify-content: center;
-  align-items: center; /* for single line flex container */
-  align-content: center; /* for multi-line flex container */
+  align-items: center;
+  align-content: center;
   color: ${({ theme }) => theme.colors.neutral};
   font-size: 12px;
   grid-column: 3 / 3;
 
   button {
-    margin-right: 10px;
     font-size: 18px;
-    border-radius: 5px;
+    border-radius: 6px;
   }
-  .Hamburger{
+  .Hamburger {
+    margin-left: 20px;
+    cursor: pointer;
     font-size: 30px;
-    display:none;
+    display: none;
   }
   @media (max-width: 768px) {
     grid-column: 2 / 4;
 
-    .Hamburger{
-      display:block;
+    .Hamburger {
+      display: block;
     }
-    
   }
 `
+
+export const Avatar = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 65px;
+  width: 65px;
+  font-size: 24px;
+  color: ${({ theme }) => theme.colors.yellow};
+  border: 2px solid ${({ theme }) => theme.colors.neutral};
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  transition: 100ms;
+`
+
+export const DropDown = styled.div`
+  display: none;
+  // height: 80px;
+  // width: 140px;
+  position: absolute;
+  padding: 20px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  background-color: ${({ theme }) => theme.colors.lightGrey};
+  border-radius: 6px;
+  z-index: 2;
+  top: 80px;
+
+  &.activeAvatar {
+    display: block;
+  }
+
+  h5 {
+    margin-bottom: 10px;
+  }
+`
+
 export const SearchBar = styled.div`
   display: flex;
   justify-content: center;
@@ -128,7 +155,7 @@ export const SearchBar = styled.div`
     display: inline-block;
     transform: translateY(2px);
   }
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     grid-row: 3 / 3;
     grid-column: 1 / 4;
   }

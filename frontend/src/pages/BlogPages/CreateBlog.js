@@ -26,10 +26,9 @@ export default function CreateBlog() {
             bg={({ theme }) => theme.colors.yellow}
             clr={({ theme }) => theme.colors.primaryBlue}
           >
-            Create{" "}
+            Create
             <span>
-              {" "}
-              <FaPlusSquare />{" "}
+              <FaPlusSquare />
             </span>
           </Button>
           <Button
@@ -37,9 +36,8 @@ export default function CreateBlog() {
             clr={({ theme }) => theme.colors.primaryBlue}
             action='clear'
           >
-            Clear{" "}
+            Clear
             <span>
-              {" "}
               <FaTimes />
             </span>
           </Button>

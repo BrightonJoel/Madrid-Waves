@@ -18,11 +18,11 @@ export const CreateForm = styled.div`
   font-weight: 500;
 
   @media (max-width: 768px) {
-    padding: 20px;
+    padding: 30px;
   }
 
   Label {
-    font-size: 25px;
+    font-size: 24px;
     display: block;
     padding: 10px 0;
   }

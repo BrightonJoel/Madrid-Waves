@@ -1,7 +1,7 @@
-import React,{useState}  from "react";
-import { Button } from "../../styles/GlobalComponents/Button";
-import { Link } from "react-router-dom";
-import { FaSearch, FaBars } from "react-icons/fa";
+import React, { useState } from "react"
+import { Link, useHistory } from "react-router-dom"
+import useUser from "../../hooks/useUser"
+import { useAuth } from "../../context/AuthContext"
 
 // styles
 import {
@@ -9,48 +9,74 @@ import {
   Logo,
   NavLinks,
   Profile,
+  Avatar,
+  DropDown,
   SearchBar,
-} from "./HomeHeaderStyles";
-
+} from "./HomeHeaderStyles"
+import { FaSearch, FaBars } from "react-icons/fa"
+import { Button } from "../../styles/GlobalComponents/Button"
 
 export default function HomeHeader() {
-
-  const [isOpen, setIsOpen] = useState();
+  const [isOpen, setIsOpen] = useState()
+  const [isAvatar, setIsAvatar] = useState()
+  const { currentUser, loading } = useUser()
+  const { logout } = useAuth()
+  const history = useHistory()
 
   return (
     <NavContainer>
-      <Logo>
-        <img src="/img/Logo-Transparent.svg" alt="Logo" />
+      <Logo onClick={() => history.push("/")}>
+        <img src='/img/Logo-Transparent.svg' alt='Logo' />
         <h1>Madrid Waves</h1>
       </Logo>
-      <NavLinks className= {isOpen ? "active": ""}>
+      <NavLinks className={isOpen ? "active" : ""}>
         <ul>
           <li>
-            <Link to="/create">Create</Link>
+            <Link to='/create'>Create</Link>
           </li>
           <li>
-            <Link to="/myblogs">MyBlogs</Link>
+            <Link to='/myblogs'>MyBlogs</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to='/about'>About</Link>
           </li>
         </ul>
       </NavLinks>
       <Profile>
-        <Button
-          bg={({ theme }) => theme.colors.red}
-          clr={({ theme }) => theme.colors.neutral}
-        >
-          Login
-        </Button>
-        <FaBars className="Hamburger" onClick={()=> {
-          setIsOpen(!isOpen)
-          console.log("Testing ...")
-        }} />
+        {currentUser && !loading ? (
+          <Avatar onClick={() => setIsAvatar(!isAvatar)}>
+            <h1>{currentUser.username.charAt(0)}</h1>
+            <DropDown className={isAvatar ? "activeAvatar" : ""}>
+              <Button
+                onClick={logout}
+                bg={({ theme }) => theme.colors.red}
+                clr={({ theme }) => theme.colors.neutral}
+              >
+                Logout
+              </Button>
+            </DropDown>
+          </Avatar>
+        ) : (
+          <Button
+            onClick={() => history.push("/login")}
+            bg={({ theme }) => theme.colors.red}
+            clr={({ theme }) => theme.colors.neutral}
+          >
+            Login
+          </Button>
+        )}
+
+        <FaBars
+          className='Hamburger'
+          onClick={() => {
+            setIsOpen(!isOpen)
+            console.log("Testing ...")
+          }}
+        />
       </Profile>
 
       <SearchBar>
-        <input type="text"></input>
+        <input type='text'></input>
         <Button
           bg={({ theme }) => theme.colors.red}
           clr={({ theme }) => theme.colors.neutral}
@@ -60,8 +86,7 @@ export default function HomeHeader() {
             <FaSearch />
           </span>
         </Button>
-        
       </SearchBar>
     </NavContainer>
-  );
+  )
 }
