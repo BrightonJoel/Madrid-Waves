@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react"
 import { useHistory } from "react-router"
 
-import { callApi } from "../hooks/callApi"
+import { loginApi } from "../hooks/loginApi"
 import { registerApi } from "../hooks/registerApi"
 
 const AuthContext = React.createContext()
@@ -29,13 +29,13 @@ export function AuthProvider({ children }) {
 
   async function login(userDetails) {
     const path = process.env.REACT_APP_LOGIN_PATH
-    return await callApi(path, "POST", userDetails)
+    return await loginApi(path, "POST", userDetails)
   }
 
   async function logout() {
     const path = process.env.REACT_APP_LOGOUT
     localStorage.clear()
-    const { error } = await callApi(path, "POST")
+    const { error } = await loginApi(path, "POST")
     history.push("/login")
     return error
   }
