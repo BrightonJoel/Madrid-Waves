@@ -35,7 +35,7 @@ const UPDATELIKES = gql`
 `
 
 export default function HomePage() {
-  const { currentUser, loading } = useUser()
+  const { currentUser } = useUser()
 
   // Updating likes
   const [
@@ -51,13 +51,27 @@ export default function HomePage() {
     },
   })
 
+  function checkUserLike(blog) {
+    let liked = false
+    if (blog.UserId === currentUser.id) {
+      if (blog.isLiked === true) {
+        liked = false
+      } else {
+        liked = true
+      }
+    } else {
+      liked = false
+    }
+    return liked
+  }
+
   const handleLikes = (blog) => {
     updateLikes({
       variables: {
         id: blog.id,
         UserId: currentUser.id,
         Likes: blog.isLiked ? blog.Likes - 1 : blog.Likes + 1,
-        isLiked: blog.UserId === currentUser.id && blog.isLiked ? false : true,
+        isLiked: checkUserLike(blog),
       },
     })
     console.log(updateData, updateLoad, updateError)
