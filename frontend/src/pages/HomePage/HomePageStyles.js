@@ -29,6 +29,7 @@ export const ContentArea = styled.div`
   background-color: ${({ bg }) => bg};
   padding: ${({ p }) => p};
   hr {
+    border: 1px solid #c4c4c4;
     margin: 20px 40px;
   }
 `

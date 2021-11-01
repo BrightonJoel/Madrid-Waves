@@ -44,7 +44,13 @@ export const Blog = styled.section`
 
   h3 {
     font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+  }
+
+  h5 {
+    font-size: 16px;
+    margin: 15px;
+    letter-spacing: 5px;
   }
 
   p {

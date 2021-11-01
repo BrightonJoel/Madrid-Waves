@@ -40,6 +40,7 @@ export const CreateForm = styled.div`
     }
   }
   select {
+    appearance: none;
     border: none;
     border-radius: 6px;
     padding: 10px 20px;
