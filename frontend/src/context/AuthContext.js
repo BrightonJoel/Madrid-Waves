@@ -34,7 +34,6 @@ export function AuthProvider({ children }) {
 
   async function logout() {
     const path = process.env.REACT_APP_LOGOUT
-    localStorage.clear()
     const { error } = await loginApi(path, "POST")
     history.push("/login")
     return error

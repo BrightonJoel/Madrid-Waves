@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { loginApi } from "./loginApi"
 
 const useUser = () => {
   const [currentUser, setUser] = useState(null)
@@ -7,16 +8,14 @@ const useUser = () => {
   useEffect(() => {
     setLoading(true)
 
-    const loggedInUser = localStorage.getItem("user")
+    const fetchUser = async () => {
+      const { loading, data } = await loginApi("users/me", "GET")
 
-    if (loggedInUser === null) {
-      setLoading(false)
+      if (!data) setLoading(loading)
+      setUser(data)
+      setLoading(loading)
     }
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser)
-      setUser(foundUser)
-      setLoading(false)
-    }
+    fetchUser()
   }, [])
 
   return { currentUser, loading }

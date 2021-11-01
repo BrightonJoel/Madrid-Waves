@@ -63,7 +63,7 @@ export default function Blogs({ handleLikes }) {
               ))}
             </ImageContainer>
             <ContentArea p='20px' bg={({ theme }) => theme.colors.neutral}>
-              <h3>{blog.Title}</h3>
+              <h3>{blog.Title}</h3> <h5>By Author</h5>
               <p>{blog.Body.substring(0, 250) + "..."}</p>
               <hr />
               <ActionArea>
