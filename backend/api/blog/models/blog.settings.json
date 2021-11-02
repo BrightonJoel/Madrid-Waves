@@ -31,21 +31,13 @@
       "required": false,
       "pluginOptions": {}
     },
-    "Likes": {
-      "type": "integer",
-      "default": 0,
-      "min": 0
-    },
     "Views": {
       "type": "integer",
       "default": 0
     },
-    "isLiked": {
-      "type": "boolean",
-      "default": false
-    },
-    "UserId": {
-      "type": "integer"
+    "likes": {
+      "collection": "like",
+      "via": "blog"
     }
   }
 }

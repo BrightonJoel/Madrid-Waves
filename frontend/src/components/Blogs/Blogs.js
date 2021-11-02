@@ -5,13 +5,12 @@ import { Link } from "react-router-dom"
 import { BlogsWrapper, BlogContainer, BlogHeader, Blog } from "./BlogsStyles"
 import {
   ImageContainer,
-  HeartContainer,
   ContentArea,
   ActionArea,
 } from "../../pages/HomePage/HomePageStyles"
 import { Button } from "../../styles/GlobalComponents/Button"
-import { AiFillHeart } from "react-icons/ai"
 import { FaFilter } from "react-icons/fa"
+import LikeButton from "./LikeButton"
 
 const GETBLOGS = gql`
   query GetBlogs {
@@ -23,15 +22,16 @@ const GETBLOGS = gql`
         id
         url
       }
-      Likes
+      likes {
+        id
+        UserName
+      }
       Views
-      isLiked
-      UserId
     }
   }
 `
 
-export default function Blogs({ handleLikes }) {
+export default function Blogs() {
   const { loading, error, data } = useQuery(GETBLOGS)
 
   if (loading) return <p>Loading...</p>
@@ -67,13 +67,7 @@ export default function Blogs({ handleLikes }) {
               <p>{blog.Body.substring(0, 250) + "..."}</p>
               <hr />
               <ActionArea>
-                <HeartContainer>
-                  <AiFillHeart
-                    className={`heart ${blog.isLiked ? "active" : ""}`}
-                    onClick={() => handleLikes(blog)}
-                  />
-                  <span>{blog.Likes}</span>
-                </HeartContainer>
+                <LikeButton id={blog.id} likes={blog.likes} />
                 <Link to={`/details/${blog.id}`}>Read More</Link>
               </ActionArea>
             </ContentArea>
