@@ -3,7 +3,7 @@ module.exports = {
   query: ``,
   type: {},
   mutation: `
-  likePost(id: ID, UserName: String): Blog!
+  likePost(id: ID, UserId: ID): Blog!
     `,
   resolver: {
     Query: {},

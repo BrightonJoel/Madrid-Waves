@@ -35,9 +35,11 @@
       "type": "integer",
       "default": 0
     },
-    "likes": {
-      "collection": "like",
-      "via": "blog"
+    "likedUser": {
+      "plugin": "users-permissions",
+      "collection": "user",
+      "via": "blogs",
+      "dominant": true
     }
   }
 }

@@ -7,8 +7,8 @@ import { AiFillHeart } from "react-icons/ai"
 import { HeartContainer } from "../../pages/HomePage/HomePageStyles"
 
 const UPDATELIKES = gql`
-  mutation UpdateLikes($id: ID!, $UserName: String) {
-    likePost(id: $id, UserName: $UserName) {
+  mutation UpdateLikes($id: ID!, $UserId: ID) {
+    likePost(id: $id, UserId: $UserId) {
       id
       Title
       Body
@@ -16,16 +16,16 @@ const UPDATELIKES = gql`
         id
         url
       }
-      likes {
+      likedUser {
         id
-        UserName
+        username
       }
       Views
     }
   }
 `
 
-export default function LikeButton({ id, likes }) {
+export default function LikeButton({ id, likedUser }) {
   const { currentUser } = useUser()
   const history = useHistory()
   const [liked, setLiked] = useState(false)
@@ -33,11 +33,11 @@ export default function LikeButton({ id, likes }) {
   useEffect(() => {
     if (
       currentUser &&
-      likes.find((like) => like.UserName === currentUser.username)
+      likedUser.find((like) => like.username === currentUser.username)
     ) {
       setLiked(true)
     } else setLiked(false)
-  }, [currentUser, likes])
+  }, [currentUser, likedUser])
 
   const [updateLikes] = useMutation(UPDATELIKES, {
     options: {
@@ -53,7 +53,7 @@ export default function LikeButton({ id, likes }) {
     updateLikes({
       variables: {
         id: id,
-        UserName: `${currentUser.username}`,
+        UserId: `${currentUser.id}`,
       },
     })
   }
@@ -72,7 +72,7 @@ export default function LikeButton({ id, likes }) {
             onClick={() => history.push("/login")}
           />
         )}
-        <span>{likes.length}</span>
+        <span>{likedUser.length}</span>
       </HeartContainer>
     </>
   )

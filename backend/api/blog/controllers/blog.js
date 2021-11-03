@@ -3,24 +3,25 @@ const { parseMultipartData, sanitizeEntity } = require("strapi-utils");
 module.exports = {
   async likePost(ctx) {
     // const { id } = ctx.params;
-    const { id, UserName } = ctx.request.body;
+    const { id, UserId } = ctx.request.body;
     const blog = await strapi.services.blog.findOne({ id });
+    ctx.state.user = await strapi.plugins[
+      "users-permissions"
+    ].services.user.fetchAuthenticatedUser(UserId);
 
     if (blog) {
-      if (blog.likes.find((like) => like.UserName === UserName)) {
+      if (
+        blog.likedUser.find((like) => like.username === ctx.state.user.username)
+      ) {
         // blog already liked unlike it
-        await strapi.services.like.delete({ UserName });
-
-        blog.likes = blog.likes.filter((like) => like.UserName !== UserName);
+        blog.likedUser = blog.likedUser.filter(
+          (like) => like.username !== ctx.state.user.username
+        );
         entity = await strapi.services.blog.update({ id }, blog);
       } else {
         // Not liked
-        let newLike = {
-          UserName,
-          blog: `${blog.id}`,
-        };
-        await strapi.services.like.create(newLike);
-        entity = await strapi.services.blog.findOne({ id });
+        blog.likedUser = [...blog.likedUser, ctx.state.user];
+        entity = await strapi.services.blog.update({ id }, blog);
       }
     } else {
       return ctx.request(null, [{ messages: [{ id: "No blogs found" }] }]);

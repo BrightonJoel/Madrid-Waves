@@ -26,9 +26,9 @@ const GETSINGLEBLOGS = gql`
         id
         url
       }
-      likes {
+      likedUser {
         id
-        UserName
+        username
       }
       Views
     }
@@ -63,7 +63,7 @@ export default function SingleBlog() {
               <p>{blog.Body.substring(0, 200) + "..."}</p>
               <hr />
               <ActionArea>
-                <LikeButton id={blog.id} likes={blog.likes} />
+                <LikeButton id={blog.id} likedUser={blog.likedUser} />
                 <Link to={`/details/${blog.id}`}>Read More</Link>
               </ActionArea>
             </ContentArea>
