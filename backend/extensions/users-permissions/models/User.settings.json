@@ -62,6 +62,10 @@
     "blogs": {
       "via": "likedUser",
       "collection": "blog"
+    },
+    "blog": {
+      "via": "Author",
+      "collection": "blog"
     }
   }
 }

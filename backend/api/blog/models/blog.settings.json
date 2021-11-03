@@ -40,6 +40,16 @@
       "collection": "user",
       "via": "blogs",
       "dominant": true
+    },
+    "Author": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "blog"
+    },
+    "blogCategories": {
+      "collection": "blog-category",
+      "via": "blogs",
+      "dominant": true
     }
   }
 }
