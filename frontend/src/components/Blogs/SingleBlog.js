@@ -1,6 +1,7 @@
 import React from "react"
 import { useQuery, gql } from "@apollo/client"
 import { Link } from "react-router-dom"
+import LikeButton from "./LikeButton"
 
 // styles
 import {
@@ -11,11 +12,9 @@ import {
 } from "./SingleBlogStyles"
 import {
   ImageContainer,
-  HeartContainer,
   ContentArea,
   ActionArea,
 } from "../../pages/HomePage/HomePageStyles"
-import { AiFillHeart } from "react-icons/ai"
 
 const GETSINGLEBLOGS = gql`
   query GetSingleBlog {
@@ -27,15 +26,16 @@ const GETSINGLEBLOGS = gql`
         id
         url
       }
-      Likes
+      likedUser {
+        id
+        username
+      }
       Views
-      isLiked
-      UserId
     }
   }
 `
 
-export default function SingleBlog({ handleLikes }) {
+export default function SingleBlog() {
   const { data, loading, error } = useQuery(GETSINGLEBLOGS)
 
   if (loading) return <p>Loading...</p>
@@ -63,13 +63,7 @@ export default function SingleBlog({ handleLikes }) {
               <p>{blog.Body.substring(0, 200) + "..."}</p>
               <hr />
               <ActionArea>
-                <HeartContainer>
-                  <AiFillHeart
-                    className={`heart ${blog.isLiked ? "active" : ""}`}
-                    onClick={() => handleLikes(blog)}
-                  />
-                  <span>{blog.Likes}</span>
-                </HeartContainer>
+                <LikeButton id={blog.id} likedUser={blog.likedUser} />
                 <Link to={`/details/${blog.id}`}>Read More</Link>
               </ActionArea>
             </ContentArea>

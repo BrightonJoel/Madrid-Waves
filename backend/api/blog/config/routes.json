@@ -41,6 +41,14 @@
       }
     },
     {
+      "method": "PUT",
+      "path": "/likePost/:id",
+      "handler": "blog.likePost",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "DELETE",
       "path": "/blogs/:id",
       "handler": "blog.delete",
