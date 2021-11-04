@@ -31,9 +31,14 @@ export default function HomeHeader() {
       </Logo>
       <NavLinks className={isOpen ? "active" : ""}>
         <ul>
-          <li>
-            <Link to='/create'>Create</Link>
-          </li>
+          {currentUser ? (
+            <li>
+              <Link to='/create'>Create</Link>
+            </li>
+          ) : (
+            <Link to='/login'>Create</Link>
+          )}
+
           <li>
             <Link to='/myblogs'>MyBlogs</Link>
           </li>
