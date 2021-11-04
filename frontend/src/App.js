@@ -13,12 +13,15 @@ import MyBlogs from "./pages/BlogPages/MyBlogs"
 import BlogsDetails from "./pages/BlogPages/BlogDetails"
 import About from "./pages/About"
 import Theme from "./styles/theme"
-
+import { createUploadLink } from "apollo-upload-client";
 import { AuthProvider } from "./context/AuthContext"
 
 // Apollo client
 const client = new ApolloClient({
   uri: "http://localhost:1337/graphql",
+  // link: createUploadLink({
+  //       uri: "http://localhost:1337/graphql",
+  //     }),
   credentials: "include",
   cache: new InMemoryCache(),
 })

@@ -1,11 +1,36 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { MainDiv, CreateForm } from "./CreateBlogStyles";
 import { Button } from "../../styles/GlobalComponents/Button";
 import { FaPlusSquare, FaTimes } from "react-icons/fa";
 import useUser from "../../hooks/useUser";
 import { useHistory } from "react-router";
-import { useMutation, gql, useQuery } from "@apollo/client";
+import {
+  useMutation,
+  gql,
+  useQuery,
+  ApolloClient,
+  InMemoryCache,
+} from "@apollo/client";
 import { ErrorWrapper } from "../AuthPages/AuthPageStyles";
+
+import { ApolloProvider } from "@apollo/react-hooks";
+import { createUploadLink } from "apollo-upload-client";
+// const cache = new InMemoryCache();
+
+// const client = new ApolloClient({
+//   cache,
+//   link: createUploadLink({
+//     uri: "http://localhost:1337/graphql",
+//   }),
+// });
+
+const UPLOADIMAGE = gql`
+  mutation ($file: Upload!) {
+    upload(file: $file) {
+      name
+    }
+  }
+`;
 
 const CREATEBLOG = gql`
   mutation CreateBlog(
@@ -65,14 +90,24 @@ export default function CreateBlog() {
     },
   });
 
+  const [uploadImage, { data: Imagedata , loading: LodingImage, error: uploadError}] = useMutation(UPLOADIMAGE);
+
+  const [Image, setImage] = useState(null);
+
+  function onImageChange(event) {
+    console.log(event.target.files);
+
+    setImage(event.target.files[0]);
+  }
+
   const { data } = useQuery(FETCHCATEGORY);
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(title.current.value);
-    console.log(category.current.value);
-    console.log(body.current.value);
-    console.log(image.current.value);
+    // console.log(title.current.value);
+    // console.log(category.current.value);
+    // console.log(body.current.value);
+    // console.log(image.current.value);
 
     createBlog({
       variables: {
@@ -82,6 +117,28 @@ export default function CreateBlog() {
         blogCategories: category.current.value,
       },
     });
+    // uploadImage({
+    //   variables: {
+    //     file: Image,
+    //   },
+    // });
+
+    console.log(Imagedata);
+    console.log(uploadError)
+    // client
+    //   .mutate({
+    //     mutation: UPLOAD_IMAGE,
+    //     variables: {
+    //       file: Image,
+    //     },
+    //   },
+    //   )
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
   }
 
   if (loading) {
@@ -105,7 +162,12 @@ export default function CreateBlog() {
             <label> Body </label>
             <textarea rows="25" ref={body} required></textarea>
             <label> Upload Image</label>
-            <input type="file" accept="image/*" ref={image}></input>
+            <input
+              type="file"
+              accept="image/*"
+              ref={image}
+              onChange={onImageChange}
+            ></input>
             {!createBlogLoading && !createBlogError && createBlogData ? (
               <ErrorWrapper>Blog Created Successfully !!!</ErrorWrapper>
             ) : !createBlogData && !createBlogError ? (
