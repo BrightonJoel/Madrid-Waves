@@ -1,15 +1,15 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useRef, useState } from "react"
 import { MainDiv, CreateForm } from "./CreateBlogStyles"
 import { Button } from "../../styles/GlobalComponents/Button"
 import { FaPlusSquare, FaTimes } from "react-icons/fa"
 import useUser from "../../hooks/useUser"
-import { useHistory } from "react-router"
 import { useMutation, gql, useQuery } from "@apollo/client"
 import { ErrorWrapper } from "../AuthPages/AuthPageStyles"
 
 const UPLOADIMAGE = gql`
   mutation ($file: Upload!) {
     upload(file: $file) {
+      id
       name
     }
   }
@@ -21,6 +21,7 @@ const CREATEBLOG = gql`
     $Body: String!
     $Author: ID
     $blogCategories: [ID]
+    $CoverImage: [ID]
   ) {
     createBlog(
       input: {
@@ -29,11 +30,16 @@ const CREATEBLOG = gql`
           Body: $Body
           Author: $Author
           blogCategories: $blogCategories
+          CoverImage: $CoverImage
         }
       }
     ) {
       blog {
         Title
+        CoverImage {
+          id
+          name
+        }
       }
     }
   }
@@ -48,20 +54,11 @@ const FETCHCATEGORY = gql`
   }
 `
 
-const FETCHFILEID = gql`
-  query FETCHFILEID($name: String!) {
-    files(where: { name: $name }) {
-      id
-    }
-  }
-`
-
 export default function CreateBlog() {
   const title = useRef()
   const category = useRef()
   const body = useRef()
   const [Image, setImage] = useState(null)
-  const history = useHistory()
   const { currentUser, loading } = useUser()
 
   const [
@@ -81,58 +78,60 @@ export default function CreateBlog() {
     },
   })
 
-  const [
-    uploadImage,
-    { data: Imagedata, loading: LodingImage, error: uploadError },
-  ] = useMutation(UPLOADIMAGE, {
-    options: {
-      context: {
-        headers: {
-          credentials: "include",
+  const [uploadImage, { data: resultData, loading: loadingResult }] =
+    useMutation(UPLOADIMAGE, {
+      async onCompleted({ data }) {
+        console.log("log: completed ", await data)
+      },
+      ignoreResults: false,
+      options: {
+        context: {
+          headers: {
+            credentials: "include",
+          },
         },
       },
-    },
-  })
+    })
 
   function onImageChange(event) {
     console.log(event.target.files[0])
     setImage(event.target.files[0])
   }
 
-  const {
-    data: fileId,
-    error: fileFetchError,
-    refetch,
-  } = useQuery(FETCHFILEID, {
-    manual: true,
-    variables: {
-      name: Image.name,
-    },
-  })
-
   const { data, loading: fetchCategoriesLoading } = useQuery(FETCHCATEGORY)
 
-  function handleSubmit(e) {
+  async function uploadFile(e) {
     e.preventDefault()
+    console.log("Uploading.... file")
+    await uploadImage({
+      variables: {
+        file: Image,
+      },
+    })
+    console.log("Upload done...")
+  }
 
-    refetch()
+  async function handleSubmit(e) {
+    e.preventDefault()
+    console.log("upload data", resultData)
+    const imgId = await resultData.upload.id
 
-    createBlog({
+    await createBlog({
       variables: {
         Title: title.current.value,
         Body: body.current.value,
         Author: currentUser.id,
         blogCategories: category.current.value,
+        CoverImage: imgId,
       },
     })
+  }
 
-    uploadImage({
-      variables: {
-        file: Image,
-      },
-    })
-
-    console.log(fileId, fileFetchError)
+  function clearForm(e) {
+    e.preventDefault()
+    title.current.value = ""
+    category.current.value = ""
+    body.current.value = ""
   }
 
   if (loading) {
@@ -158,8 +157,15 @@ export default function CreateBlog() {
           </select>
           <label> Body </label>
           <textarea rows='25' ref={body} required></textarea>
-          <label> Upload Image</label>
+          <label> Upload Image</label>{" "}
           <input type='file' accept='image/*' onChange={onImageChange}></input>
+          <Button
+            bg={({ theme }) => theme.colors.yellow}
+            clr={({ theme }) => theme.colors.primaryBlue}
+            onClick={uploadFile}
+          >
+            Upload
+          </Button>
           {!createBlogLoading && !createBlogError && createBlogData ? (
             <ErrorWrapper>Blog Created Successfully !!!</ErrorWrapper>
           ) : !createBlogData && !createBlogError ? (
@@ -167,7 +173,6 @@ export default function CreateBlog() {
           ) : (
             <ErrorWrapper>An error has occured !</ErrorWrapper>
           )}
-
           <Button
             bg={({ theme }) => theme.colors.yellow}
             clr={({ theme }) => theme.colors.primaryBlue}
@@ -181,7 +186,7 @@ export default function CreateBlog() {
           <Button
             bg={({ theme }) => theme.colors.yellow}
             clr={({ theme }) => theme.colors.primaryBlue}
-            action='clear'
+            onClick={clearForm}
           >
             Clear
             <span>
