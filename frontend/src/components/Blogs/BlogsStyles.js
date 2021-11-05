@@ -47,12 +47,6 @@ export const Blog = styled.section`
     margin-bottom: 10px;
   }
 
-  h5 {
-    font-size: 16px;
-    margin: 15px;
-    letter-spacing: 5px;
-  }
-
   p {
     line-height: 1.6;
     opacity: 0.7;
@@ -64,5 +58,23 @@ export const Blog = styled.section`
 
   @media (max-width: 600px) {
     padding: 20px;
+  }
+`
+export const Title = styled.h2`
+  font-size: 36px;
+  text-align: center;
+`
+
+export const NoBlogImgContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 50px 0px;
+  img {
+    width: 40%;
+    height: ${({ h }) => h};
+    object-fit: cover;
+    border-radius: 6px;
   }
 `

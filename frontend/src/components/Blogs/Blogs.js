@@ -1,6 +1,8 @@
 import React from "react"
-import { useQuery, gql } from "@apollo/client"
+import { useQuery } from "@apollo/client"
 import { Link } from "react-router-dom"
+import { GETBLOGS } from "../../queries/GetAllBlogs"
+import { BiLoaderAlt } from "react-icons/bi"
 
 import { BlogsWrapper, BlogContainer, BlogHeader, Blog } from "./BlogsStyles"
 import {
@@ -9,32 +11,20 @@ import {
   ActionArea,
 } from "../../pages/HomePage/HomePageStyles"
 import { Button } from "../../styles/GlobalComponents/Button"
+import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"
 import { FaFilter } from "react-icons/fa"
 import LikeButton from "./LikeButton"
-
-const GETBLOGS = gql`
-  query GetBlogs {
-    blogs {
-      id
-      Title
-      Body
-      CoverImage {
-        id
-        url
-      }
-      likedUser {
-        id
-        username
-      }
-      Views
-    }
-  }
-`
 
 export default function Blogs() {
   const { loading, error, data } = useQuery(GETBLOGS)
 
-  if (loading) return <p>Loading...</p>
+  if (loading)
+    return (
+      <SpinnerContainer>
+        {/* <BiLoaderAlt className='loader' /> */}
+        <img src='/img/Logo-Transparent.svg' alt='loader' />
+      </SpinnerContainer>
+    )
   if (error) return <p>{error.message}</p>
 
   return (
@@ -63,7 +53,7 @@ export default function Blogs() {
               ))}
             </ImageContainer>
             <ContentArea p='20px' bg={({ theme }) => theme.colors.neutral}>
-              <h3>{blog.Title}</h3> <h5>By Author</h5>
+              <h3>{blog.Title}</h3>
               <p>{blog.Body.substring(0, 250) + "..."}</p>
               <hr />
               <ActionArea>

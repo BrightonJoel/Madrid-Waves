@@ -1,29 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router"
-import { useMutation, gql } from "@apollo/client"
+import { useMutation } from "@apollo/client"
+import { UPDATELIKES } from "../../queries/UpdateLikes"
 import useUser from "../../hooks/useUser"
 
 import { AiFillHeart } from "react-icons/ai"
 import { HeartContainer } from "../../pages/HomePage/HomePageStyles"
-
-const UPDATELIKES = gql`
-  mutation UpdateLikes($id: ID!, $UserId: ID) {
-    likePost(id: $id, UserId: $UserId) {
-      id
-      Title
-      Body
-      CoverImage {
-        id
-        url
-      }
-      likedUser {
-        id
-        username
-      }
-      Views
-    }
-  }
-`
 
 export default function LikeButton({ id, likedUser }) {
   const { currentUser } = useUser()

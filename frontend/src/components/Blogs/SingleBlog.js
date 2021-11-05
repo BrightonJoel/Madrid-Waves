@@ -1,7 +1,8 @@
 import React from "react"
-import { useQuery, gql } from "@apollo/client"
+import { useQuery } from "@apollo/client"
+import { GETSINGLEBLOG } from "../../queries/GetSingleBlog"
 import { Link } from "react-router-dom"
-import LikeButton from "./LikeButton"
+import { BiLoaderAlt } from "react-icons/bi"
 
 // styles
 import {
@@ -15,30 +16,19 @@ import {
   ContentArea,
   ActionArea,
 } from "../../pages/HomePage/HomePageStyles"
-
-const GETSINGLEBLOGS = gql`
-  query GetSingleBlog {
-    blogs(where: { id: 1 }) {
-      id
-      Title
-      Body
-      CoverImage {
-        id
-        url
-      }
-      likedUser {
-        id
-        username
-      }
-      Views
-    }
-  }
-`
+import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"
+import LikeButton from "./LikeButton"
 
 export default function SingleBlog() {
-  const { data, loading, error } = useQuery(GETSINGLEBLOGS)
+  const { data, loading, error } = useQuery(GETSINGLEBLOG)
 
-  if (loading) return <p>Loading...</p>
+  if (loading)
+    return (
+      <SpinnerContainer>
+        {/* <BiLoaderAlt className='loader' /> */}
+        <img src='/img/Logo-Transparent.svg' alt='loader' />
+      </SpinnerContainer>
+    )
   if (error) return <p>{error.message}</p>
   return (
     <Container>
