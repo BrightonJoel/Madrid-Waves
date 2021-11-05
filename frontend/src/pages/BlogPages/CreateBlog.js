@@ -78,20 +78,19 @@ export default function CreateBlog() {
     },
   })
 
-  const [uploadImage, { data: resultData, loading: loadingResult }] =
-    useMutation(UPLOADIMAGE, {
-      async onCompleted({ data }) {
-        console.log("log: completed ", await data)
-      },
-      ignoreResults: false,
-      options: {
-        context: {
-          headers: {
-            credentials: "include",
-          },
+  const [uploadImage, { data: resultData }] = useMutation(UPLOADIMAGE, {
+    async onCompleted({ data }) {
+      console.log("log: completed ", await data)
+    },
+    ignoreResults: false,
+    options: {
+      context: {
+        headers: {
+          credentials: "include",
         },
       },
-    })
+    },
+  })
 
   function onImageChange(event) {
     console.log(event.target.files[0])
