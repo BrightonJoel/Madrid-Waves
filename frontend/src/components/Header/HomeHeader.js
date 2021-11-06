@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory, NavLink } from "react-router-dom"
 import useUser from "../../hooks/useUser"
 import { useAuth } from "../../context/AuthContext"
 
@@ -11,10 +11,10 @@ import {
   Profile,
   Avatar,
   DropDown,
-  SearchBar,
 } from "./HomeHeaderStyles"
-import { FaSearch, FaBars } from "react-icons/fa"
+import { FaBars } from "react-icons/fa"
 import { Button } from "../../styles/GlobalComponents/Button"
+import Search from "./Search"
 
 export default function HomeHeader() {
   const [isOpen, setIsOpen] = useState()
@@ -33,17 +33,25 @@ export default function HomeHeader() {
         <ul>
           {currentUser ? (
             <li>
-              <Link to='/create'>Create</Link>
+              <NavLink to='/create' activeClassName='nav-active'>
+                Create
+              </NavLink>
             </li>
           ) : (
-            <Link to='/login'>Create</Link>
+            <NavLink to='/login' activeClassName='nav-active'>
+              Create
+            </NavLink>
           )}
 
           <li>
-            <Link to='/myblogs'>MyBlogs</Link>
+            <NavLink to='/myblogs' activeClassName='nav-active'>
+              MyBlogs
+            </NavLink>
           </li>
           <li>
-            <Link to='/about'>About</Link>
+            <NavLink to='/about' activeClassName='nav-active'>
+              About
+            </NavLink>
           </li>
         </ul>
       </NavLinks>
@@ -75,23 +83,10 @@ export default function HomeHeader() {
           className='Hamburger'
           onClick={() => {
             setIsOpen(!isOpen)
-            console.log("Testing ...")
           }}
         />
       </Profile>
-
-      <SearchBar>
-        <input type='text'></input>
-        <Button
-          bg={({ theme }) => theme.colors.red}
-          clr={({ theme }) => theme.colors.neutral}
-        >
-          Search
-          <span>
-            <FaSearch />
-          </span>
-        </Button>
-      </SearchBar>
+      <Search />
     </NavContainer>
   )
 }

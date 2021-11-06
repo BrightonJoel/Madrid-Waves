@@ -47,6 +47,11 @@ export const NavLinks = styled.nav`
     padding: 0 20px;
     color: ${({ theme }) => theme.colors.neutral};
     font-size: 20px;
+
+    &.nav-active {
+      color: ${({ theme }) => theme.colors.yellow};
+      text-decoration: overline;
+    }
   }
   li {
     display: inline-block;
