@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const MainDiv = styled.div`
   margin: 48px auto;
@@ -10,7 +10,7 @@ export const MainDiv = styled.div`
     font-size: 50px;
     padding: 50px 0px;
   }
-`
+`;
 export const CreateForm = styled.div`
   background-color: ${({ theme }) => theme.colors.neutral};
   border-radius: 12px;
@@ -38,6 +38,11 @@ export const CreateForm = styled.div`
     &:focus {
       outline: 2px dotted ${({ theme }) => theme.colors.primaryBlue};
     }
+  }
+
+  input[type="file"] {
+    display: inline;
+    width: 50%;
   }
   select {
     appearance: none;
@@ -82,4 +87,36 @@ export const CreateForm = styled.div`
     display: inline-block;
     transform: translateY(3px);
   }
-`
+`;
+export const FileDiv = styled.div`
+
+margin-bottom: 20px;
+
+  label {
+    background-color: ${({ theme }) => theme.colors.lightGrey};
+    padding: 0.5rem;
+    font-family: sans-serif;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    width: 100%;
+    display:block;
+    text-align: center;
+    height: 160px;
+    
+  }
+  input[type="file" i] {
+    display: none;
+  }
+  button{
+    margin: 20px;
+    display:block;
+    margin: 30px auto;
+    
+  }
+  h1 {
+    font-size: 20px;
+    margin: 20px;
+    float:center;
+    
+  }
+`;
