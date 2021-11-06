@@ -1,66 +1,24 @@
-import React, { useRef, useState } from "react"
-import { MainDiv, CreateForm } from "./CreateBlogStyles"
-import { Button } from "../../styles/GlobalComponents/Button"
-import { FaPlusSquare, FaTimes } from "react-icons/fa"
-import useUser from "../../hooks/useUser"
-import { useMutation, gql, useQuery } from "@apollo/client"
-import { ErrorWrapper } from "../AuthPages/AuthPageStyles"
+import useUser from "../../hooks/useUser";
+import React, { useRef, useState } from "react";
+import { UPLOADIMAGE } from "../../queries/UploadImage";
+import { CREATEBLOG } from "../../queries/CreateOneBLog";
+import { MainDiv, CreateForm, FileDiv } from "./CreateBlogStyles";
+import { ErrorWrapper } from "../AuthPages/AuthPageStyles";
+import { useMutation, useQuery } from "@apollo/client";
+import { Button } from "../../styles/GlobalComponents/Button";
+import { FETCHCATEGORY } from "../../queries/fetchBlogCategory";
+import { FaPlusSquare, FaTimes, FaCloudUploadAlt } from "react-icons/fa";
 
-const UPLOADIMAGE = gql`
-  mutation ($file: Upload!) {
-    upload(file: $file) {
-      id
-      name
-    }
-  }
-`
 
-const CREATEBLOG = gql`
-  mutation CreateBlog(
-    $Title: String!
-    $Body: String!
-    $Author: ID
-    $blogCategories: [ID]
-    $CoverImage: [ID]
-  ) {
-    createBlog(
-      input: {
-        data: {
-          Title: $Title
-          Body: $Body
-          Author: $Author
-          blogCategories: $blogCategories
-          CoverImage: $CoverImage
-        }
-      }
-    ) {
-      blog {
-        Title
-        CoverImage {
-          id
-          name
-        }
-      }
-    }
-  }
-`
-
-const FETCHCATEGORY = gql`
-  query fetchCategory {
-    blogCategories {
-      id
-      Name
-    }
-  }
-`
 
 export default function CreateBlog() {
-  const title = useRef()
-  const category = useRef()
-  const body = useRef()
-  const [Image, setImage] = useState(null)
-  const { currentUser, loading } = useUser()
-
+  //constants and variables
+  const title = useRef();
+  const category = useRef();
+  const body = useRef();
+  const [Image, setImage] = useState(null);
+  const [FileStatus, setFileStatus] = useState("Click here to upload an image")
+  const { currentUser, loading } = useUser();
   const [
     createBlog,
     {
@@ -76,12 +34,11 @@ export default function CreateBlog() {
         },
       },
     },
-  })
-
-  const [uploadImage, { data: resultData }] = useMutation(UPLOADIMAGE, {
-    async onCompleted({ data }) {
-      console.log("log: completed ", await data)
-    },
+  });
+  const [
+    uploadImage,
+    { data: ImageData, loading: LoadingImage, error: ImageFetchError },
+  ] = useMutation(UPLOADIMAGE, {
     ignoreResults: false,
     options: {
       context: {
@@ -90,31 +47,36 @@ export default function CreateBlog() {
         },
       },
     },
-  })
+  });
+  const { data, loading: fetchCategoriesLoading } = useQuery(FETCHCATEGORY);
 
+  //events and functions
   function onImageChange(event) {
-    console.log(event.target.files[0])
-    setImage(event.target.files[0])
+    setImage(event.target.files[0]);
+    setFileStatus(event.target.files[0].name + " is chosen")
   }
 
-  const { data, loading: fetchCategoriesLoading } = useQuery(FETCHCATEGORY)
-
   async function uploadFile(e) {
-    e.preventDefault()
-    console.log("Uploading.... file")
+    e.preventDefault();
+    if(Image){
     await uploadImage({
       variables: {
         file: Image,
       },
-    })
-    console.log("Upload done...")
+    });
+    setFileStatus("File uploaded Successfully !!!")
+  }else{
+    setFileStatus("First choose an image to upload")
+  }
+
   }
 
   async function handleSubmit(e) {
-    e.preventDefault()
-    console.log("upload data", resultData)
-    const imgId = await resultData.upload.id
-
+    e.preventDefault();
+    console.log("upload data", ImageData);
+    if(ImageData || ImageFetchError){
+    const imgId = await ImageData.upload.id;
+    
     await createBlog({
       variables: {
         Title: title.current.value,
@@ -123,20 +85,23 @@ export default function CreateBlog() {
         blogCategories: category.current.value,
         CoverImage: imgId,
       },
-    })
+    });
+  }else{
+    setFileStatus("First upload an image to create blog")
+  }
+
   }
 
   function clearForm(e) {
-    e.preventDefault()
-    title.current.value = ""
-    category.current.value = ""
-    body.current.value = ""
+    e.preventDefault();
+    window.location.reload(false);
   }
 
+// Rendering the page
   if (loading) {
-    return <p> loading pls wait</p>
+    return <p> loading pls wait</p>;
   } else if (fetchCategoriesLoading) {
-    return <p>Loading....</p>
+    return <p>Loading....</p>;
   }
 
   return (
@@ -145,7 +110,7 @@ export default function CreateBlog() {
       <CreateForm>
         <form onSubmit={handleSubmit}>
           <label>Title</label>
-          <input type='text' ref={title} required></input>
+          <input type="text" ref={title} required></input>
           <label>Category</label>
           <select ref={category} required>
             {data.blogCategories.map((category) => (
@@ -155,16 +120,24 @@ export default function CreateBlog() {
             ))}
           </select>
           <label> Body </label>
-          <textarea rows='25' ref={body} required></textarea>
-          <label> Upload Image</label>{" "}
-          <input type='file' accept='image/*' onChange={onImageChange}></input>
-          <Button
-            bg={({ theme }) => theme.colors.yellow}
-            clr={({ theme }) => theme.colors.primaryBlue}
+          <textarea rows="25" ref={body} required></textarea>
+          <label> Upload Image</label>
+          <FileDiv>
+          <input type="file" onChange={onImageChange} id="upload" />
+          <label htmlFor="upload"><h1>{ FileStatus} </h1><Button
+            bg={({ theme }) => theme.colors.primaryBlue}
+            clr={({ theme }) => theme.colors.neutral}
             onClick={uploadFile}
           >
-            Upload
-          </Button>
+            {LoadingImage ? "Uploading" : "Upload"}
+            <span>
+              <FaCloudUploadAlt />
+            </span>
+            </Button>
+            </label>
+          
+          
+          </FileDiv>
           {!createBlogLoading && !createBlogError && createBlogData ? (
             <ErrorWrapper>Blog Created Successfully !!!</ErrorWrapper>
           ) : !createBlogData && !createBlogError ? (
@@ -175,7 +148,7 @@ export default function CreateBlog() {
           <Button
             bg={({ theme }) => theme.colors.yellow}
             clr={({ theme }) => theme.colors.primaryBlue}
-            type='submit'
+            type="submit"
           >
             {createBlogLoading ? "Creating" : "Create"}
             <span>
@@ -195,5 +168,5 @@ export default function CreateBlog() {
         </form>
       </CreateForm>
     </MainDiv>
-  )
+  );
 }
