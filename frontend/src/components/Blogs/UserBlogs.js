@@ -15,6 +15,7 @@ import {
   ContentArea,
   ActionArea,
 } from "../../pages/HomePage/HomePageStyles"
+import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"
 import LikeButton from "./LikeButton"
 
 export default function UserBlogs({ userId, username }) {
@@ -22,7 +23,13 @@ export default function UserBlogs({ userId, username }) {
     variables: { where: { Author: userId } },
   })
 
-  if (loading) return <p>Loading...</p>
+  if (loading)
+    return (
+      <SpinnerContainer>
+        {/* <BiLoaderAlt className='loader' /> */}
+        <img src='/img/Logo-Spinner.svg' alt='loader' />
+      </SpinnerContainer>
+    )
   if (error) return <p>{error.message}</p>
 
   return (

@@ -22,7 +22,7 @@ export default function Blogs() {
     return (
       <SpinnerContainer>
         {/* <BiLoaderAlt className='loader' /> */}
-        <img src='/img/Logo-Transparent.svg' alt='loader' />
+        <img src='/img/Logo-Spinner.svg' alt='loader' />
       </SpinnerContainer>
     )
   if (error) return <p>{error.message}</p>
