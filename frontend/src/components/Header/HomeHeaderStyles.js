@@ -135,6 +135,7 @@ export const DropDown = styled.div`
 `
 
 export const SearchBar = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center; /* for single line flex container */

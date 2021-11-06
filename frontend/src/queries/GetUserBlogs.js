@@ -14,6 +14,10 @@ export const GETUSERBLOGS = gql`
         id
         username
       }
+      blogCategories {
+        id
+        Name
+      }
       Views
     }
   }

@@ -9,6 +9,7 @@ import {
   ImageContainer,
   ContentArea,
   ActionArea,
+  Category,
 } from "../../pages/HomePage/HomePageStyles"
 import { Button } from "../../styles/GlobalComponents/Button"
 import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"
@@ -17,11 +18,11 @@ import LikeButton from "./LikeButton"
 
 export default function Blogs() {
   const { loading, error, data } = useQuery(GETBLOGS)
+  console.log(data)
 
   if (loading)
     return (
       <SpinnerContainer>
-        {/* <BiLoaderAlt className='loader' /> */}
         <img src='/img/Logo-Spinner.svg' alt='loader' />
       </SpinnerContainer>
     )
@@ -54,6 +55,12 @@ export default function Blogs() {
             </ImageContainer>
             <ContentArea p='20px' bg={({ theme }) => theme.colors.neutral}>
               <h3>{blog.Title}</h3>
+              <Category>
+                {blog.blogCategories.map((category) => (
+                  <span key={category.id}>{category.Name}</span>
+                ))}
+              </Category>
+
               <p>{blog.Body.substring(0, 250) + "..."}</p>
               <hr />
               <ActionArea>

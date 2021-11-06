@@ -2,7 +2,6 @@ import React from "react"
 import { useQuery } from "@apollo/client"
 import { GETSINGLEBLOG } from "../../queries/GetSingleBlog"
 import { Link } from "react-router-dom"
-import { BiLoaderAlt } from "react-icons/bi"
 
 // styles
 import {
@@ -15,6 +14,7 @@ import {
   ImageContainer,
   ContentArea,
   ActionArea,
+  Category,
 } from "../../pages/HomePage/HomePageStyles"
 import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"
 import LikeButton from "./LikeButton"
@@ -25,7 +25,6 @@ export default function SingleBlog() {
   if (loading)
     return (
       <SpinnerContainer>
-        {/* <BiLoaderAlt className='loader' /> */}
         <img src='/img/Logo-Spinner.svg' alt='loader' />
       </SpinnerContainer>
     )
@@ -50,6 +49,11 @@ export default function SingleBlog() {
             </ImageContainer>
             <ContentArea>
               <h3>{blog.Title}</h3>
+              <Category>
+                {blog.blogCategories.map((category) => (
+                  <span key={category.id}>{category.Name}</span>
+                ))}
+              </Category>
               <p>{blog.Body.substring(0, 200) + "..."}</p>
               <hr />
               <ActionArea>
@@ -63,6 +67,13 @@ export default function SingleBlog() {
 
       <LaligaTable>
         <h2>Laliga</h2>
+        {/* <iframe
+          width='300'
+          height='300'
+          src='https://www.youtube.com/embed/j020zZ00JGQ'
+          title='YouTube video player'
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+        ></iframe> */}
       </LaligaTable>
     </Container>
   )

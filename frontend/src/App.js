@@ -11,6 +11,7 @@ import HomeHeader from "./components/Header/HomeHeader"
 import CreateBlog from "./pages/BlogPages/CreateBlog"
 import MyBlogs from "./pages/BlogPages/MyBlogs"
 import BlogsDetails from "./pages/BlogPages/BlogDetails"
+import SearchPage from "./pages/SearchPage"
 import About from "./pages/About"
 import Theme from "./styles/theme"
 import { createUploadLink } from "apollo-upload-client"
@@ -53,6 +54,10 @@ function App() {
               <Route path='/about'>
                 <HomeHeader />
                 <About />
+              </Route>
+              <Route path='/search'>
+                <HomeHeader />
+                <SearchPage />
               </Route>
               <Route path='/details/:id'>
                 <HomeHeader />

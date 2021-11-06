@@ -14,6 +14,7 @@ import {
   ImageContainer,
   ContentArea,
   ActionArea,
+  Category,
 } from "../../pages/HomePage/HomePageStyles"
 import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"
 import LikeButton from "./LikeButton"
@@ -36,7 +37,6 @@ export default function UserBlogs({ userId, username }) {
     <BlogsWrapper>
       <BlogContainer>
         <Title>My Blogs</Title>
-
         {data.blogs.length === 0 ? (
           <NoBlogImgContainer>
             <img src='/img/No-blogs.svg' alt='no-blogs' />
@@ -58,6 +58,11 @@ export default function UserBlogs({ userId, username }) {
               </ImageContainer>
               <ContentArea p='20px' bg={({ theme }) => theme.colors.neutral}>
                 <h3>{blog.Title}</h3>
+                <Category>
+                  {blog.blogCategories.map((category) => (
+                    <span key={category.id}>{category.Name}</span>
+                  ))}
+                </Category>
                 <p>{blog.Body.substring(0, 250) + "..."}</p>
                 <hr />
                 <ActionArea>

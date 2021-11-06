@@ -49,7 +49,6 @@ export const Blog = styled.section`
 
   p {
     line-height: 1.6;
-    opacity: 0.7;
   }
 
   @media (max-width: 900px) {
@@ -60,6 +59,7 @@ export const Blog = styled.section`
     padding: 20px;
   }
 `
+
 export const Title = styled.h2`
   font-size: 36px;
   text-align: center;

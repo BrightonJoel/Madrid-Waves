@@ -10,12 +10,14 @@ import { Button } from "../../styles/GlobalComponents/Button"
 
 export default function Search() {
   const searchQuery = useRef()
-  const [isFetched, setIsFetched] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   const [searchBlog, { data, loading }] = useLazyQuery(SEARCHBLOGS)
 
   async function handleClick(e) {
     e.preventDefault()
+    setIsOpen(true)
+
     await searchBlog({
       variables: { where: { Title_contains: searchQuery.current.value } },
     })
@@ -35,8 +37,11 @@ export default function Search() {
             <FaSearch />
           </span>
         </Button>
+
+        {isOpen && (
+          <SearchResults data={data} loading={loading} setIsOpen={setIsOpen} />
+        )}
       </SearchBar>
-      <SearchResults data={data} loading={loading} />
     </>
   )
 }

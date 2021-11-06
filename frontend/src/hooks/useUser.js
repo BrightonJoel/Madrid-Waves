@@ -16,6 +16,10 @@ const useUser = () => {
       setLoading(loading)
     }
     fetchUser()
+
+    return () => {
+      setUser(null)
+    }
   }, [])
 
   return { currentUser, loading }

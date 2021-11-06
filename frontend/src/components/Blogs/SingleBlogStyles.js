@@ -31,7 +31,6 @@ export const LatestBlogSection = styled.section`
 
   p {
     line-height: 1.6;
-    opacity: 0.7;
   }
 `
 
