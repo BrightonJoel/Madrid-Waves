@@ -61,3 +61,11 @@ export const HeartContainer = styled.div`
     }
   }
 `
+export const Category = styled.div`
+  margin: 20px 10px;
+
+  span {
+    margin: 0px 10px;
+    opacity: 0.7;
+  }
+`

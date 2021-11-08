@@ -42,12 +42,20 @@ export default function HomeHeader() {
               Create
             </NavLink>
           )}
+          {currentUser ? (
+            <li>
+              <NavLink to='/myblogs' activeClassName='nav-active'>
+                MyBlogs
+              </NavLink>
+            </li>
+          ) : (
+            <li>
+              <NavLink to='/login' activeClassName='nav-active'>
+                MyBlogs
+              </NavLink>
+            </li>
+          )}
 
-          <li>
-            <NavLink to='/myblogs' activeClassName='nav-active'>
-              MyBlogs
-            </NavLink>
-          </li>
           <li>
             <NavLink to='/about' activeClassName='nav-active'>
               About
