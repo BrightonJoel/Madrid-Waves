@@ -10,7 +10,7 @@ export const MainDiv = styled.div`
       font-size: 50px;
   }
   p{
-      font-size: 20px;
+      font-size: 16px;
   }
   h3{
       padding: 30px 50px 30px 0;

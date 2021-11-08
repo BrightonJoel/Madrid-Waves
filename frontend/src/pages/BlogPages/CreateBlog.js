@@ -110,7 +110,7 @@ export default function CreateBlog() {
       <CreateForm>
         <form onSubmit={handleSubmit}>
           <label>Title</label>
-          <input type="text" ref={title} required></input>
+          <input type="text" minLength="10" maxLength="50" ref={title} required></input>
           <label>Category</label>
           <select ref={category} required>
             {data.blogCategories.map((category) => (
@@ -120,7 +120,7 @@ export default function CreateBlog() {
             ))}
           </select>
           <label> Body </label>
-          <textarea rows="25" ref={body} required></textarea>
+          <textarea rows="25" minLength ="100" maxLength="1000" ref={body} required></textarea>
           <label> Upload Image</label>
           <FileDiv>
           <input type="file" onChange={onImageChange} id="upload" />
