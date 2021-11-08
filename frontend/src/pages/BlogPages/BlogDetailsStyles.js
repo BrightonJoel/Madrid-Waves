@@ -116,3 +116,6 @@ export const CommentBox = styled.div`
       padding: 20px 0;
   }
   `
+  export const LikeButton = styled.div`
+  
+  `
