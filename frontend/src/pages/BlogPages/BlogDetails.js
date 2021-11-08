@@ -12,13 +12,13 @@ import {
   FaTwitter,
   FaShare,
   FaEye,
-  FaHeart,
   FaTelegramPlane,
 } from "react-icons/fa";
 import { Button } from "../../styles/GlobalComponents/Button";
 import { useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner";
+import LikeButton from "../../components/Blogs/LikeButton";
 
 const GETSINGLEBLOGWITHID = gql`
   query GetSingleBlog($id: ID!) {
@@ -67,9 +67,8 @@ export default function BlogsDetails() {
       <h1>{CurrentBlogData.blog.Title}</h1>
       <br />
       <p>
-        {" "}
         Author: {CurrentBlogData.blog.Author.username} | created at:{" "}
-        {new Date(CurrentBlogData.blog.created_at) + " "}
+        {new Date(CurrentBlogData.blog.created_at)+ " "}
       </p>
       <br />
 
@@ -90,12 +89,8 @@ export default function BlogsDetails() {
           alt="Thumbnail"
         />
 
-        <p>
-          {CurrentBlogData.blog.Body}
-        </p>
-        <Heart>
-          <FaHeart /> <p> {CurrentBlogData.blog.likedUser.length}</p>
-        </Heart>
+        <p>{CurrentBlogData.blog.Body}</p>
+        <LikeButton id={id} likedUser={CurrentBlogData.blog.likedUser} />
         <Views>
           <FaEye /> <p> {CurrentBlogData.blog.Views}</p>
         </Views>
