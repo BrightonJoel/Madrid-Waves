@@ -8,6 +8,8 @@ import { useMutation, useQuery } from "@apollo/client";
 import { Button } from "../../styles/GlobalComponents/Button";
 import { FETCHCATEGORY } from "../../queries/fetchBlogCategory";
 import { FaPlusSquare, FaTimes, FaCloudUploadAlt } from "react-icons/fa";
+import { Redirect } from "react-router"
+import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner";
 
 
 
@@ -51,6 +53,8 @@ export default function CreateBlog() {
   const { data, loading: fetchCategoriesLoading } = useQuery(FETCHCATEGORY);
 
   //events and functions
+ 
+
   function onImageChange(event) {
     setImage(event.target.files[0]);
     setFileStatus(event.target.files[0].name + " is chosen")
@@ -98,14 +102,16 @@ export default function CreateBlog() {
   }
 
 // Rendering the page
-  if (loading) {
-    return <p> loading pls wait</p>;
-  } else if (fetchCategoriesLoading) {
-    return <p>Loading....</p>;
+  if (loading || fetchCategoriesLoading) {
+    return <SpinnerContainer>
+    <img src='/img/Logo-Spinner.svg' alt='loader' />
+  </SpinnerContainer>
   }
-
+  
   return (
-    <MainDiv>
+    <>
+    {currentUser ? (
+      <MainDiv>
       <h3>Create A New Blog</h3>
       <CreateForm>
         <form onSubmit={handleSubmit}>
@@ -168,5 +174,9 @@ export default function CreateBlog() {
         </form>
       </CreateForm>
     </MainDiv>
+    ) : (
+      <Redirect to='/login' />
+    )}
+    </>
   );
 }

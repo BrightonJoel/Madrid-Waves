@@ -50,6 +50,10 @@
       "collection": "blog-category",
       "via": "blogs",
       "dominant": true
+    },
+    "comments": {
+      "via": "blog",
+      "collection": "comment"
     }
   }
 }

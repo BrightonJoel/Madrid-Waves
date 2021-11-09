@@ -66,6 +66,10 @@
     "blog": {
       "via": "Author",
       "collection": "blog"
+    },
+    "comments": {
+      "via": "commentedUser",
+      "collection": "comment"
     }
   }
 }

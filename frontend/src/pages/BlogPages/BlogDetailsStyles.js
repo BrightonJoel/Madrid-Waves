@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const MainDiv = styled.div`
-  width: 60%;
+  width: 1200px;
+  max-width: 90%;
   margin: 50px auto;
   padding: 5px;
 
@@ -11,6 +12,7 @@ export const MainDiv = styled.div`
   }
   p{
       font-size: 16px;
+      margin-top: 20px;
   }
   h3{
       padding: 30px 50px 30px 0;
@@ -43,11 +45,20 @@ export const MainDiv = styled.div`
   h6{
       height: 100px;
   }
+  @media(max-width:720px){
+    h1{
+      font-size: 25px;
+    }
+    p{
+      font-size: 15px;
+    }
+  }
   `;
 export const Post = styled.div`
   background-color: ${({ theme }) => theme.colors.neutral};
   padding: 50px 50px 30px;
   border-radius: 5px;
+
 
   img {
     width: 100%;
@@ -55,7 +66,10 @@ export const Post = styled.div`
   }
 
   p {
-    padding: 50px 0;
+    padding: 10px 0;
+  }
+  @media(max-width:720px){
+    padding: 5px 
   }
 `;
 export const Heart = styled.div`
@@ -63,6 +77,7 @@ export const Heart = styled.div`
   padding: 0 30px;
   font-size: 30px;
   display: inline-block;
+  margin-bottom: 2px;
   p {
     display: inline-block;
     font-size: 30px;
@@ -74,12 +89,14 @@ export const Views = styled.div`
   color: ${({ theme }) => theme.colors.primaryBlue};
   padding: 0 30px;
   font-size: 35px;
+  margin-top: 10px;
   display: inline-block;
   p {
     display: inline-block;
-    font-size: 30px;
+    font-size: 15px;
     padding: 0;
     vertical-align: middle;
+    margin-bottom: 17px;
   }
 `;
 export const CommenTitle = styled.div`
@@ -116,6 +133,10 @@ export const CommentBox = styled.div`
       padding: 20px 0;
   }
   `
-  export const LikeButton = styled.div`
+  export const ActionContainer = styled.div`
+  display:flex;
   
+  `
+  export const Share = styled.div`
+  margin-top:20px;
   `
