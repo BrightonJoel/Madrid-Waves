@@ -1,15 +1,11 @@
 import React from "react"
 import { useQuery } from "@apollo/client"
+import YouTube from "./YouTube"
 import { GETSINGLEBLOG } from "../../queries/GetSingleBlog"
 import { Link } from "react-router-dom"
 
 // styles
-import {
-  Container,
-  LatestBlogSection,
-  Content,
-  LaligaTable,
-} from "./SingleBlogStyles"
+import { Container, LatestBlogSection, Content } from "./SingleBlogStyles"
 import {
   ImageContainer,
   ContentArea,
@@ -64,17 +60,7 @@ export default function SingleBlog() {
           </Content>
         </LatestBlogSection>
       ))}
-
-      <LaligaTable>
-        <h2>Laliga</h2>
-        {/* <iframe
-          width='300'
-          height='300'
-          src='https://www.youtube.com/embed/j020zZ00JGQ'
-          title='YouTube video player'
-          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-        ></iframe> */}
-      </LaligaTable>
+      <YouTube />
     </Container>
   )
 }

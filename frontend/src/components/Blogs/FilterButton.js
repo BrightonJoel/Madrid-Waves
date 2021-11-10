@@ -12,10 +12,6 @@ export default function FilterButton() {
   const [showFilter, setShowFilter] = useState(false)
   const { data, loading, error } = useQuery(FETCHCATEGORY)
 
-  async function handleFilter() {
-    setShowFilter(!showFilter)
-  }
-
   return (
     <>
       <BlogHeader>
@@ -24,7 +20,7 @@ export default function FilterButton() {
         <Button
           bg={({ theme }) => theme.colors.primaryBlue}
           clr={({ theme }) => theme.colors.neutral}
-          onClick={handleFilter}
+          onClick={() => setShowFilter(!showFilter)}
         >
           Filter
           <FaFilter className='filter' />
@@ -48,6 +44,10 @@ export default function FilterButton() {
                   {category.Name}
                 </NavLink>
               ))}
+
+            <NavLink activeClassName='nav-active' exact to='/'>
+              All Blogs
+            </NavLink>
           </CategoryLinks>
         </FilterPopup>
       )}
