@@ -1,11 +1,11 @@
 import React from "react"
+import { Link, useParams } from "react-router-dom"
 import { useQuery } from "@apollo/client"
-import { Link } from "react-router-dom"
-import { GETBLOGS } from "../../queries/GetAllBlogs"
-import FilterButton from "./FilterButton"
+import { FETCHBYCATEGORY } from "../../queries/FetchByCategory"
+import FilterButton from "../Blogs/FilterButton"
 
 // Styles
-import { BlogsWrapper, BlogContainer, Blog } from "./BlogsStyles"
+import { BlogsWrapper, BlogContainer, Blog } from "../Blogs/BlogsStyles"
 import {
   ImageContainer,
   ContentArea,
@@ -13,10 +13,14 @@ import {
   Category,
 } from "../../pages/HomePage/HomePageStyles"
 import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"
-import LikeButton from "./LikeButton"
+import LikeButton from "../Blogs/LikeButton"
 
-export default function Blogs() {
-  const { loading, error, data } = useQuery(GETBLOGS)
+export default function CategoryBlogs() {
+  const { id } = useParams()
+
+  const { loading, error, data } = useQuery(FETCHBYCATEGORY, {
+    variables: { where: { blogCategories: { id: id } } },
+  })
 
   if (loading)
     return (
@@ -25,7 +29,6 @@ export default function Blogs() {
       </SpinnerContainer>
     )
   if (error) return <p>{error.message}</p>
-
   return (
     <BlogsWrapper>
       <BlogContainer>

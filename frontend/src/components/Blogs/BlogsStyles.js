@@ -64,8 +64,19 @@ export const FilterPopup = styled.div`
   background-color: ${({ theme }) => theme.colors.lightGrey};
   padding: 20px;
 
-  span {
-    cursor: pointer;
-    margin: 0px 10px;
+  a {
+    margin: 10px 10px;
+
+    &.nav-active {
+      color: ${({ theme }) => theme.colors.red};
+      text-decoration: overline;
+    }
   }
+`
+
+export const CategoryLinks = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
 `

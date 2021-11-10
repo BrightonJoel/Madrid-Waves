@@ -1,28 +1,20 @@
 import React, { useState } from "react"
-import { useLazyQuery } from "@apollo/client"
-import { GETBLOGS } from "../../queries/GetAllBlogs"
+import { NavLink } from "react-router-dom"
+import { useQuery } from "@apollo/client"
+import { FETCHCATEGORY } from "../../queries/fetchBlogCategory"
 
 // Styles
-import { BlogHeader, FilterPopup } from "./BlogsStyles"
+import { BlogHeader, FilterPopup, CategoryLinks } from "./BlogsStyles"
 import { FaFilter } from "react-icons/fa"
 import { Button } from "../../styles/GlobalComponents/Button"
 
 export default function FilterButton() {
   const [showFilter, setShowFilter] = useState(false)
-  const [fetchBlogByCategory, { data, loading }] = useLazyQuery(GETBLOGS)
+  const { data, loading, error } = useQuery(FETCHCATEGORY)
 
   async function handleFilter() {
     setShowFilter(!showFilter)
-    console.log("Clicked Filter button")
   }
-
-  async function handleCategory(categoryId) {
-    await fetchBlogByCategory({
-      variables: { where: { blogCategories: { id: "1" } } },
-    })
-  }
-
-  console.log(data)
 
   return (
     <>
@@ -41,11 +33,22 @@ export default function FilterButton() {
 
       {showFilter && (
         <FilterPopup>
-          <div>
-            <span onClick={handleCategory}>Champions League</span>
-            <span>Laliga</span>
-            <span>Copa Del Rey</span>
-          </div>
+          <CategoryLinks>
+            {loading && <span>Loading...</span>}
+            {error && <span>{error.message}</span>}
+            {!loading &&
+              data &&
+              data.blogCategories &&
+              data.blogCategories.map((category) => (
+                <NavLink
+                  activeClassName='nav-active'
+                  key={category.id}
+                  to={`/category/${category.id}`}
+                >
+                  {category.Name}
+                </NavLink>
+              ))}
+          </CategoryLinks>
         </FilterPopup>
       )}
     </>
