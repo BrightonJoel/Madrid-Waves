@@ -60,21 +60,12 @@ export const Blog = styled.section`
   }
 `
 
-export const Title = styled.h2`
-  font-size: 36px;
-  text-align: center;
-`
+export const FilterPopup = styled.div`
+  background-color: ${({ theme }) => theme.colors.lightGrey};
+  padding: 20px;
 
-export const NoBlogImgContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 50px 0px;
-  img {
-    width: 40%;
-    height: ${({ h }) => h};
-    object-fit: cover;
-    border-radius: 6px;
+  span {
+    cursor: pointer;
+    margin: 0px 10px;
   }
 `

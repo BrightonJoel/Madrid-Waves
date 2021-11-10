@@ -17,7 +17,7 @@ export default function MyBlogs() {
   return (
     <>
       {currentUser ? (
-        <UserBlogs userId={currentUser.id} username={currentUser.username} />
+        <UserBlogs userId={currentUser.id} />
       ) : (
         <Redirect to='/login' />
       )}

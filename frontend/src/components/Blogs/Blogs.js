@@ -1,75 +1,47 @@
-import React from "react";
-import { useQuery } from "@apollo/client";
-import { Link } from "react-router-dom";
-import { GETBLOGS } from "../../queries/GetAllBlogs";
-import { BiLoaderAlt } from "react-icons/bi";
+import React, { useEffect, useState } from "react"
+import { useQuery } from "@apollo/client"
+import { Link } from "react-router-dom"
+import { GETBLOGS } from "../../queries/GetAllBlogs"
+import FilterButton from "./FilterButton"
 
-import { BlogsWrapper, BlogContainer, BlogHeader, Blog } from "./BlogsStyles";
+// Styles
+import { BlogsWrapper, BlogContainer, Blog } from "./BlogsStyles"
 import {
   ImageContainer,
   ContentArea,
   ActionArea,
   Category,
-} from "../../pages/HomePage/HomePageStyles";
-import { Button } from "../../styles/GlobalComponents/Button";
-import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner";
-import { FaFilter } from "react-icons/fa";
-import LikeButton from "./LikeButton";
+} from "../../pages/HomePage/HomePageStyles"
+import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"
+import LikeButton from "./LikeButton"
 
 export default function Blogs() {
-  //Reloading the page once every time it loads
-  function reloadPage() {
-    var currentDocumentTimestamp = new Date(
-      performance.timing.domLoading
-    ).getTime();
-    // Current Time //
-    var now = Date.now();
-    // Total Process Lenght as Minutes //
-    var tenSec = 10 * 1000;
-    // End Time of Process //
-    var plusTenSec = currentDocumentTimestamp + tenSec;
-    if (now > plusTenSec) {
-      window.location.reload();
-    }
-  }
-  reloadPage();
-  const { loading, error, data } = useQuery(GETBLOGS);
-  console.log(data);
+  const { loading, error, data } = useQuery(GETBLOGS)
 
   if (loading)
     return (
       <SpinnerContainer>
-        <img src="/img/Logo-Spinner.svg" alt="loader" />
+        <img src='/img/Logo-Spinner.svg' alt='loader' />
       </SpinnerContainer>
-    );
-  if (error) return <p>{error.message}</p>;
-  
+    )
+  if (error) return <p>{error.message}</p>
+
   return (
     <BlogsWrapper>
       <BlogContainer>
-        <BlogHeader>
-          <h2>Blogs</h2>
-          <Button
-            bg={({ theme }) => theme.colors.primaryBlue}
-            clr={({ theme }) => theme.colors.neutral}
-          >
-            Filter
-            <FaFilter className="filter" />
-          </Button>
-        </BlogHeader>
-
+        <FilterButton />
         {data.blogs.map((blog) => (
           <Blog key={blog.id}>
-            <ImageContainer h="300px" bg={({ theme }) => theme.colors.neutral}>
+            <ImageContainer h='300px' bg={({ theme }) => theme.colors.neutral}>
               {blog.CoverImage.map((u) => (
                 <img
                   key={u.id}
                   src={`http://localhost:1337${u.url}`}
-                  alt="Thumbnail"
+                  alt='Thumbnail'
                 />
               ))}
             </ImageContainer>
-            <ContentArea p="20px" bg={({ theme }) => theme.colors.neutral}>
+            <ContentArea p='20px' bg={({ theme }) => theme.colors.neutral}>
               <h3>{blog.Title}</h3>
               <Category>
                 {blog.blogCategories.map((category) => (
@@ -88,5 +60,5 @@ export default function Blogs() {
         ))}
       </BlogContainer>
     </BlogsWrapper>
-  );
+  )
 }

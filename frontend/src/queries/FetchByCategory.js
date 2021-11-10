@@ -1,7 +1,7 @@
 import gql from "graphql-tag"
 
-export const GETBLOGS = gql`
-  query GetBlogs($where: JSON) {
+export const FETCHBYCATEGORY = gql`
+  query FetchBlogByCategory($where: JSON) {
     blogs(sort: "created_at:desc", where: $where) {
       id
       Title
