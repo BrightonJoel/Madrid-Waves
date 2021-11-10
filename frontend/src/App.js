@@ -18,7 +18,7 @@ import { createUploadLink } from "apollo-upload-client"
 import { AuthProvider } from "./context/AuthContext"
 
 const link = createUploadLink({
-  uri: "http://localhost:1337/graphql",
+  uri: process.env.REACT_APP_GRAPHQL_URL,
   credentials: "include",
 })
 
@@ -43,6 +43,10 @@ function App() {
                 <Header />
                 <Login />
               </Route>
+              <Route exact path='/'>
+                <HomeHeader />
+                <HomePage />
+              </Route>
               <Route path='/create'>
                 <HomeHeader />
                 <CreateBlog />
@@ -62,10 +66,6 @@ function App() {
               <Route path='/details/:id'>
                 <HomeHeader />
                 <BlogsDetails />
-              </Route>
-              <Route exact path='/'>
-                <HomeHeader />
-                <HomePage />
               </Route>
             </Switch>
             <Footer />

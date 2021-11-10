@@ -56,7 +56,6 @@ export default function SignUp() {
     <Background>
       <Container>
         <Wrapper>
-          {loading && <p>loading.....</p>}
           <h2>Sign up to Madrid waves</h2>
           {errorMsg && <ErrorWrapper>{errorMsg}</ErrorWrapper>}
           <form onSubmit={handleSubmit}>
