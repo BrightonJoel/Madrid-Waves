@@ -22,7 +22,7 @@
 - themes
   - default.js (colors, fonts, breakpoints)
 
-## Tech Stack used for this project
+## Tech Stack used
 
 - Figma ( Design )
 - React ( Frontend )
