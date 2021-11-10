@@ -1,11 +1,11 @@
 import React from "react"
+import { Link, useParams } from "react-router-dom"
 import { useQuery } from "@apollo/client"
-import YouTube from "./YouTube"
-import { GETSINGLEBLOG } from "../../queries/GetSingleBlog"
-import { Link } from "react-router-dom"
+import { FETCHBYCATEGORY } from "../../queries/FetchByCategory"
+import FilterButton from "../Blogs/FilterButton"
 
-// styles
-import { Container, LatestBlogSection, Content } from "./SingleBlogStyles"
+// Styles
+import { BlogsWrapper, BlogContainer, Blog } from "../Blogs/BlogsStyles"
 import {
   ImageContainer,
   ContentArea,
@@ -13,10 +13,14 @@ import {
   Category,
 } from "../../pages/HomePage/HomePageStyles"
 import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"
-import LikeButton from "./LikeButton"
+import LikeButton from "../Blogs/LikeButton"
 
-export default function SingleBlog() {
-  const { data, loading, error } = useQuery(GETSINGLEBLOG)
+export default function CategoryBlogs() {
+  const { id } = useParams()
+
+  const { loading, error, data } = useQuery(FETCHBYCATEGORY, {
+    variables: { where: { blogCategories: { id: id } } },
+  })
 
   if (loading)
     return (
@@ -26,15 +30,12 @@ export default function SingleBlog() {
     )
   if (error) return <p>{error.message}</p>
   return (
-    <Container>
-      {data.blogs.map((blog) => (
-        <LatestBlogSection key={blog.id}>
-          <h2>Latest</h2>
-          <Content>
-            <ImageContainer
-              h='400px'
-              bg={({ theme }) => theme.colors.lightGrey}
-            >
+    <BlogsWrapper>
+      <BlogContainer>
+        <FilterButton />
+        {data.blogs.map((blog) => (
+          <Blog key={blog.id}>
+            <ImageContainer h='300px' bg={({ theme }) => theme.colors.neutral}>
               {blog.CoverImage.map((u) => (
                 <img
                   key={u.id}
@@ -43,24 +44,24 @@ export default function SingleBlog() {
                 />
               ))}
             </ImageContainer>
-            <ContentArea>
+            <ContentArea p='20px' bg={({ theme }) => theme.colors.neutral}>
               <h3>{blog.Title}</h3>
               <Category>
                 {blog.blogCategories.map((category) => (
                   <span key={category.id}>{category.Name}</span>
                 ))}
               </Category>
-              <p>{blog.Body.substring(0, 200) + "..."}</p>
+
+              <p>{blog.Body.substring(0, 250) + "..."}</p>
               <hr />
               <ActionArea>
                 <LikeButton id={blog.id} likedUser={blog.likedUser} />
                 <Link to={`/details/${blog.id}`}>Read More</Link>
               </ActionArea>
             </ContentArea>
-          </Content>
-        </LatestBlogSection>
-      ))}
-      <YouTube />
-    </Container>
+          </Blog>
+        ))}
+      </BlogContainer>
+    </BlogsWrapper>
   )
 }

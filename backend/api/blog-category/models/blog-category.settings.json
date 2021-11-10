@@ -2,12 +2,13 @@
   "kind": "collectionType",
   "collectionName": "blog_categories",
   "info": {
-    "name": "BlogCategory"
+    "name": "BlogCategory",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {

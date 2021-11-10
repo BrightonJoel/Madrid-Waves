@@ -1,24 +1,25 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client"
+import { createUploadLink } from "apollo-upload-client"
+import { AuthProvider } from "./context/AuthContext"
 
 // page and layout imports
-import HomePage from "./pages/HomePage/HomePage"
 import SignUp from "./pages/AuthPages/SignUp"
 import Login from "./pages/AuthPages/Login"
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
 import HomeHeader from "./components/Header/HomeHeader"
+import HomePage from "./pages/HomePage/HomePage"
+import Category from "./pages/CategoryPage/Category"
 import CreateBlog from "./pages/BlogPages/CreateBlog"
 import MyBlogs from "./pages/BlogPages/MyBlogs"
 import BlogsDetails from "./pages/BlogPages/BlogDetails"
 import SearchPage from "./pages/SearchPage"
 import About from "./pages/About"
 import Theme from "./styles/theme"
-import { createUploadLink } from "apollo-upload-client"
-import { AuthProvider } from "./context/AuthContext"
 
 const link = createUploadLink({
-  uri: "http://localhost:1337/graphql",
+  uri: process.env.REACT_APP_GRAPHQL_URL,
   credentials: "include",
 })
 
@@ -43,6 +44,10 @@ function App() {
                 <Header />
                 <Login />
               </Route>
+              <Route exact path='/'>
+                <HomeHeader />
+                <HomePage />
+              </Route>
               <Route path='/create'>
                 <HomeHeader />
                 <CreateBlog />
@@ -63,9 +68,9 @@ function App() {
                 <HomeHeader />
                 <BlogsDetails />
               </Route>
-              <Route exact path='/'>
+              <Route path='/category/:id'>
                 <HomeHeader />
-                <HomePage />
+                <Category />
               </Route>
             </Switch>
             <Footer />

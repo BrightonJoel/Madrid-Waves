@@ -45,7 +45,7 @@ export const Content = styled.div`
     gap: 30px;
   }
 `
-export const LaligaTable = styled.section`
+export const YouTubeContainer = styled.section`
   background-color: ${({ theme }) => theme.colors.neutral};
   border-radius: 6px;
   padding: 30px;
@@ -53,5 +53,20 @@ export const LaligaTable = styled.section`
   h2 {
     font-size: 42px;
     text-align: center;
+  }
+`
+
+export const VideoContainer = styled.div`
+  margin: 20px 0px;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
+  padding: 10px;
+  border-radius: 6px;
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
   }
 `

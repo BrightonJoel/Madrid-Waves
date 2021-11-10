@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { useQuery } from "@apollo/client"
 import { Link } from "react-router-dom"
 import { GETBLOGS } from "../../queries/GetAllBlogs"

@@ -47,8 +47,8 @@
       "via": "blog"
     },
     "blogCategories": {
-      "collection": "blog-category",
       "via": "blogs",
+      "collection": "blog-category",
       "dominant": true
     },
     "comments": {
