@@ -13,6 +13,7 @@ import {
   Category,
 } from "../../pages/HomePage/HomePageStyles"
 import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"
+import { ErrorContainer } from "../../styles/GlobalComponents/Errors"
 import LikeButton from "./LikeButton"
 
 export default function Blogs() {
@@ -24,7 +25,14 @@ export default function Blogs() {
         <img src='/img/Logo-Spinner.svg' alt='loader' />
       </SpinnerContainer>
     )
-  if (error) return <p>{error.message}</p>
+
+  if (error)
+    return (
+      <ErrorContainer>
+        <img src='/img/Error.svg' alt='Fetch Error' />
+        <h2>{error.message}</h2>
+      </ErrorContainer>
+    )
 
   return (
     <BlogsWrapper>

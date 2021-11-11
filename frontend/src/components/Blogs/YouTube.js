@@ -19,10 +19,9 @@ export default function YouTube() {
   if (error)
     return (
       <YouTubeContainer>
-        <h2>{error.message}</h2>
+        <p>{error.message}</p>
       </YouTubeContainer>
     )
-  if (data) console.log(data)
 
   return (
     <YouTubeContainer>
