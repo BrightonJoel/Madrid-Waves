@@ -2,7 +2,14 @@ import styled from "styled-components"
 
 export const NavContainer = styled.header`
   display: grid;
-  background-color: ${({ theme }) => theme.colors.primaryBlue};
+  // background-color: ${({ theme }) => theme.colors.primaryBlue};
+  background: rgb(0, 71, 151);
+  background: radial-gradient(
+    circle,
+    rgba(0, 71, 151, 1) 0%,
+    rgba(0, 71, 151, 1) 48%,
+    rgba(0, 23, 151, 1) 100%
+  );
   height: 250px;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: auto, auto;
