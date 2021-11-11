@@ -1,16 +1,36 @@
-import styled from "styled-components";
+import styled from "styled-components"
+
+export const Background = styled.div`
+  background-image: url(/img/rose-petals.svg);
+  // background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  padding: 0px;
+
+  @media (max-width: 768px) {
+    background: none;
+  }
+`
 
 export const MainDiv = styled.div`
-  margin: 48px auto;
-  width: 768px;
+  margin: 0 auto;
+  padding: 48px 0px;
+  width: 900px;
   max-width: 90%;
 
   h3 {
     text-align: center;
-    font-size: 50px;
+    font-size: 48px;
     padding: 50px 0px;
   }
-`;
+
+  @media (max-width: 768px) {
+    h3 {
+      font-size: 34px;
+    }
+  }
+`
 export const CreateForm = styled.div`
   background-color: ${({ theme }) => theme.colors.neutral};
   border-radius: 12px;
@@ -42,7 +62,8 @@ export const CreateForm = styled.div`
 
   input[type="file"] {
     display: inline;
-    width: 50%;
+    width: 300px;
+    margin-right: 20px;
   }
   select {
     appearance: none;
@@ -60,6 +81,7 @@ export const CreateForm = styled.div`
   }
 
   Textarea {
+    line-height: 1.7;
     border: none;
     border-radius: 6px;
     padding: 20px 20px;
@@ -87,36 +109,19 @@ export const CreateForm = styled.div`
     display: inline-block;
     transform: translateY(3px);
   }
-`;
+
+  @media (max-width: 768px) {
+    input[type="file"] {
+      display: inline;
+      width: 250px;
+      margin-right: 20px;
+    }
+  }
+`
 export const FileDiv = styled.div`
-
-margin-bottom: 20px;
-
-  label {
-    background-color: ${({ theme }) => theme.colors.lightGrey};
-    padding: 0.5rem;
-    font-family: sans-serif;
-    border-radius: 0.3rem;
-    cursor: pointer;
-    width: 100%;
-    display:block;
-    text-align: center;
-    height: 160px;
-    
+  .UploadWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
   }
-  input[type="file" i] {
-    display: none;
-  }
-  button{
-    margin: 20px;
-    display:block;
-    margin: 30px auto;
-    
-  }
-  h1 {
-    font-size: 20px;
-    margin: 20px;
-    float:center;
-    
-  }
-`;
+`

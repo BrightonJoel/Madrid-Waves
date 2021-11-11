@@ -1,4 +1,4 @@
-import {gql} from "@apollo/client"
+import { gql } from "@apollo/client"
 
 export const CREATEBLOG = gql`
   mutation CreateBlog(
@@ -20,6 +20,7 @@ export const CREATEBLOG = gql`
       }
     ) {
       blog {
+        id
         Title
         CoverImage {
           id
