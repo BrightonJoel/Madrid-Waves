@@ -27,7 +27,7 @@ export default function Views({ id, view }) {
       })
     }
     increaseView()
-  }, [])
+  })
 
   return (
     <>
