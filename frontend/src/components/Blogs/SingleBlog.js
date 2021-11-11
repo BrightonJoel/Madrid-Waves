@@ -12,6 +12,7 @@ import {
   ActionArea,
   Category,
 } from "../../pages/HomePage/HomePageStyles"
+import { ErrorContainer } from "../../styles/GlobalComponents/Errors"
 import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"
 import LikeButton from "./LikeButton"
 
@@ -24,7 +25,15 @@ export default function SingleBlog() {
         <img src='/img/Logo-Spinner.svg' alt='loader' />
       </SpinnerContainer>
     )
-  if (error) return <p>{error.message}</p>
+
+  if (error)
+    return (
+      <ErrorContainer>
+        <img src='/img/Error.svg' alt='Fetch Error' />
+        <h2>{error.message}</h2>
+      </ErrorContainer>
+    )
+
   return (
     <Container>
       {data.blogs.map((blog) => (

@@ -11,8 +11,9 @@ export const NoBlogImgContainer = styled.div`
   align-items: center;
   width: 100%;
   margin: 50px 0px;
+  min-height: 50vh;
   img {
-    width: 40%;
+    width: 30%;
     height: ${({ h }) => h};
     object-fit: cover;
     border-radius: 6px;
