@@ -32,7 +32,7 @@ export default function ShareButton() {
   return (
     <Share>
       <FaShare onClick={handleCopyClick} />
-      {isCopied && <span>Copied Link</span>}
+      {isCopied && <span>Link Copied!</span>}
     </Share>
   )
 }

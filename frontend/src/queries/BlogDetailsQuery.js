@@ -60,6 +60,7 @@ export const GETCOMMENTS = gql`
       commentedUser {
         username
       }
+      published_at
     }
   }
 `

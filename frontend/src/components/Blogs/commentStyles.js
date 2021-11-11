@@ -3,7 +3,14 @@ import styled from "styled-components"
 export const Profile = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 20px;
+
+  p {
+    margin: 0;
+    font-size: 18px;
+    opacity: 0.7;
+  }
 `
 
 export const Avatar = styled.div`
@@ -23,7 +30,7 @@ export const Avatar = styled.div`
 `
 
 export const CommentBox = styled.div`
-  border-radius: 5px;
+  border-radius: 6px;
   background-color: ${({ theme }) => theme.colors.neutral};
   padding: 30px 50px;
   margin-bottom: 30px;

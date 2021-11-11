@@ -38,6 +38,8 @@ export default function Comment({ id }) {
         commentedUser: currentUser.id,
       },
     })
+
+    commentText.current.value = ""
   }
 
   if (loading) return <p>Loading...</p>
@@ -66,8 +68,15 @@ export default function Comment({ id }) {
               <h1>{comment.commentedUser.username.charAt(0)}</h1>
             </Avatar>
             <h2>{comment.commentedUser.username}</h2>
+            <p>
+              {new Date(comment.published_at).toLocaleDateString("en-us", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </p>
           </Profile>
-
           <br />
           <ReactMarkdown
             children={comment.commentText}
