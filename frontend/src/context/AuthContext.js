@@ -11,16 +11,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null)
   const history = useHistory()
-
-  function saveUser(user) {
-    if (user !== null) {
-      localStorage.setItem("user", JSON.stringify(user.user))
-      setUser(user)
-    }
-    return
-  }
 
   async function signUp(userDetails) {
     const path = process.env.REACT_APP_SIGNUP_PATH
@@ -42,9 +33,7 @@ export function AuthProvider({ children }) {
   const value = {
     signUp,
     login,
-    saveUser,
     logout,
-    user,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
