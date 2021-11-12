@@ -15,6 +15,7 @@ import CreateBlog from "./pages/BlogPages/CreateBlog"
 import MyBlogs from "./pages/BlogPages/MyBlogs"
 import BlogsDetails from "./pages/BlogPages/BlogDetails"
 import SearchPage from "./pages/SearchPage"
+import NotFound from "./pages/NotFound/NotFound"
 import About from "./pages/About"
 import Theme from "./styles/theme"
 
@@ -71,6 +72,10 @@ function App() {
               <Route path='/category/:id'>
                 <HomeHeader />
                 <Category />
+              </Route>
+              <Route path='*'>
+                <Header />
+                <NotFound />
               </Route>
             </Switch>
             <Footer />

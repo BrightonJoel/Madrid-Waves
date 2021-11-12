@@ -41,7 +41,7 @@ export default function Login() {
     }
 
     setLoading(true)
-    const { loading, error, data } = await login(userDetails)
+    const { loading, error } = await login(userDetails)
 
     if (error === "Logout and try again") {
       emailRef.current.value = ""
