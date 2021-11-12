@@ -19,7 +19,7 @@ export default function Login() {
   const emailRef = useRef()
   const passwordRef = useRef()
 
-  const { login, saveUser, logout } = useAuth()
+  const { login, logout } = useAuth()
   const history = useHistory()
 
   const [errorMsg, setErrorMsg] = useState(null)
@@ -42,7 +42,6 @@ export default function Login() {
 
     setLoading(true)
     const { loading, error, data } = await login(userDetails)
-    saveUser(data)
 
     if (error === "Logout and try again") {
       emailRef.current.value = ""
