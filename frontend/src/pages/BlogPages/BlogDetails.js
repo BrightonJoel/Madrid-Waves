@@ -10,7 +10,13 @@ import Comment from "../../components/Blogs/comment"
 import { GETSINGLEBLOGWITHID } from "../../queries/BlogDetailsQuery"
 
 // Styles
-import { MainDiv, Post, ActionContainer, BlogHead } from "./BlogDetailsStyles"
+import {
+  MainDiv,
+  Post,
+  ActionContainer,
+  BlogHead,
+  Title,
+} from "./BlogDetailsStyles"
 import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"
 import LikeButton from "../../components/Blogs/LikeButton"
 import ShareButton from "../../components/Blogs/ShareButton"
@@ -34,7 +40,7 @@ export default function BlogsDetails() {
 
   return (
     <MainDiv>
-      <h1>{data.blog.Title}</h1>
+      <Title>{data.blog.Title}</Title>
       <BlogHead>
         <p>By {data.blog.Author.username}</p>
         <p>
