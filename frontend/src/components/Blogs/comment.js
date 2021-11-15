@@ -6,7 +6,7 @@ import { useQuery, useMutation } from "@apollo/client"
 import useUser from "../../hooks/useUser"
 
 // Styles
-import { CommentBox, Avatar, Profile } from "./commentStyles"
+import { CommentBox, Avatar, Profile, BtnContainer } from "./commentStyles"
 import { CommenTitle } from "../../pages/BlogPages/BlogDetailsStyles"
 import { Button } from "../../styles/GlobalComponents/Button"
 import { FaTelegramPlane } from "react-icons/fa"
@@ -51,7 +51,7 @@ export default function Comment({ id }) {
       <br />
       <textarea rows='7' ref={commentText}></textarea>
 
-      <h6>
+      <BtnContainer>
         <Button
           bg={({ theme }) => theme.colors.yellow}
           clr={({ theme }) => theme.colors.primaryBlue}
@@ -59,7 +59,7 @@ export default function Comment({ id }) {
         >
           Comment <FaTelegramPlane />
         </Button>
-      </h6>
+      </BtnContainer>
 
       {data.comments.map((comment) => (
         <CommentBox key={comment.id}>

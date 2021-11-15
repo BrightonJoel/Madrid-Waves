@@ -35,3 +35,10 @@ export const CommentBox = styled.div`
   padding: 30px 50px;
   margin-bottom: 30px;
 `
+
+export const BtnContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+`

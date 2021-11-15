@@ -42,7 +42,7 @@ export default function BlogsDetails() {
     <MainDiv>
       <Title>{data.blog.Title}</Title>
       <BlogHead>
-        <p>By {data.blog.Author.username}</p>
+        <strong>By {data.blog.Author.username}</strong>
         <p>
           {new Date(data.blog.created_at).toLocaleDateString("en-us", {
             weekday: "long",

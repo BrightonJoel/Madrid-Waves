@@ -6,6 +6,7 @@ export const Title = styled.h1`
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  margin-bottom: 20px;
 `
 
 export const MainDiv = styled.div`
@@ -18,24 +19,10 @@ export const MainDiv = styled.div`
     font-size: 48px;
   }
 
-  p {
-    line-height: 1.7;
-    font-size: 20px;
-    margin-top: 20px;
-  }
-
-  h3 {
-    padding: 30px 50px 30px 0;
-    font-size: 40px;
-    color: ${({ theme }) => theme.colors.primaryBlue};
-    display: inline-block;
-  }
-
-  h4 {
-    padding: 30px 50px 30px 0;
-    font-size: 40px;
-    color: ${({ theme }) => theme.colors.red};
-    display: inline-block;
+  p,
+  strong {
+    font-size: 18px;
+    margin: 0 10px;
   }
 
   textarea {
@@ -47,23 +34,13 @@ export const MainDiv = styled.div`
     margin: 10px 0;
   }
 
-  Button {
-    border-radius: 5px;
-    font-size: 20px;
-    padding: 12px;
-    float: right;
-  }
-
-  h6 {
-    height: 100px;
-  }
-
   @media (max-width: 720px) {
     h1 {
       font-size: 34px;
     }
-    p {
-      font-size: 18px;
+
+    h2 {
+      font-size: 28px;
     }
   }
 `
@@ -83,22 +60,87 @@ export const BlogHead = styled.div`
 
 export const Post = styled.div`
   background-color: ${({ theme }) => theme.colors.neutral};
-  padding: 48px 48px;
-  border-radius: 5px;
+  padding: 48px;
+  border-radius: 6px;
 
   img {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 6px;
+  }
+
+  h1 {
+    font-size: 42px;
+    padding: 0;
+    border: none;
+    font-weight: 700;
+    margin: 32px 0;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 34px;
+    padding: 0;
+    border: none;
+    font-weight: 700;
+    margin: 24px 0;
+    line-height: 1.7;
+  }
+
+  code {
+    line-height: 1.5;
+    padding: 3px 0;
+    margin: 0;
+    word-break: normal;
+  }
+
+  pre {
+    background-color: #f5f5f5;
+    font-size: 18px;
+    border-radius: 0;
+    overflow-x: auto;
+  }
+
+  th {
+    text-align: center;
+    font-weight: 700;
+    border: 1px solid #efefef;
+    padding: 10px 6px;
+    background-color: #f5f7fa;
+    word-break: break-word;
+  }
+
+  td,
+  th {
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: normal;
+  }
+
+  ul {
+    font-size: 18px;
+    line-height: 28px;
+    padding-left: 36px;
+  }
+
+  li {
+    margin-bottom: 8px;
+    line-height: 1.7;
   }
 
   p {
-    padding: 10px 0;
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 8px 0;
   }
 
-  hr {
-    border: 1px solid #c4c4c4;
-    margin: 20px 40px;
+  a {
+    color: #0052d9;
   }
+
+  // hr {
+  //   border: 1px solid #c4c4c4;
+  //   margin: 20px 40px;
+  // }
 
   @media (max-width: 720px) {
     padding: 20px;
