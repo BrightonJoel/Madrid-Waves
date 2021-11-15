@@ -1,5 +1,13 @@
 import styled from "styled-components"
 
+export const Title = styled.h1`
+  width: fit-content;
+  background: linear-gradient(45deg, #e72142, #004797);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+`
+
 export const MainDiv = styled.div`
   width: 1200px;
   max-width: 90%;

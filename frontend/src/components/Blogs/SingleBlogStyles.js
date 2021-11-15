@@ -19,14 +19,19 @@ export const LatestBlogSection = styled.section`
   border-radius: 6px;
 
   h2 {
+    width: fit-content;
+    background: linear-gradient(45deg, #e72142, #004797);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
     font-size: 42px;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
   }
 
   h3 {
     font-size: 24px;
-    margin-bottom: 20px;
+    margin: 20px;
   }
 
   p {
@@ -51,6 +56,12 @@ export const YouTubeContainer = styled.section`
   padding: 30px;
 
   h2 {
+    margin: auto;
+    width: fit-content;
+    background: linear-gradient(45deg, #e72142, #004797);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
     font-size: 42px;
     text-align: center;
   }

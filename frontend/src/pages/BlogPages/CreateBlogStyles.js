@@ -20,6 +20,10 @@ export const MainDiv = styled.div`
   max-width: 90%;
 
   h3 {
+    background: linear-gradient(45deg, #e72142, #004797);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
     text-align: center;
     font-size: 48px;
     padding: 50px 0px;

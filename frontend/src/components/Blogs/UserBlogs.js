@@ -64,7 +64,10 @@ export default function UserBlogs({ userId }) {
                   <hr />
                   <ActionArea>
                     <LikeButton id={blog.id} likedUser={blog.likedUser} />
-                    <DeleteButton blogId={blog.id} />
+                    <DeleteButton
+                      blogId={blog.id}
+                      imageId={blog.CoverImage[0].id}
+                    />
                     <Link to={`/details/${blog.id}`}>Read More</Link>
                   </ActionArea>
                 </ContentArea>

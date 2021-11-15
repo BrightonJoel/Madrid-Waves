@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import { DELETEBLOG } from "../../queries/DeleteBlog"
 import { useMutation } from "@apollo/client"
-import { GETUSERBLOGS } from "../../queries/GetUserBlogs"
+import { DELETEFILE, DELETEBLOG } from "../../queries/DeleteBlog"
+import { GETBLOGS } from "../../queries/GetAllBlogs"
 
 // Styles
 import {
@@ -14,8 +14,18 @@ import {
 } from "./UserBlogsStyles"
 import { AiOutlineDelete, AiOutlineWarning } from "react-icons/ai"
 
-export default function DeleteButton({ blogId }) {
+export default function DeleteButton({ blogId, imageId }) {
   const [isOpen, setIsOpen] = useState(false)
+
+  const [deleteFile, { loading: loadingDelete }] = useMutation(DELETEFILE, {
+    options: {
+      context: {
+        headers: {
+          credentials: "include",
+        },
+      },
+    },
+  })
 
   const [deleteBlog, { loading }] = useMutation(DELETEBLOG, {
     options: {
@@ -28,9 +38,13 @@ export default function DeleteButton({ blogId }) {
   })
 
   async function handleDelete(blogId) {
+    await deleteFile({
+      variables: { Id: imageId },
+    })
+
     await deleteBlog({
       variables: { Id: blogId },
-      refetchQueries: [GETUSERBLOGS],
+      refetchQueries: [GETBLOGS],
     })
 
     setIsOpen(!isOpen)
@@ -47,7 +61,11 @@ export default function DeleteButton({ blogId }) {
             <ButtonContainer>
               <NoButton onClick={() => setIsOpen(false)}>No</NoButton>
               <ConfirmButton onClick={() => handleDelete(blogId)}>
-                {loading ? "Loading..." : "Yes"}
+                {loadingDelete
+                  ? "Deleting File..."
+                  : loading
+                  ? "Loading..."
+                  : "Yes"}
               </ConfirmButton>
             </ButtonContainer>
           </PopupContent>

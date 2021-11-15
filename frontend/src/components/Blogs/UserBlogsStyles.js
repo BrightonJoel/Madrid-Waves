@@ -1,6 +1,12 @@
 import styled from "styled-components"
 
 export const Title = styled.h2`
+  width: fit-content;
+  margin: auto;
+  background: linear-gradient(45deg, #e72142, #004797);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   font-size: 36px;
   text-align: center;
 `

@@ -18,6 +18,10 @@ export const BlogHeader = styled.div`
   padding: 30px;
 
   h2 {
+    background: linear-gradient(45deg, #e72142, #004797);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
     font-size: 42px;
   }
 
@@ -35,12 +39,6 @@ export const Blog = styled.section`
 
   background-color: ${({ theme }) => theme.colors.lightGrey};
   border-radius: 6px;
-
-  h2 {
-    font-size: 42px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
 
   h3 {
     font-size: 24px;
