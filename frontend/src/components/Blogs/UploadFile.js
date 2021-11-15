@@ -1,4 +1,5 @@
 import React from "react"
+import { GETSINGLEBLOG } from "../../queries/GetSingleBlog"
 
 // styles
 import { FileDiv } from "../../pages/BlogPages/CreateBlogStyles"
@@ -25,6 +26,7 @@ export default function UploadFile({
         variables: {
           file: Image,
         },
+        refetchQueries: [GETSINGLEBLOG],
       })
       setFileStatus("File uploaded Successfully !!!")
     } else {
