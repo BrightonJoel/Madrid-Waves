@@ -78,3 +78,15 @@ export const ErrorWrapper = styled.div`
     margin-left: 10px;
   }
 `
+
+export const UserFoundContainer = styled.div`
+  height: 400px;
+  img {
+    width: 100%;
+    height: 400px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`
