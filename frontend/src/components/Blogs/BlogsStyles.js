@@ -82,3 +82,21 @@ export const CategoryLinks = styled.div`
     justify-content: center;
   }
 `
+
+export const PaginationContainer = styled.div`
+  margin: 20px 0px;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  li {
+    margin-right: 10px;
+  }
+
+  .active {
+    background-color: ${({ theme }) => theme.colors.yellow};
+    color: ${({ theme }) => theme.colors.primaryBlue};
+  }
+`
