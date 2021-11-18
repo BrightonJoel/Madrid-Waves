@@ -14,7 +14,7 @@ import MdEditor from "react-markdown-editor-lite"
 import "react-markdown-editor-lite/lib/index.css"
 
 // Styles
-import { MainDiv, CreateForm, Background } from "./CreateBlogStyles"
+import { Article, CreateForm, Background } from "./CreateBlogStyles"
 import { ErrorWrapper } from "../AuthPages/AuthPageStyles"
 import { Button } from "../../styles/GlobalComponents/Button"
 import { FaPlusSquare, FaTimes } from "react-icons/fa"
@@ -25,7 +25,6 @@ export default function CreateBlog() {
   const history = useHistory()
   const title = useRef()
   const category = useRef()
-  const body = useRef()
   const [content, setContent] = useState("")
   const [Image, setImage] = useState(null)
   const [FileStatus, setFileStatus] = useState("")
@@ -66,7 +65,6 @@ export default function CreateBlog() {
 
   function handleEditorChange({ html, text }) {
     // console.log("handleEditorChange", html, text)
-    // body.current.value = text
     setContent(text)
     console.log(text)
   }
@@ -111,33 +109,27 @@ export default function CreateBlog() {
     <>
       {currentUser ? (
         <Background>
-          <MainDiv>
+          <Article>
             <h3>Create A New Blog</h3>
             <CreateForm>
               <form onSubmit={handleSubmit}>
-                <label>Title</label>
+                <label htmlFor='title'>Title</label>
                 <input
+                  id='title'
                   type='text'
                   minLength='5'
                   maxLength='100'
                   ref={title}
                   required
                 ></input>
-                <label>Category</label>
-                <select ref={category} required>
+                <label htmlFor='category'>Category</label>
+                <select id='category' ref={category} required>
                   {data.blogCategories.map((category) => (
                     <option key={category.id} value={category.id}>
                       {category.Name}
                     </option>
                   ))}
                 </select>
-                <label> Body </label>
-                {/* <textarea
-                  rows='25'
-                  minLength='100'
-                  ref={body}
-                  required
-                ></textarea> */}
 
                 <MdEditor
                   style={{ height: "500px" }}
@@ -181,7 +173,7 @@ export default function CreateBlog() {
                 </Button>
               </form>
             </CreateForm>
-          </MainDiv>
+          </Article>
         </Background>
       ) : (
         <Redirect to='/login' />

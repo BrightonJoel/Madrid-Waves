@@ -13,7 +13,7 @@ export const Background = styled.div`
   }
 `
 
-export const MainDiv = styled.div`
+export const Article = styled.article`
   margin: 0 auto;
   padding: 48px 0px;
   width: 900px;
@@ -126,6 +126,7 @@ export const FileDiv = styled.div`
   .UploadWrapper {
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
     align-items: center;
   }
 `

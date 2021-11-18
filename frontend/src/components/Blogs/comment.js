@@ -4,15 +4,17 @@ import { CREATECOMMENT, GETCOMMENTS } from "../../queries/BlogDetailsQuery"
 import ReactMarkdown from "react-markdown"
 import { useQuery, useMutation } from "@apollo/client"
 import useUser from "../../hooks/useUser"
+import { useHistory } from "react-router"
 
 // Styles
-import { CommentBox, Avatar, Profile } from "./commentStyles"
+import { CommentBox, Avatar, Profile, BtnContainer } from "./commentStyles"
 import { CommenTitle } from "../../pages/BlogPages/BlogDetailsStyles"
 import { Button } from "../../styles/GlobalComponents/Button"
 import { FaTelegramPlane } from "react-icons/fa"
 
 export default function Comment({ id }) {
   const { currentUser } = useUser()
+  const history = useHistory()
   const commentText = useRef()
 
   const { data, loading, error } = useQuery(GETCOMMENTS, {
@@ -51,15 +53,25 @@ export default function Comment({ id }) {
       <br />
       <textarea rows='7' ref={commentText}></textarea>
 
-      <h6>
-        <Button
-          bg={({ theme }) => theme.colors.yellow}
-          clr={({ theme }) => theme.colors.primaryBlue}
-          onClick={handleComment}
-        >
-          Comment <FaTelegramPlane />
-        </Button>
-      </h6>
+      <BtnContainer>
+        {currentUser ? (
+          <Button
+            bg={({ theme }) => theme.colors.yellow}
+            clr={({ theme }) => theme.colors.primaryBlue}
+            onClick={handleComment}
+          >
+            Comment <FaTelegramPlane />
+          </Button>
+        ) : (
+          <Button
+            bg={({ theme }) => theme.colors.yellow}
+            clr={({ theme }) => theme.colors.primaryBlue}
+            onClick={() => history.push("/login")}
+          >
+            Login to comment <FaTelegramPlane />
+          </Button>
+        )}
+      </BtnContainer>
 
       {data.comments.map((comment) => (
         <CommentBox key={comment.id}>

@@ -42,7 +42,7 @@ export default function BlogsDetails() {
     <MainDiv>
       <Title>{data.blog.Title}</Title>
       <BlogHead>
-        <p>By {data.blog.Author.username}</p>
+        <strong>By {data.blog.Author.username}</strong>
         <p>
           {new Date(data.blog.created_at).toLocaleDateString("en-us", {
             weekday: "long",
@@ -55,7 +55,7 @@ export default function BlogsDetails() {
 
       <Post>
         <img
-          src={`http://localhost:1337${data.blog.CoverImage[0].url}`}
+          src={`${process.env.REACT_APP_SHORT_URL}${data.blog.CoverImage[0].url}`}
           alt='Thumbnail'
         />
         <ReactMarkdown children={data.blog.Body} remarkPlugins={[remarkGfm]} />
