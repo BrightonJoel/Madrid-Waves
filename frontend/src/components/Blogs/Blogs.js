@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client"
 import { Link } from "react-router-dom"
 import { GETBLOGS } from "../../queries/GetAllBlogs"
 import FilterButton from "./FilterButton"
+import ReactMarkdown from "react-markdown"
 
 // Styles
 import { BlogsWrapper, BlogContainer, Blog } from "./BlogsStyles"
@@ -44,7 +45,7 @@ export default function Blogs() {
               {blog.CoverImage.map((u) => (
                 <img
                   key={u.id}
-                  src={`http://localhost:1337${u.url}`}
+                  src={`${process.env.REACT_APP_SHORT_URL}${u.url}`}
                   alt='Thumbnail'
                 />
               ))}
@@ -57,7 +58,9 @@ export default function Blogs() {
                 ))}
               </Category>
 
-              <p>{blog.Body.substring(0, 250) + "..."}</p>
+              <ReactMarkdown>
+                {blog.Body.substring(0, 250) + "..."}
+              </ReactMarkdown>
               <hr />
               <ActionArea>
                 <LikeButton id={blog.id} likedUser={blog.likedUser} />

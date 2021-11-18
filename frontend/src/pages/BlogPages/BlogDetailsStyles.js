@@ -137,13 +137,15 @@ export const Post = styled.div`
     color: #0052d9;
   }
 
-  // hr {
-  //   border: 1px solid #c4c4c4;
-  //   margin: 20px 40px;
-  // }
-
   @media (max-width: 720px) {
     padding: 20px;
+    h1 {
+      font-size: 28px;
+    }
+
+    h2 {
+      font-size: 26px;
+    }
   }
 `
 

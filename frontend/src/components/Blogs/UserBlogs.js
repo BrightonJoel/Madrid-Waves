@@ -48,7 +48,7 @@ export default function UserBlogs({ userId }) {
                   {blog.CoverImage.map((u) => (
                     <img
                       key={u.id}
-                      src={`http://localhost:1337${u.url}`}
+                      src={`${process.env.REACT_APP_SHORT_URL}${u.url}`}
                       alt='Thumbnail'
                     />
                   ))}

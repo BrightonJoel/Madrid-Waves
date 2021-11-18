@@ -55,6 +55,10 @@ export const NavLinks = styled.nav`
     color: ${({ theme }) => theme.colors.neutral};
     font-size: 20px;
 
+    &:hover {
+      text-decoration: overline;
+    }
+
     &.nav-active {
       color: ${({ theme }) => theme.colors.yellow};
       text-decoration: overline;

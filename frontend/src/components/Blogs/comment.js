@@ -4,6 +4,7 @@ import { CREATECOMMENT, GETCOMMENTS } from "../../queries/BlogDetailsQuery"
 import ReactMarkdown from "react-markdown"
 import { useQuery, useMutation } from "@apollo/client"
 import useUser from "../../hooks/useUser"
+import { useHistory } from "react-router"
 
 // Styles
 import { CommentBox, Avatar, Profile, BtnContainer } from "./commentStyles"
@@ -13,6 +14,7 @@ import { FaTelegramPlane } from "react-icons/fa"
 
 export default function Comment({ id }) {
   const { currentUser } = useUser()
+  const history = useHistory()
   const commentText = useRef()
 
   const { data, loading, error } = useQuery(GETCOMMENTS, {
@@ -52,13 +54,23 @@ export default function Comment({ id }) {
       <textarea rows='7' ref={commentText}></textarea>
 
       <BtnContainer>
-        <Button
-          bg={({ theme }) => theme.colors.yellow}
-          clr={({ theme }) => theme.colors.primaryBlue}
-          onClick={handleComment}
-        >
-          Comment <FaTelegramPlane />
-        </Button>
+        {currentUser ? (
+          <Button
+            bg={({ theme }) => theme.colors.yellow}
+            clr={({ theme }) => theme.colors.primaryBlue}
+            onClick={handleComment}
+          >
+            Comment <FaTelegramPlane />
+          </Button>
+        ) : (
+          <Button
+            bg={({ theme }) => theme.colors.yellow}
+            clr={({ theme }) => theme.colors.primaryBlue}
+            onClick={() => history.push("/login")}
+          >
+            Login to comment <FaTelegramPlane />
+          </Button>
+        )}
       </BtnContainer>
 
       {data.comments.map((comment) => (
