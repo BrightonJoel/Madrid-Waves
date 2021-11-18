@@ -19,7 +19,13 @@ import { ErrorContainer } from "../../styles/GlobalComponents/Errors"
 import LikeButton from "./LikeButton"
 
 export default function Blogs() {
-  const { loading, error, data } = useQuery(GETBLOGS)
+  const [start, setStart] = useState(0)
+  const [pageNumber, setPageNumber] = useState(1)
+  const { loading, error, data } = useQuery(GETBLOGS, {
+    variables: {
+      start: start,
+    },
+  })
 
   if (loading)
     return (
@@ -71,7 +77,12 @@ export default function Blogs() {
           </Blog>
         ))}
 
-        <Pagination />
+        <hr />
+        <Pagination
+          setStart={setStart}
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
+        />
       </BlogContainer>
     </BlogsWrapper>
   )
