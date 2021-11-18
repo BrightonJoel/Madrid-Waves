@@ -13,6 +13,7 @@ import {
   Input,
   ErrorWrapper,
   UserFoundContainer,
+  LoginFooter,
 } from "./AuthPageStyles"
 import { Button } from "../../styles/GlobalComponents/Button"
 
@@ -22,7 +23,7 @@ export default function Login() {
 
   const emailRef = useRef()
   const passwordRef = useRef()
-  const { currentUser, loading: userLoading } = useUser()
+  const { currentUser } = useUser()
 
   const { login } = useAuth()
   const history = useHistory()
@@ -89,12 +90,13 @@ export default function Login() {
                 </Button>
               )}
             </form>
-
-            <p>New to the page?</p>
-            <Link to='/signup'>Sign in</Link>
-            <br/>
-            <p>Forgot Password?</p>
-            <Link to='/forgotpassword'>Reset password</Link>
+            <LoginFooter>
+              <div>
+                <p>New to the page?</p>
+                <Link to='/signup'>Sign in</Link>
+              </div>
+              <Link to='/forgotpassword'>Forgot password?</Link>
+            </LoginFooter>
           </Wrapper>
         ) : (
           <UserFoundContainer>

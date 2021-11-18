@@ -29,7 +29,7 @@ export const Container = styled.main`
 
   p {
     display: inline;
-    margin-right: 20px;
+    margin-right: 10px;
   }
 
   @media (max-width: 768px) {
@@ -89,4 +89,11 @@ export const UserFoundContainer = styled.div`
       cursor: pointer;
     }
   }
+`
+
+export const LoginFooter = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
 `

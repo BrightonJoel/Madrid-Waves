@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { Redirect, useHistory, useLocation } from "react-router";
+import React, { useRef } from "react"
+import { useHistory, useLocation } from "react-router"
 import {
   Label,
   Input,
@@ -7,22 +7,22 @@ import {
   Container,
   Wrapper,
   ErrorWrapper,
-} from "./AuthPageStyles";
-import { Button } from "../../styles/GlobalComponents/Button";
-import { useMutation } from "@apollo/client";
-import { RESETPASSWORD } from "../../queries/Forgotquery";
+} from "./AuthPageStyles"
+import { Button } from "../../styles/GlobalComponents/Button"
+import { useMutation } from "@apollo/client"
+import { RESETPASSWORD } from "../../queries/Forgotquery"
 
 export default function RestPassword() {
-  const data = useLocation();
-  const password = useRef();
-  const confirmPassword = useRef();
-  const history = useHistory();
+  const data = useLocation()
+  const password = useRef()
+  const confirmPassword = useRef()
+  const history = useHistory()
 
   const [resetPassword, { loading: resettingPassword, error }] =
-    useMutation(RESETPASSWORD);
+    useMutation(RESETPASSWORD)
 
   async function handleSubmit(event) {
-    event.preventDefault();
+    event.preventDefault()
     try {
       await resetPassword({
         variables: {
@@ -30,10 +30,10 @@ export default function RestPassword() {
           passwordConfirmation: confirmPassword.current.value,
           code: data.search.split("=")[1],
         },
-      });
-      history.push("/login");
+      })
+      history.push("/login")
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   }
   if (error) {
@@ -45,7 +45,7 @@ export default function RestPassword() {
           </Wrapper>
         </Container>
       </Background>
-    );
+    )
   }
   return (
     <Background>
@@ -55,29 +55,29 @@ export default function RestPassword() {
 
           <form onSubmit={handleSubmit}>
             <Label> New password</Label>
-            <Input type="password" ref={password} required />
+            <Input type='password' ref={password} required />
             <Label> Confirm password</Label>
-            <Input type="password" ref={confirmPassword} required />
+            <Input type='password' ref={confirmPassword} required />
 
             {resettingPassword ? (
               <Button
-                type="submit"
+                type='submit'
                 disabled={resettingPassword}
                 bg={({ theme }) => theme.colors.primaryBlue}
                 clr={({ theme }) => theme.colors.neutral}
-                mt="30px"
-                w="100%"
+                mt='30px'
+                w='100%'
               >
                 Changing password....
               </Button>
             ) : (
               <Button
-                type="submit"
+                type='submit'
                 // disabled={loading}
                 bg={({ theme }) => theme.colors.primaryBlue}
                 clr={({ theme }) => theme.colors.neutral}
-                mt="30px"
-                w="100%"
+                mt='30px'
+                w='100%'
               >
                 Change password
               </Button>
@@ -86,5 +86,5 @@ export default function RestPassword() {
         </Wrapper>
       </Container>
     </Background>
-  );
+  )
 }
