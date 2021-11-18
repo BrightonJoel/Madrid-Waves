@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import { useQuery } from "@apollo/client"
 import { Link } from "react-router-dom"
 import { GETBLOGS } from "../../queries/GetAllBlogs"
 import FilterButton from "./FilterButton"
+import Pagination from "./Pagination"
 import ReactMarkdown from "react-markdown"
 
 // Styles
@@ -69,6 +70,8 @@ export default function Blogs() {
             </ContentArea>
           </Blog>
         ))}
+
+        <Pagination />
       </BlogContainer>
     </BlogsWrapper>
   )
