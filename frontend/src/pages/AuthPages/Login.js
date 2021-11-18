@@ -92,6 +92,9 @@ export default function Login() {
 
             <p>New to the page?</p>
             <Link to='/signup'>Sign in</Link>
+            <br/>
+            <p>Forgot Password?</p>
+            <Link to='/forgotpassword'>Reset password</Link>
           </Wrapper>
         ) : (
           <UserFoundContainer>

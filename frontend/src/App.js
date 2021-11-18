@@ -18,6 +18,8 @@ import SearchPage from "./pages/SearchPage"
 import NotFound from "./pages/NotFound/NotFound"
 import About from "./pages/About"
 import Theme from "./styles/theme"
+import Forgotpassword from "./pages/AuthPages/ForgotPassword"
+import RestPassword from "./pages/AuthPages/Restpassword"
 
 const link = createUploadLink({
   uri: process.env.REACT_APP_GRAPHQL_URL,
@@ -44,6 +46,14 @@ function App() {
               <Route path='/login'>
                 <Header />
                 <Login />
+              </Route>
+              <Route path='/forgotpassword'>
+                <Header />
+                <Forgotpassword />
+              </Route>
+              <Route path='/resetpassword'>
+                <Header />
+                <RestPassword/>
               </Route>
               <Route exact path='/'>
                 <HomeHeader />
