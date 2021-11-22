@@ -7,15 +7,7 @@ import { ViewsContainer } from "../../pages/BlogPages/BlogDetailsStyles"
 import { FaEye } from "react-icons/fa"
 
 export default function Views({ id, view }) {
-  const [UpdateViews] = useMutation(UPDATEVIEWS, {
-    options: {
-      context: {
-        headers: {
-          credentials: "include",
-        },
-      },
-    },
-  })
+  const [UpdateViews] = useMutation(UPDATEVIEWS)
 
   useLayoutEffect(() => {
     async function increaseView() {
