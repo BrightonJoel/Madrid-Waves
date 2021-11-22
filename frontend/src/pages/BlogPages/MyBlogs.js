@@ -1,5 +1,5 @@
 import React from "react"
-import UserBlogs from "../../components/Blogs/UserBlogs"
+import UserBlogs from "../../components/Blogs/MyBlogs/UserBlogs"
 import { Redirect } from "react-router"
 import useUser from "../../hooks/useUser"
 import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"

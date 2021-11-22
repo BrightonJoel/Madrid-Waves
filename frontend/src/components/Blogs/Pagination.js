@@ -2,7 +2,7 @@ import React from "react"
 import useFetch from "../../hooks/useFetch"
 
 //Styles
-import { PaginationContainer } from "./BlogsStyles"
+import { PaginationContainer } from "./Home/BlogsStyles"
 import { Button } from "../../styles/GlobalComponents/Button"
 
 export default function Pagination({ setStart, pageNumber, setPageNumber }) {

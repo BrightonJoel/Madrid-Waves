@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client"
 import { FETCHCATEGORY } from "../../queries/fetchBlogCategory"
 
 // Styles
-import { BlogHeader, FilterPopup, CategoryLinks } from "./BlogsStyles"
+import { BlogHeader, FilterPopup, CategoryLinks } from "./Home/BlogsStyles"
 import { FaFilter } from "react-icons/fa"
 import { Button } from "../../styles/GlobalComponents/Button"
 

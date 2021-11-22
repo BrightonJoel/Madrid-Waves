@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { useQuery } from "@apollo/client"
 import { Link } from "react-router-dom"
-import { GETBLOGS } from "../../queries/GetAllBlogs"
-import FilterButton from "./FilterButton"
-import Pagination from "./Pagination"
+import { GETBLOGS } from "../../../queries/GetAllBlogs"
+import FilterButton from "../FilterButton"
+import Pagination from "../Pagination"
 import ReactMarkdown from "react-markdown"
 
 // Styles
@@ -13,10 +13,10 @@ import {
   ContentArea,
   ActionArea,
   Category,
-} from "../../pages/HomePage/HomePageStyles"
-import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"
-import { ErrorContainer } from "../../styles/GlobalComponents/Errors"
-import LikeButton from "./LikeButton"
+} from "../../../pages/HomePage/HomePageStyles"
+import { SpinnerContainer } from "../../../styles/GlobalComponents/Spinner"
+import { ErrorContainer } from "../../../styles/GlobalComponents/Errors"
+import LikeButton from "../LikeButton"
 
 export default function Blogs() {
   const [start, setStart] = useState(0)
