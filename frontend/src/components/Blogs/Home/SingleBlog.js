@@ -1,7 +1,7 @@
 import React from "react"
 import { useQuery } from "@apollo/client"
-import YouTube from "./YouTube"
-import { GETSINGLEBLOG } from "../../queries/GetSingleBlog"
+import YouTube from "../YouTube"
+import { GETSINGLEBLOG } from "../../../queries/GetSingleBlog"
 import { Link } from "react-router-dom"
 
 // styles
@@ -11,10 +11,10 @@ import {
   ContentArea,
   ActionArea,
   Category,
-} from "../../pages/HomePage/HomePageStyles"
-import { ErrorContainer } from "../../styles/GlobalComponents/Errors"
-import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"
-import LikeButton from "./LikeButton"
+} from "../../../pages/HomePage/HomePageStyles"
+import { ErrorContainer } from "../../../styles/GlobalComponents/Errors"
+import { SpinnerContainer } from "../../../styles/GlobalComponents/Spinner"
+import LikeButton from "../LikeButton"
 
 export default function SingleBlog() {
   const { data, loading, error } = useQuery(GETSINGLEBLOG)

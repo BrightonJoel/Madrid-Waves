@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import Views from "../../components/Blogs/Views"
-import Comment from "../../components/Blogs/comment"
+import Comment from "../../components/Blogs/Comments/Comment"
 
 // Queries
 import { GETSINGLEBLOGWITHID } from "../../queries/BlogDetailsQuery"

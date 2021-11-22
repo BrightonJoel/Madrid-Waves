@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useMutation } from "@apollo/client"
-import { DELETEFILE, DELETEBLOG } from "../../queries/DeleteBlog"
-import { GETBLOGS } from "../../queries/GetAllBlogs"
+import { DELETEFILE, DELETEBLOG } from "../../../queries/DeleteBlog"
+import { GETBLOGS } from "../../../queries/GetAllBlogs"
 
 // Styles
 import {

@@ -1,20 +1,20 @@
 import React from "react"
 import { useQuery } from "@apollo/client"
 import { Link } from "react-router-dom"
-import { GETUSERBLOGS } from "../../queries/GetUserBlogs"
+import { GETUSERBLOGS } from "../../../queries/GetUserBlogs"
 import DeleteButton from "./DeleteButton"
 
 // Styles
-import { BlogsWrapper, BlogContainer, Blog } from "./BlogsStyles"
+import { BlogsWrapper, BlogContainer, Blog } from "../Home/BlogsStyles"
 import { Title, NoBlogImgContainer } from "./UserBlogsStyles"
 import {
   ImageContainer,
   ContentArea,
   ActionArea,
   Category,
-} from "../../pages/HomePage/HomePageStyles"
-import { SpinnerContainer } from "../../styles/GlobalComponents/Spinner"
-import LikeButton from "./LikeButton"
+} from "../../../pages/HomePage/HomePageStyles"
+import { SpinnerContainer } from "../../../styles/GlobalComponents/Spinner"
+import LikeButton from "../LikeButton"
 
 export default function UserBlogs({ userId }) {
   const { loading, error, data } = useQuery(GETUSERBLOGS, {

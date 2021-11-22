@@ -2,7 +2,7 @@ import React from "react"
 import useYouTube from "../../hooks/useYouTubeApi"
 
 // Styles
-import { YouTubeContainer, VideoContainer } from "./SingleBlogStyles"
+import { YouTubeContainer, VideoContainer } from "./Home/SingleBlogStyles"
 import { Center } from "../Header/SearchResultsStyles"
 
 export default function YouTube() {

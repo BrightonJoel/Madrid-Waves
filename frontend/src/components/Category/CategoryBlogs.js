@@ -5,7 +5,7 @@ import { FETCHBYCATEGORY } from "../../queries/FetchByCategory"
 import FilterButton from "../Blogs/FilterButton"
 
 // Styles
-import { BlogsWrapper, BlogContainer, Blog } from "../Blogs/BlogsStyles"
+import { BlogsWrapper, BlogContainer, Blog } from "../Blogs/Home/BlogsStyles"
 import {
   ImageContainer,
   ContentArea,

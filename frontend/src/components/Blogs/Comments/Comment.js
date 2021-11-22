@@ -1,15 +1,15 @@
 import React, { useRef } from "react"
 import remarkGfm from "remark-gfm"
-import { CREATECOMMENT, GETCOMMENTS } from "../../queries/BlogDetailsQuery"
+import { CREATECOMMENT, GETCOMMENTS } from "../../../queries/BlogDetailsQuery"
 import ReactMarkdown from "react-markdown"
 import { useQuery, useMutation } from "@apollo/client"
-import useUser from "../../hooks/useUser"
+import useUser from "../../../hooks/useUser"
 import { useHistory } from "react-router"
 
 // Styles
-import { CommentBox, Avatar, Profile, BtnContainer } from "./commentStyles"
-import { CommenTitle } from "../../pages/BlogPages/BlogDetailsStyles"
-import { Button } from "../../styles/GlobalComponents/Button"
+import { CommentBox, Avatar, Profile, BtnContainer } from "./CommentStyles"
+import { CommenTitle } from "../../../pages/BlogPages/BlogDetailsStyles"
+import { Button } from "../../../styles/GlobalComponents/Button"
 import { FaTelegramPlane } from "react-icons/fa"
 
 export default function Comment({ id }) {
