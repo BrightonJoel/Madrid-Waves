@@ -15,7 +15,7 @@ export const SearchResultContainer = styled.div`
     list-style: none;
     border-radius: 6px;
     padding: 20px 10px;
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.neutral};
   }
 `
 export const Center = styled.div`

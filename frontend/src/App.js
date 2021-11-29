@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client"
 import { createUploadLink } from "apollo-upload-client"
 import { AuthProvider } from "./context/AuthContext"
+import ScrollToTop from "./hooks/ScrollToTop "
 
 // page and layout imports
 import SignUp from "./pages/AuthPages/SignUp"
@@ -53,7 +54,7 @@ function App() {
               </Route>
               <Route path='/resetpassword'>
                 <Header />
-                <RestPassword/>
+                <RestPassword />
               </Route>
               <Route exact path='/'>
                 <HomeHeader />
@@ -76,8 +77,10 @@ function App() {
                 <SearchPage />
               </Route>
               <Route path='/details/:id'>
-                <HomeHeader />
-                <BlogsDetails />
+                <ScrollToTop>
+                  <HomeHeader />
+                  <BlogsDetails />
+                </ScrollToTop>
               </Route>
               <Route path='/category/:id'>
                 <HomeHeader />

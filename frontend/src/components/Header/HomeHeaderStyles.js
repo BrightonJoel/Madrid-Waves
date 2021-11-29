@@ -26,7 +26,7 @@ export const Logo = styled.nav`
   align-items: center; /* for single line flex container */
   align-content: center; /* for multi-line flex container */
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.neutral};
+  color: ${({ theme }) => theme.colors.white};
   font-size: 12px;
   img {
     height: 100px;
@@ -47,12 +47,12 @@ export const NavLinks = styled.nav`
   justify-content: center;
   align-items: center; /* for single line flex container */
   align-content: center; /* for multi-line flex container */
-  color: ${({ theme }) => theme.colors.neutral};
+  color: ${({ theme }) => theme.colors.white};
   grid-column: 2 / 2;
 
   a {
     padding: 0 20px;
-    color: ${({ theme }) => theme.colors.neutral};
+    color: ${({ theme }) => theme.colors.white};
     font-size: 20px;
 
     &:hover {
@@ -85,7 +85,7 @@ export const Profile = styled.nav`
   justify-content: center;
   align-items: center;
   align-content: center;
-  color: ${({ theme }) => theme.colors.neutral};
+  color: ${({ theme }) => theme.colors.white};
   font-size: 12px;
   grid-column: 3 / 3;
 
@@ -98,6 +98,12 @@ export const Profile = styled.nav`
     cursor: pointer;
     font-size: 30px;
     display: none;
+  }
+  .bulbOn,
+  .bulbOff {
+    margin-right: 20px;
+    font-size: 30px;
+    cursor: pointer;
   }
   @media (max-width: 768px) {
     grid-column: 2 / 4;
@@ -117,7 +123,7 @@ export const Avatar = styled.div`
   width: 65px;
   font-size: 24px;
   color: ${({ theme }) => theme.colors.yellow};
-  border: 2px solid ${({ theme }) => theme.colors.neutral};
+  border: 2px solid ${({ theme }) => theme.colors.white};
   border-radius: 50%;
   cursor: pointer;
   user-select: none;
@@ -158,6 +164,7 @@ export const SearchBar = styled.div`
     width: 50%;
     border-radius: 5px 0 0 5px;
     background-color: ${({ theme }) => theme.colors.lightGrey};
+    color: ${({ theme }) => theme.colors.text};
     border: None;
     outline: None;
     padding: 11px 20px;

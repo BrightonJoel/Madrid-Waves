@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { useMutation } from "@apollo/client";
+import React, { useRef } from "react"
+import { useMutation } from "@apollo/client"
 import {
   Label,
   Input,
@@ -7,27 +7,27 @@ import {
   Container,
   Wrapper,
   ErrorWrapper,
-} from "./AuthPageStyles";
-import { Button } from "../../styles/GlobalComponents/Button";
-import { FORGOTPASSWORD } from "../../queries/Forgotquery";
+} from "./AuthPageStyles"
+import { Button } from "../../styles/GlobalComponents/Button"
+import { FORGOTPASSWORD } from "../../queries/Forgotquery"
 export default function Forgotpassword() {
-  const emailRef = useRef();
+  const emailRef = useRef()
 
   const [
     Forgotpassword,
     { loading: sendingEmail, data: emailData, error: emailError },
-  ] = useMutation(FORGOTPASSWORD);
+  ] = useMutation(FORGOTPASSWORD)
 
   async function handleSubmit(event) {
-    event.preventDefault();
+    event.preventDefault()
     try {
-     await Forgotpassword({
+      await Forgotpassword({
         variables: {
           email: emailRef.current.value,
         },
-      });
+      })
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   }
 
@@ -41,27 +41,27 @@ export default function Forgotpassword() {
 
           <form onSubmit={handleSubmit}>
             <Label> Registred Email</Label>
-            <Input type="email" ref={emailRef} required />
+            <Input type='email' ref={emailRef} required />
 
             {sendingEmail ? (
               <Button
-                type="submit"
+                type='submit'
                 disabled={sendingEmail}
                 bg={({ theme }) => theme.colors.primaryBlue}
-                clr={({ theme }) => theme.colors.neutral}
-                mt="30px"
-                w="100%"
+                clr={({ theme }) => theme.colors.white}
+                mt='30px'
+                w='100%'
               >
                 Sending mail...
               </Button>
             ) : (
               <Button
-                type="submit"
+                type='submit'
                 disabled={emailData}
                 bg={({ theme }) => theme.colors.primaryBlue}
-                clr={({ theme }) => theme.colors.neutral}
-                mt="30px"
-                w="100%"
+                clr={({ theme }) => theme.colors.white}
+                mt='30px'
+                w='100%'
               >
                 Send mail
               </Button>
@@ -70,5 +70,5 @@ export default function Forgotpassword() {
         </Wrapper>
       </Container>
     </Background>
-  );
+  )
 }

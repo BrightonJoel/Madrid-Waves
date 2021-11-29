@@ -20,7 +20,7 @@ export const LatestBlogSection = styled.section`
 
   h2 {
     width: fit-content;
-    background: linear-gradient(45deg, #e72142, #004797);
+    background: ${({ theme }) => theme.colors.title};
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -58,7 +58,7 @@ export const YouTubeContainer = styled.section`
   h2 {
     margin: auto;
     width: fit-content;
-    background: linear-gradient(45deg, #e72142, #004797);
+    background: ${({ theme }) => theme.colors.title};
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;

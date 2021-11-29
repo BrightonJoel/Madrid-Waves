@@ -71,7 +71,7 @@ export default function Login() {
                   type='submit'
                   disabled={loading}
                   bg={({ theme }) => theme.colors.primaryBlue}
-                  clr={({ theme }) => theme.colors.neutral}
+                  clr={({ theme }) => theme.colors.white}
                   mt='30px'
                   w='100%'
                 >
@@ -82,7 +82,7 @@ export default function Login() {
                   type='submit'
                   disabled={loading}
                   bg={({ theme }) => theme.colors.primaryBlue}
-                  clr={({ theme }) => theme.colors.neutral}
+                  clr={({ theme }) => theme.colors.white}
                   mt='30px'
                   w='100%'
                 >

@@ -132,7 +132,11 @@ export default function CreateBlog() {
                 </select>
 
                 <MdEditor
-                  style={{ height: "500px" }}
+                  style={{
+                    height: "500px",
+                    padding: "0 0 15px 0",
+                    margin: "10px 0",
+                  }}
                   renderHTML={(text) => mdParser.render(text)}
                   onChange={handleEditorChange}
                 />

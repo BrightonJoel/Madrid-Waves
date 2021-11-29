@@ -13,5 +13,5 @@ export const FooterStyled = styled.footer`
     rgba(0, 71, 151, 1) 48%,
     rgba(0, 23, 151, 1) 100%
   );
-  color: ${({ theme }) => theme.colors.neutral};
+  color: ${({ theme }) => theme.colors.white};
 `

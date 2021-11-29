@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Background = styled.div`
-  background-image: url(/img/flat-mountains.svg);
+  background-image: url(/img/${({ theme }) => theme.colors.headBackground});
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -61,7 +61,8 @@ export const Label = styled.label`
 export const Input = styled.input`
   width: 100%;
   padding: 10px 20px;
-  background-color: #f1f1f1;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
+  color: ${({ theme }) => theme.colors.text};
   border: none;
   border-radius: 6px;
 
