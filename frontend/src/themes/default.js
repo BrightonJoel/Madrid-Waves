@@ -32,7 +32,7 @@ export const darkTheme = {
 
   // Colors
   colors: {
-    primaryBlue: "#004797",
+    primaryBlue: "#2f326a",
     lightGrey: "#2f326a",
     red: "#E72142",
     neutral: "#32407B",
@@ -44,6 +44,6 @@ export const darkTheme = {
     Background: "rose-petals-dark.svg",
     headBackground: "flat-mountains-dark.svg",
     header:
-      "rgba(0,71,151,1) 0%, rgba(50,64,123,1) 100%, rgba(0,71,151,1) 100%",
+      "rgba(50,64,123,1) 0%, rgba(50,64,123,1) 100%, rgba(47,50,106,1) 100%",
   },
 }
