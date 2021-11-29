@@ -42,7 +42,7 @@ export default function UploadFile({
           <input type='file' onChange={onImageChange} />
           <Button
             bg={({ theme }) => theme.colors.primaryBlue}
-            clr={({ theme }) => theme.colors.neutral}
+            clr={({ theme }) => theme.colors.white}
             onClick={uploadFile}
           >
             {LoadingImage ? "Uploading" : "Upload"}

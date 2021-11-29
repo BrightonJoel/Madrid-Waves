@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const Title = styled.h2`
   width: fit-content;
   margin: auto;
-  background: linear-gradient(45deg, #e72142, #004797);
+  background: ${({ theme }) => theme.colors.title};
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -93,6 +93,7 @@ export const ButtonContainer = styled.div`
 
 export const NoButton = styled.button`
   border: 1px solid ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.text};
   background-color: transparent;
   cursor: pointer;
   border-radius: 6px;
@@ -101,7 +102,7 @@ export const NoButton = styled.button`
 
 export const ConfirmButton = styled.button`
   border: none;
-  color: ${({ theme }) => theme.colors.neutral};
+  color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.red};
   cursor: pointer;
   border-radius: 6px;

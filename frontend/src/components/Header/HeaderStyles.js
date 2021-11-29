@@ -15,7 +15,7 @@ export const Head = styled.header`
   height: 150px;
 
   h1 {
-    color: ${({ theme }) => theme.colors.neutral};
+    color: ${({ theme }) => theme.colors.white};
   }
 
   img {

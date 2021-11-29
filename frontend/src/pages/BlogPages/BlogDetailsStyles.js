@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Title = styled.h1`
   width: fit-content;
-  background: linear-gradient(45deg, #e72142, #004797);
+  background: ${({ theme }) => theme.colors.title};
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -27,7 +27,9 @@ export const MainDiv = styled.div`
 
   textarea {
     border-radius: 5px;
+    background-color: ${({ theme }) => theme.colors.neutral};
     border-color: ${({ theme }) => theme.colors.neutral};
+    color: ${({ theme }) => theme.colors.text};
     padding: 20px;
     outline: None;
     width: 100%;
@@ -150,7 +152,7 @@ export const Post = styled.div`
 `
 
 export const ViewsContainer = styled.div`
-  color: ${({ theme }) => theme.colors.primaryBlue};
+  color: ${({ theme }) => theme.colors.text};
   display: flex;
   justify-content: center;
   align-items: center;

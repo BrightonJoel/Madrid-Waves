@@ -31,7 +31,7 @@ export default function Pagination({ setStart, pageNumber, setPageNumber }) {
             <Button
               className={pageNumber === page.pageno ? "active" : ""}
               bg={({ theme }) => theme.colors.primaryBlue}
-              clr={({ theme }) => theme.colors.neutral}
+              clr={({ theme }) => theme.colors.white}
               onClick={() => {
                 setPageNumber(page.pageno)
                 setStart(page.limit)

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Background = styled.div`
-  background-image: url(/img/rose-petals.svg);
+  background-image: url(/img/${({ theme }) => theme.colors.Background});
   // background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -20,7 +20,7 @@ export const Article = styled.article`
   max-width: 90%;
 
   h3 {
-    background: linear-gradient(45deg, #e72142, #004797);
+    background: ${({ theme }) => theme.colors.title};
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;

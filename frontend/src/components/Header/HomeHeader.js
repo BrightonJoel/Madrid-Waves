@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useHistory, NavLink } from "react-router-dom"
 import useUser from "../../hooks/useUser"
 import { useAuth } from "../../context/AuthContext"
+import { useTheme } from "../../styles/theme"
 
 // styles
 import {
@@ -13,10 +14,12 @@ import {
   DropDown,
 } from "./HomeHeaderStyles"
 import { FaBars } from "react-icons/fa"
+import { BsSunFill, BsFillMoonFill } from "react-icons/bs"
 import { Button } from "../../styles/GlobalComponents/Button"
 import Search from "./Search"
 
 export default function HomeHeader() {
+  const { themeToggler, theme } = useTheme()
   const [isOpen, setIsOpen] = useState()
   const [isAvatar, setIsAvatar] = useState()
   const { currentUser, loading } = useUser()
@@ -64,6 +67,12 @@ export default function HomeHeader() {
         </ul>
       </NavLinks>
       <Profile>
+        {theme === "light" ? (
+          <BsSunFill className='bulbOn' onClick={() => themeToggler()} />
+        ) : (
+          <BsFillMoonFill className='bulbOff' onClick={() => themeToggler()} />
+        )}
+
         {currentUser && !loading ? (
           <Avatar onClick={() => setIsAvatar(!isAvatar)}>
             <h1>{currentUser.username.charAt(0)}</h1>
@@ -71,7 +80,7 @@ export default function HomeHeader() {
               <Button
                 onClick={logout}
                 bg={({ theme }) => theme.colors.red}
-                clr={({ theme }) => theme.colors.neutral}
+                clr={({ theme }) => theme.colors.white}
               >
                 Logout
               </Button>
@@ -81,7 +90,7 @@ export default function HomeHeader() {
           <Button
             onClick={() => history.push("/login")}
             bg={({ theme }) => theme.colors.red}
-            clr={({ theme }) => theme.colors.neutral}
+            clr={({ theme }) => theme.colors.white}
           >
             Login
           </Button>

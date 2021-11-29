@@ -19,7 +19,7 @@ export default function FilterButton() {
 
         <Button
           bg={({ theme }) => theme.colors.primaryBlue}
-          clr={({ theme }) => theme.colors.neutral}
+          clr={({ theme }) => theme.colors.white}
           onClick={() => setShowFilter(!showFilter)}
         >
           Filter

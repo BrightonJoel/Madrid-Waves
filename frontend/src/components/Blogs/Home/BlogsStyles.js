@@ -18,7 +18,7 @@ export const BlogHeader = styled.div`
   padding: 30px;
 
   h2 {
-    background: linear-gradient(45deg, #e72142, #004797);
+    background: ${({ theme }) => theme.colors.title};
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;

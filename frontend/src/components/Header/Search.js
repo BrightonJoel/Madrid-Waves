@@ -29,7 +29,7 @@ export default function Search() {
         <input ref={searchQuery} type='text'></input>
         <Button
           bg={({ theme }) => theme.colors.red}
-          clr={({ theme }) => theme.colors.neutral}
+          clr={({ theme }) => theme.colors.white}
           onClick={handleClick}
         >
           Search
