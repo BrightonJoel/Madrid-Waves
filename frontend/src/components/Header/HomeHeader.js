@@ -73,7 +73,9 @@ export default function HomeHeader() {
           <BsFillMoonFill className='bulbOff' onClick={() => themeToggler()} />
         )}
 
-        {currentUser && !loading ? (
+        {loading ? (
+          <p>Loading...</p>
+        ) : currentUser ? (
           <Avatar onClick={() => setIsAvatar(!isAvatar)}>
             <h1>{currentUser.username.charAt(0)}</h1>
             <DropDown className={isAvatar ? "activeAvatar" : ""}>

@@ -26,7 +26,6 @@ export const Avatar = styled.div`
   border-radius: 50%;
   cursor: pointer;
   user-select: none;
-  transition: 100ms;
 `
 
 export const CommentBox = styled.div`

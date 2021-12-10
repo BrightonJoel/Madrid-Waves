@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useState, useContext } from "react"
 import { useHistory } from "react-router"
 
 import { loginApi } from "../hooks/loginApi"
@@ -11,6 +11,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
+  const [globalError, setGlobalError] = useState(null)
   const history = useHistory()
 
   async function signUp(userDetails) {
@@ -34,6 +35,8 @@ export function AuthProvider({ children }) {
     signUp,
     login,
     logout,
+    globalError,
+    setGlobalError,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

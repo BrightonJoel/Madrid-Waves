@@ -25,8 +25,14 @@ export default function Login() {
   const passwordRef = useRef()
   const { currentUser } = useUser()
 
-  const { login } = useAuth()
+  const { login, globalError, setGlobalError } = useAuth()
   const history = useHistory()
+
+  if (globalError !== null) {
+    setTimeout(() => {
+      setGlobalError(null)
+    }, 5000)
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -59,6 +65,7 @@ export default function Login() {
         {!currentUser ? (
           <Wrapper>
             <h2>Log in to Madrid Waves</h2>
+            {globalError && <ErrorWrapper>{globalError}</ErrorWrapper>}
             {errorMsg && <ErrorWrapper>{errorMsg}</ErrorWrapper>}
             <form onSubmit={handleSubmit}>
               <Label>Email</Label>

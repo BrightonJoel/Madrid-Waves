@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useLayoutEffect, useContext } from "react"
 import { ThemeProvider } from "styled-components"
 
 import GlobalStyles from "./globals"
@@ -13,8 +13,14 @@ export function useTheme() {
 const Theme = ({ children }) => {
   const [theme, setTheme] = useState("light")
 
+  useLayoutEffect(() => {
+    const currentTheme = localStorage.getItem("theme")
+    setTheme(currentTheme)
+  }, [])
+
   const themeToggler = () => {
     theme === "light" ? setTheme("dark") : setTheme("light")
+    localStorage.setItem("theme", theme === "light" ? "dark" : "light")
   }
 
   const value = {

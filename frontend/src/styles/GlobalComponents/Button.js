@@ -10,10 +10,14 @@ export const Button = styled.button`
   font-size: 20px;
   border: none;
   cursor: pointer;
-  transition: 100ms;
+  transition: transform 100ms ease-in-out;
 
-  &:hover {
+  &:hover:not([disabled]) {
     transform: scale(0.98);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 
   @media (max-width: 768px) {

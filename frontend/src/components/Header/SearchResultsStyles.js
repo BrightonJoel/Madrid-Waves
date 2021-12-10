@@ -9,6 +9,7 @@ export const SearchResultContainer = styled.div`
   padding: 20px;
   width: 100%;
   border-radius: 6px;
+  animation: 100ms ease-in-out fadeIn 1;
 
   li {
     margin-top: 10px;
@@ -16,7 +17,33 @@ export const SearchResultContainer = styled.div`
     border-radius: 6px;
     padding: 20px 10px;
     background-color: ${({ theme }) => theme.colors.neutral};
+    transition: background-color 200ms ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(0 0 0 / 6%);
+    }
   }
+
+  a {
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.text};
+  }
+
+  p {
+    margin-top: 10px;
+    opacity: 0.7;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      visibility: hidden;
+    }
+    to {
+      opacity: 1;
+      visibility: visible;
+    }
 `
 export const Center = styled.div`
   display: flex;

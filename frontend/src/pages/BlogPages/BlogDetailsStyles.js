@@ -1,19 +1,66 @@
 import styled from "styled-components"
 
-export const Title = styled.h1`
-  width: fit-content;
-  background: ${({ theme }) => theme.colors.title};
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  margin-bottom: 20px;
+export const Banner = styled.div`
+  margin-top: 48px;
+  padding: 32px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 45%,
+    ${({ theme }) => theme.colors.banner}
+  );
+
+  @media (max-width: 768px) {
+    background: none;
+    margin: 0;
+  }
 `
 
-export const MainDiv = styled.div`
-  width: 1200px;
+export const BlogCover = styled.div`
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  max-width: 1240px;
+  gap: 50px;
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+`
+
+export const Description = styled.div``
+
+export const Title = styled.h1`
+  font-size: 42px;
+  width: fit-content;
+  background: ${({ theme }) => theme.colors.title};
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 20px;
+
+  @media (max-width: 900px) {
+    font-size: 36px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
+`
+
+export const Container = styled.div`
+  width: 1000px;
   max-width: 90%;
-  margin: 50px auto;
-  padding: 5px;
+  margin: 48px auto;
 
   h1 {
     font-size: 48px;
@@ -56,7 +103,7 @@ export const BlogHead = styled.div`
   margin-bottom: 20px;
 
   @media (max-width: 450px) {
-    gap: 0;
+    gap: 10px;
   }
 `
 
@@ -96,7 +143,7 @@ export const Post = styled.div`
   }
 
   pre {
-    background-color: #f5f5f5;
+    background-color: ${({ theme }) => theme.colors.lightGrey};
     font-size: 18px;
     border-radius: 0;
     overflow-x: auto;
@@ -107,7 +154,7 @@ export const Post = styled.div`
     font-weight: 700;
     border: 1px solid #efefef;
     padding: 10px 6px;
-    background-color: #f5f7fa;
+    background-color: ${({ theme }) => theme.colors.lightGrey};
     word-break: break-word;
   }
 
@@ -136,7 +183,7 @@ export const Post = styled.div`
   }
 
   a {
-    color: #0052d9;
+    color: ${({ theme }) => theme.colors.link};
   }
 
   @media (max-width: 720px) {
@@ -159,7 +206,12 @@ export const ViewsContainer = styled.div`
   gap: 10px;
 
   svg {
+    transition: transform 100ms ease-in-out;
     font-size: 32px;
+    &:hover {
+      transform: scale(1.1);
+      color: ${({ theme }) => theme.colors.primaryBlue};
+    }
   }
 `
 export const CommenTitle = styled.div`
@@ -203,13 +255,21 @@ export const ActionContainer = styled.div`
   gap: 60px;
 `
 export const Share = styled.div`
-  font-size: 32px;
+  // font-size: 32px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 
+  svg {
+    transition: transform 100ms ease-in-out;
+    font-size: 32px;
+    &:hover {
+      transform: scale(1.1);
+      color: ${({ theme }) => theme.colors.primaryBlue};
+    }
+  }
   span {
     font-size: 16px;
   }

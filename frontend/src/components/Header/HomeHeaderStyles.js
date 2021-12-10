@@ -99,6 +99,10 @@ export const Profile = styled.nav`
     margin-right: 20px;
     font-size: 30px;
     cursor: pointer;
+    transition: transform 100ms ease-in-out;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
   @media (max-width: 768px) {
     grid-column: 2 / 4;
@@ -122,13 +126,10 @@ export const Avatar = styled.div`
   border-radius: 50%;
   cursor: pointer;
   user-select: none;
-  transition: 100ms;
 `
 
 export const DropDown = styled.div`
   display: none;
-  // height: 80px;
-  // width: 140px;
   position: absolute;
   padding: 20px;
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
@@ -150,13 +151,26 @@ export const SearchBar = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center; /* for single line flex container */
+  align-items: center;
+  width: 100%;
   grid-row: 2 / 2;
   grid-column: 2 / 2;
-  padding: 30px 0px;
+
+  @media (max-width: 768px) {
+    grid-row: 3 / 3;
+    grid-column: 1 / 4;
+  }
+`
+
+export const SearchBarContent = styled.form`
+  background-color: ${({ theme }) => theme.colors.lightGrey};
+  display: flex;
+  align-items: center;
+  padding: 5px 0px;
+  border-radius: 6px;
 
   input {
-    width: 50%;
+    width: 400px;
     border-radius: 5px 0 0 5px;
     background-color: ${({ theme }) => theme.colors.lightGrey};
     color: ${({ theme }) => theme.colors.text};
@@ -164,18 +178,14 @@ export const SearchBar = styled.div`
     outline: None;
     padding: 11px 20px;
   }
-  button {
-    font-size: 18px;
-    border-radius: 0 5px 5px 0;
-    transform: translateY(0.5px);
-  }
+
   span {
-    padding: 0 5px;
-    display: inline-block;
-    transform: translateY(2px);
+    padding-left: 30px;
   }
+
   @media (max-width: 768px) {
-    grid-row: 3 / 3;
-    grid-column: 1 / 4;
+    input {
+      width: clamp(350px, 50%, 500px);
+    }
   }
 `

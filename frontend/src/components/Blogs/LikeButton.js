@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { useAuth } from "../../context/AuthContext"
 import { useHistory } from "react-router"
 import { useMutation } from "@apollo/client"
 import { UPDATELIKES } from "../../queries/UpdateLikes"
@@ -8,9 +9,15 @@ import { AiFillHeart } from "react-icons/ai"
 import { HeartContainer } from "../../pages/HomePage/HomePageStyles"
 
 export default function LikeButton({ id, likedUser }) {
+  const { setGlobalError } = useAuth()
   const { currentUser } = useUser()
   const history = useHistory()
   const [liked, setLiked] = useState(false)
+
+  const handleUnAuthorized = () => {
+    setGlobalError("Please log in to like")
+    history.push("/login")
+  }
 
   useEffect(() => {
     if (
@@ -49,10 +56,7 @@ export default function LikeButton({ id, likedUser }) {
             onClick={() => handleLikes(id)}
           />
         ) : (
-          <AiFillHeart
-            className='heart'
-            onClick={() => history.push("/login")}
-          />
+          <AiFillHeart className='heart' onClick={handleUnAuthorized} />
         )}
         <span>{likedUser.length}</span>
       </HeartContainer>

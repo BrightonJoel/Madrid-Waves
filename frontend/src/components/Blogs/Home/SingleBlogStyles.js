@@ -17,12 +17,13 @@ export const LatestBlogSection = styled.section`
   background-color: ${({ theme }) => theme.colors.neutral};
   padding: 30px;
   border-radius: 6px;
+  transition: box-shadow 100ms ease-in-out;
 
   h2 {
     width: fit-content;
     background: ${({ theme }) => theme.colors.title};
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     font-size: 42px;
     text-align: center;
@@ -36,6 +37,10 @@ export const LatestBlogSection = styled.section`
 
   p {
     line-height: 1.6;
+  }
+
+  &:hover {
+    box-shadow: 0 0 2rem ${({ theme }) => theme.colors.neutral};
   }
 `
 
@@ -59,8 +64,8 @@ export const YouTubeContainer = styled.section`
     margin: auto;
     width: fit-content;
     background: ${({ theme }) => theme.colors.title};
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     font-size: 42px;
     text-align: center;
@@ -79,5 +84,10 @@ export const VideoContainer = styled.div`
     height: 180px;
     object-fit: cover;
     border-radius: 6px;
+    transition: transform 100ms ease-in-out;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
   }
 `

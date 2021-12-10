@@ -4,9 +4,8 @@ import { SEARCHBLOGS } from "../../queries/SearchBlogs"
 import SearchResults from "./SearchResults"
 
 // Styles
-import { SearchBar } from "./HomeHeaderStyles"
+import { SearchBar, SearchBarContent } from "./HomeHeaderStyles"
 import { FaSearch } from "react-icons/fa"
-import { Button } from "../../styles/GlobalComponents/Button"
 
 export default function Search() {
   const searchQuery = useRef()
@@ -26,20 +25,25 @@ export default function Search() {
   return (
     <>
       <SearchBar>
-        <input ref={searchQuery} type='text'></input>
-        <Button
-          bg={({ theme }) => theme.colors.red}
-          clr={({ theme }) => theme.colors.white}
-          onClick={handleClick}
-        >
-          Search
+        <SearchBarContent>
           <span>
             <FaSearch />
           </span>
-        </Button>
+          <input
+            ref={searchQuery}
+            type='text'
+            placeholder='Search for blog title'
+            onKeyUp={handleClick}
+          ></input>
+        </SearchBarContent>
 
         {isOpen && (
-          <SearchResults data={data} loading={loading} setIsOpen={setIsOpen} />
+          <SearchResults
+            data={data}
+            loading={loading}
+            setIsOpen={setIsOpen}
+            searchQuery={searchQuery}
+          />
         )}
       </SearchBar>
     </>

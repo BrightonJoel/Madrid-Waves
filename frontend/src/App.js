@@ -41,12 +41,16 @@ function App() {
           <Theme>
             <Switch>
               <Route path='/signup'>
-                <Header />
-                <SignUp />
+                <ScrollToTop>
+                  <Header />
+                  <SignUp />
+                </ScrollToTop>
               </Route>
               <Route path='/login'>
-                <Header />
-                <Login />
+                <ScrollToTop>
+                  <Header />
+                  <Login />
+                </ScrollToTop>
               </Route>
               <Route path='/forgotpassword'>
                 <Header />

@@ -53,10 +53,12 @@ export const HeartContainer = styled.div`
     color: ${({ theme }) => theme.colors.red};
     fill: none;
     stroke-width: 50px;
+    transition: transform 100ms ease-in-out;
     &.active {
       fill: ${({ theme }) => theme.colors.red};
     }
     &:hover {
+      transform: scale(1.1);
       cursor: pointer;
     }
   }

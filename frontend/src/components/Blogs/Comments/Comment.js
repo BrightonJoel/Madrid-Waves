@@ -4,17 +4,15 @@ import { CREATECOMMENT, GETCOMMENTS } from "../../../queries/BlogDetailsQuery"
 import ReactMarkdown from "react-markdown"
 import { useQuery, useMutation } from "@apollo/client"
 import useUser from "../../../hooks/useUser"
-import { useHistory } from "react-router"
 
 // Styles
 import { CommentBox, Avatar, Profile, BtnContainer } from "./CommentStyles"
 import { CommenTitle } from "../../../pages/BlogPages/BlogDetailsStyles"
 import { Button } from "../../../styles/GlobalComponents/Button"
-import { FaTelegramPlane } from "react-icons/fa"
+import { FaTelegramPlane, FaLock } from "react-icons/fa"
 
 export default function Comment({ id }) {
   const { currentUser } = useUser()
-  const history = useHistory()
   const commentText = useRef()
 
   const { data, loading, error } = useQuery(GETCOMMENTS, {
@@ -57,7 +55,7 @@ export default function Comment({ id }) {
         {currentUser ? (
           <Button
             bg={({ theme }) => theme.colors.yellow}
-            clr={({ theme }) => theme.colors.primaryBlue}
+            clr={({ theme }) => theme.colors.text}
             onClick={handleComment}
           >
             Comment <FaTelegramPlane />
@@ -65,10 +63,10 @@ export default function Comment({ id }) {
         ) : (
           <Button
             bg={({ theme }) => theme.colors.yellow}
-            clr={({ theme }) => theme.colors.primaryBlue}
-            onClick={() => history.push("/login")}
+            clr={({ theme }) => theme.colors.text}
+            disabled
           >
-            Login to comment <FaTelegramPlane />
+            comment <FaLock />
           </Button>
         )}
       </BtnContainer>

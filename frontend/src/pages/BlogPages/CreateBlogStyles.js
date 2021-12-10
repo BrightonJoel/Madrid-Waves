@@ -21,8 +21,8 @@ export const Article = styled.article`
 
   h3 {
     background: ${({ theme }) => theme.colors.title};
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     text-align: center;
     font-size: 48px;
@@ -66,9 +66,10 @@ export const CreateForm = styled.div`
 
   input[type="file"] {
     display: inline;
-    width: 300px;
+    width: 40%;
     margin-right: 20px;
   }
+
   select {
     appearance: none;
     border: none;

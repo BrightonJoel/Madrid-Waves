@@ -36,7 +36,7 @@ export const Blog = styled.section`
   margin: 60px 0px;
   padding: 40px;
   gap: 20px;
-
+  transition: box-shadow 100ms ease-in-out;
   background-color: ${({ theme }) => theme.colors.lightGrey};
   border-radius: 6px;
 
@@ -47,6 +47,10 @@ export const Blog = styled.section`
 
   p {
     line-height: 1.6;
+  }
+
+  &:hover {
+    box-shadow: 0 0 2rem ${({ theme }) => theme.colors.lightGrey};
   }
 
   @media (max-width: 900px) {
@@ -97,6 +101,6 @@ export const PaginationContainer = styled.div`
 
   .active {
     background-color: ${({ theme }) => theme.colors.yellow};
-    color: ${({ theme }) => theme.colors.primaryBlue};
+    color: ${({ theme }) => theme.colors.text};
   }
 `
