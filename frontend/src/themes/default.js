@@ -7,15 +7,15 @@ export const lightTheme = {
 
   // Colors
   colors: {
-    primaryBlue: "#004797",
-    lightGrey: "#F1F1F1",
-    neutral: "#FFFFFF",
+    primary: "#F1F1F1",
+    secondary: "#FFFFFF",
+    blue: "#004797",
     red: "#E72142",
     white: "#FFFFFF",
     yellow: "#FCC000",
     text: "#316B83",
-    title: "linear-gradient(45deg, #e72142, #004797)",
     link: "#004797",
+    title: "linear-gradient(45deg, #e72142, #004797)",
     Background: "rose-petals.svg",
     headBackground: "flat-mountains.svg",
     header:
@@ -33,15 +33,15 @@ export const darkTheme = {
 
   // Colors
   colors: {
-    primaryBlue: "#1a8cd8",
-    lightGrey: "#15202b",
-    neutral: "#192734",
+    primary: "#15202b",
+    secondary: "#192734",
+    blue: "#1a8cd8",
     red: "#f91880",
     yellow: "#57bb5c",
     white: "#FFFFFF",
     text: "#FFFFFF",
-    title: "linear-gradient(45deg, #f1f1f1c7, #F1F1F1)",
     link: "#1d9bf0",
+    title: "linear-gradient(45deg, #f1f1f1c7, #F1F1F1)",
     Background: "rose-petals-dark.svg",
     headBackground: "flat-mountains-dark.svg",
     header: "rgba(25,39,52,1) 0%, rgba(25,39,52,1) 100%",

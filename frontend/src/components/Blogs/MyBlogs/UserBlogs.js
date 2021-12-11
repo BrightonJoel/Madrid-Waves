@@ -43,7 +43,7 @@ export default function UserBlogs({ userId }) {
               <Blog key={blog.id}>
                 <ImageContainer
                   h='300px'
-                  bg={({ theme }) => theme.colors.neutral}
+                  bg={({ theme }) => theme.colors.secondary}
                 >
                   {blog.CoverImage.map((u) => (
                     <img
@@ -53,7 +53,10 @@ export default function UserBlogs({ userId }) {
                     />
                   ))}
                 </ImageContainer>
-                <ContentArea p='20px' bg={({ theme }) => theme.colors.neutral}>
+                <ContentArea
+                  p='20px'
+                  bg={({ theme }) => theme.colors.secondary}
+                >
                   <h3>{blog.Title}</h3>
                   <Category>
                     {blog.blogCategories.map((category) => (

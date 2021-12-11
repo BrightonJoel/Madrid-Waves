@@ -14,7 +14,7 @@ export const Container = styled.main`
 `
 
 export const LatestBlogSection = styled.section`
-  background-color: ${({ theme }) => theme.colors.neutral};
+  background-color: ${({ theme }) => theme.colors.secondary};
   padding: 30px;
   border-radius: 6px;
   transition: box-shadow 100ms ease-in-out;
@@ -40,7 +40,7 @@ export const LatestBlogSection = styled.section`
   }
 
   &:hover {
-    box-shadow: 0 0 2rem ${({ theme }) => theme.colors.neutral};
+    box-shadow: 0 0 2rem ${({ theme }) => theme.colors.secondary};
   }
 `
 
@@ -56,7 +56,7 @@ export const Content = styled.div`
   }
 `
 export const YouTubeContainer = styled.section`
-  background-color: ${({ theme }) => theme.colors.neutral};
+  background-color: ${({ theme }) => theme.colors.secondary};
   border-radius: 6px;
   padding: 30px;
 
@@ -74,7 +74,7 @@ export const YouTubeContainer = styled.section`
 
 export const VideoContainer = styled.div`
   margin: 20px 0px;
-  background-color: ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.primary};
   padding: 10px;
   border-radius: 6px;
   width: 100%;

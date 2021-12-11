@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const BlogsWrapper = styled.main`
-  background-color: ${({ theme }) => theme.colors.neutral};
+  background-color: ${({ theme }) => theme.colors.secondary};
 `
 
 export const BlogContainer = styled.div`
@@ -37,7 +37,7 @@ export const Blog = styled.section`
   padding: 40px;
   gap: 20px;
   transition: box-shadow 100ms ease-in-out;
-  background-color: ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 6px;
 
   h3 {
@@ -50,7 +50,7 @@ export const Blog = styled.section`
   }
 
   &:hover {
-    box-shadow: 0 0 2rem ${({ theme }) => theme.colors.lightGrey};
+    box-shadow: 0 0 2rem ${({ theme }) => theme.colors.primary};
   }
 
   @media (max-width: 900px) {
@@ -63,7 +63,7 @@ export const Blog = styled.section`
 `
 
 export const FilterPopup = styled.div`
-  background-color: ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.primary};
   padding: 20px;
 
   a {

@@ -23,7 +23,7 @@ const Container = styled.div`
   }
 
   .text-container {
-    background-color: ${({ theme }) => theme.colors.neutral};
+    background-color: ${({ theme }) => theme.colors.secondary};
     padding: 20px 40px;
     border-radius: 6px;
   }

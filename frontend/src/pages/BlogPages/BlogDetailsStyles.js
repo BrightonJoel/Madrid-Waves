@@ -74,8 +74,8 @@ export const Container = styled.div`
 
   textarea {
     border-radius: 5px;
-    background-color: ${({ theme }) => theme.colors.neutral};
-    border-color: ${({ theme }) => theme.colors.neutral};
+    background-color: ${({ theme }) => theme.colors.secondary};
+    border-color: ${({ theme }) => theme.colors.secondary};
     color: ${({ theme }) => theme.colors.text};
     padding: 20px;
     outline: None;
@@ -108,7 +108,7 @@ export const BlogHead = styled.div`
 `
 
 export const Post = styled.div`
-  background-color: ${({ theme }) => theme.colors.neutral};
+  background-color: ${({ theme }) => theme.colors.secondary};
   padding: 48px;
   border-radius: 6px;
 
@@ -143,7 +143,7 @@ export const Post = styled.div`
   }
 
   pre {
-    background-color: ${({ theme }) => theme.colors.lightGrey};
+    background-color: ${({ theme }) => theme.colors.primary};
     font-size: 18px;
     border-radius: 0;
     overflow-x: auto;
@@ -154,7 +154,7 @@ export const Post = styled.div`
     font-weight: 700;
     border: 1px solid #efefef;
     padding: 10px 6px;
-    background-color: ${({ theme }) => theme.colors.lightGrey};
+    background-color: ${({ theme }) => theme.colors.primary};
     word-break: break-word;
   }
 
@@ -210,12 +210,12 @@ export const ViewsContainer = styled.div`
     font-size: 32px;
     &:hover {
       transform: scale(1.1);
-      color: ${({ theme }) => theme.colors.primaryBlue};
+      color: ${({ theme }) => theme.colors.blue};
     }
   }
 `
 export const CommenTitle = styled.div`
-  background-color: ${({ theme }) => theme.colors.neutral};
+  background-color: ${({ theme }) => theme.colors.secondary};
   padding: 15px;
   margin: 15px 0 10px;
   display: inline-block;
@@ -226,13 +226,13 @@ export const CommenTitle = styled.div`
 
 export const CommentBox = styled.div`
   border-radius: 5px;
-  background-color: ${({ theme }) => theme.colors.neutral};
+  background-color: ${({ theme }) => theme.colors.secondary};
   padding: 30px 50px;
   margin-bottom: 30px;
 
   div {
     border-radius: 100%;
-    background-color: ${({ theme }) => theme.colors.lightGrey};
+    background-color: ${({ theme }) => theme.colors.primary};
     width: 50px;
     height: 50px;
     display: inline-block;
@@ -267,7 +267,7 @@ export const Share = styled.div`
     font-size: 32px;
     &:hover {
       transform: scale(1.1);
-      color: ${({ theme }) => theme.colors.primaryBlue};
+      color: ${({ theme }) => theme.colors.blue};
     }
   }
   span {

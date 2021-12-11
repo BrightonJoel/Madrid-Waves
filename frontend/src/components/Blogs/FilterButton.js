@@ -18,7 +18,7 @@ export default function FilterButton() {
         <h2>Blogs</h2>
 
         <Button
-          bg={({ theme }) => theme.colors.primaryBlue}
+          bg={({ theme }) => theme.colors.blue}
           clr={({ theme }) => theme.colors.white}
           onClick={() => setShowFilter(!showFilter)}
         >

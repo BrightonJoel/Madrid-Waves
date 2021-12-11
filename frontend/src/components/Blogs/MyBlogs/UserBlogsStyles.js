@@ -67,7 +67,7 @@ export const PopupContent = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 32px;
-  background-color: ${({ theme }) => theme.colors.neutral};
+  background-color: ${({ theme }) => theme.colors.secondary};
   border-radius: 6px;
   text-align: center;
   width: min(90%, 27rem);

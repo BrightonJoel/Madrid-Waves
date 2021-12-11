@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const NavContainer = styled.header`
   display: grid;
-  // background-color: ${({ theme }) => theme.colors.primaryBlue};
+  // background-color: ${({ theme }) => theme.colors.blue};
   background: rgb(0, 71, 151);
   background: radial-gradient(circle, ${({ theme }) => theme.colors.header});
   height: 250px;
@@ -133,7 +133,7 @@ export const DropDown = styled.div`
   position: absolute;
   padding: 20px;
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  background-color: ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 6px;
   z-index: 2;
   top: 80px;
@@ -163,7 +163,7 @@ export const SearchBar = styled.div`
 `
 
 export const SearchBarContent = styled.form`
-  background-color: ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.primary};
   display: flex;
   align-items: center;
   padding: 5px 0px;
@@ -172,7 +172,7 @@ export const SearchBarContent = styled.form`
   input {
     width: 400px;
     border-radius: 5px 0 0 5px;
-    background-color: ${({ theme }) => theme.colors.lightGrey};
+    background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.text};
     border: None;
     outline: None;

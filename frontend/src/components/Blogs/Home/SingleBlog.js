@@ -40,10 +40,7 @@ export default function SingleBlog() {
         <LatestBlogSection key={blog.id}>
           <h2>Latest</h2>
           <Content>
-            <ImageContainer
-              h='400px'
-              bg={({ theme }) => theme.colors.lightGrey}
-            >
+            <ImageContainer h='400px' bg={({ theme }) => theme.colors.primary}>
               {blog.CoverImage.map((u) => (
                 <img
                   key={u.id}

@@ -5,7 +5,7 @@ export const FooterStyled = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  // background-color: ${({ theme }) => theme.colors.primaryBlue};
+  // background-color: ${({ theme }) => theme.colors.blue};
   background: rgb(0, 71, 151);
   background: radial-gradient(circle, ${({ theme }) => theme.colors.header});
   color: ${({ theme }) => theme.colors.white};

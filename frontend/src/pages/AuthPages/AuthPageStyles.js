@@ -17,7 +17,7 @@ export const Container = styled.main`
   margin: 48px auto;
   width: 600px;
   max-width: 90%;
-  background-color: ${({ theme }) => theme.colors.neutral};
+  background-color: ${({ theme }) => theme.colors.secondary};
   padding: 40px 20px;
   border-radius: 6px;
 
@@ -61,13 +61,13 @@ export const Label = styled.label`
 export const Input = styled.input`
   width: 100%;
   padding: 10px 20px;
-  background-color: ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.text};
   border: none;
   border-radius: 6px;
 
   &:focus {
-    outline: 2px dotted ${({ theme }) => theme.colors.primaryBlue};
+    outline: 2px dotted ${({ theme }) => theme.colors.blue};
   }
 `
 

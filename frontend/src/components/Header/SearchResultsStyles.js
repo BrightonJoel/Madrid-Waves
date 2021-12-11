@@ -5,7 +5,7 @@ export const SearchResultContainer = styled.div`
   z-index: 99;
   top: 80px;
   margin-top: 20px;
-  background-color: ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.primary};
   padding: 20px;
   width: 100%;
   border-radius: 6px;
@@ -16,7 +16,7 @@ export const SearchResultContainer = styled.div`
     list-style: none;
     border-radius: 6px;
     padding: 20px 10px;
-    background-color: ${({ theme }) => theme.colors.neutral};
+    background-color: ${({ theme }) => theme.colors.secondary};
     transition: background-color 200ms ease-in-out;
 
     &:hover {

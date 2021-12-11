@@ -71,7 +71,7 @@ export default function SignUp() {
             {loading ? (
               <Button
                 type='submit'
-                bg={({ theme }) => theme.colors.primaryBlue}
+                bg={({ theme }) => theme.colors.blue}
                 clr={({ theme }) => theme.colors.white}
                 mt='30px'
                 w='100%'
@@ -81,7 +81,7 @@ export default function SignUp() {
             ) : (
               <Button
                 type='submit'
-                bg={({ theme }) => theme.colors.primaryBlue}
+                bg={({ theme }) => theme.colors.blue}
                 clr={({ theme }) => theme.colors.white}
                 mt='30px'
                 w='100%'
