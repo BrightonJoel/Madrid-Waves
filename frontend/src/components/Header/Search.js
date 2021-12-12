@@ -10,10 +10,9 @@ import { FaSearch } from "react-icons/fa"
 export default function Search() {
   const searchQuery = useRef()
   const [isOpen, setIsOpen] = useState(false)
-
   const [searchBlog, { data, loading }] = useLazyQuery(SEARCHBLOGS)
 
-  async function handleClick(e) {
+  async function handleKeyUp(e) {
     e.preventDefault()
     setIsOpen(true)
 
@@ -33,7 +32,7 @@ export default function Search() {
             ref={searchQuery}
             type='text'
             placeholder='Search for blog title'
-            onKeyUp={handleClick}
+            onKeyUp={handleKeyUp}
           ></input>
         </SearchBarContent>
 

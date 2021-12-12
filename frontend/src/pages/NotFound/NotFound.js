@@ -9,7 +9,7 @@ export default function NotFound() {
 
   return (
     <Main>
-      <img src='/img/404.svg' alt='Not Found' />
+      <img src='/img/404-dark.svg' alt='Not Found' />
       <div>
         <h1>404</h1>
         <h3>Page not found!</h3>

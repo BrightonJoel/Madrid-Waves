@@ -1,71 +1,126 @@
 import React from "react"
 import styled from "styled-components"
+import { VscGithub } from "react-icons/vsc"
 
 const Container = styled.div`
   width: 768px;
   max-width: 90%;
-  margin: 20px auto;
-  min-height: 65vh;
-  line-height: 1.7;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  min-height: 700px;
 
-  h2 {
-    font-size: 36px;
-  }
-
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
-
-  li {
-    list-style: auto;
-    margin: 10px 0px;
-  }
-
-  .text-container {
+  .quote-container {
+    position: relative;
+    z-index: 99;
     background-color: ${({ theme }) => theme.colors.secondary};
+    margin: 20px 0;
     padding: 20px 40px;
     border-radius: 6px;
-  }
+    transition: box-shadow 100ms ease-in-out;
 
-  p {
-    margin-top: 10px;
+    h2,
+    h3,
+    h4 {
+      background: ${({ theme }) => theme.colors.title};
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .content {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .thumbnail {
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+      }
+    }
+
+    .follow {
+      margin-top: 32px;
+      a {
+        margin: 0 10px;
+      }
+
+      .follow-footer {
+        margin-top: 20px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+
+        svg {
+          font-size: 24px;
+        }
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 0 2rem ${({ theme }) => theme.colors.primary};
+    }
+  }
+`
+
+const BackgroundImg = styled.img`
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  opacity: 0.2;
+  height: 400px;
+  object-fit: cover;
+
+  @media (max-width: 600px) {
+    display: none;
   }
 `
 
 export default function About() {
   return (
-    <Container>
-      <div className='text-container'>
-        <h2>About Madrid Waves</h2>
-        <ul>
-          <li>
-            The objective of the project is to create a blogging web app called
-            Madrid Waves for all Madridista’s around the world
-          </li>
-          <li>Built with latest tech stack</li>
-          <li>
-            In short users can like, comment, share and create blog articles
-            with ease
-          </li>
-          <li>
-            Our motive is to make it minimalistic and to give the user a
-            seamless experience across all devices
-          </li>
-        </ul>
-        <p>
-          What I feel about being a madridista is being your very best. Being
-          the best of the best in all possible moments. Triving for success and
-          discipline. Being great as a person, being nice and polite to everyone
-          and achieving your objectives and working hard for it that's my view
-          of being Royal and pure. Dressing up clean white represents a person
-          who takes care of herself and has their life together. I myself am
-          working for this and I'm improving myself greatly and Real Madrid has
-          honestly helped me a lot. I still have much work to do before I have
-          my life together but I know I'm on the correct path.
-        </p>
-        <h4> This website was created by Gladson and Brighton</h4>
-      </div>
-    </Container>
+    <>
+      <Container>
+        <div className='quote-container'>
+          <h2>
+            “The Real Madrid shirt is white. It can stain of mud, sweat, and
+            even of blood, but never of shame! Our titles give us our nobility.”
+          </h2>
+          <div className='content'>
+            <h3>Santiago Bernabeu</h3>
+            <img
+              className='thumbnail'
+              src='/img/Bernabeu.jpg'
+              alt='Santiago Bernabeu'
+            />
+          </div>
+
+          <div className='follow'>
+            <h4>
+              Created by
+              <a target='_blank' href='https://github.com/Gladson-Samuel-S'>
+                Gladson
+              </a>
+              and
+              <a target='_blank' href='https://github.com/BrightonJoel'>
+                Brighton
+              </a>
+            </h4>
+            <div className='follow-footer'>
+              <p>Follow the project on</p>
+              <a
+                target='_blank'
+                href='https://github.com/Gladson-Samuel-S/Madrid-Waves'
+              >
+                <VscGithub />
+              </a>
+            </div>
+          </div>
+        </div>
+        <BackgroundImg src='/img/Real-Madrid.png' alt='background' />
+      </Container>
+    </>
   )
 }

@@ -12,7 +12,7 @@ import { Button } from "../../styles/GlobalComponents/Button"
 import { useMutation } from "@apollo/client"
 import { RESETPASSWORD } from "../../queries/Forgotquery"
 
-export default function RestPassword() {
+export default function ResetPassword() {
   const data = useLocation()
   const password = useRef()
   const confirmPassword = useRef()

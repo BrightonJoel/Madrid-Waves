@@ -2,16 +2,15 @@ import styled from "styled-components"
 
 export const NavContainer = styled.header`
   display: grid;
-  // background-color: ${({ theme }) => theme.colors.blue};
   background: rgb(0, 71, 151);
   background: radial-gradient(circle, ${({ theme }) => theme.colors.header});
-  height: 250px;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: auto, auto;
+  gap: 20px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto, auto, auto;
   }
 `
 export const Logo = styled.nav`
@@ -40,8 +39,8 @@ export const Logo = styled.nav`
 export const NavLinks = styled.nav`
   display: flex;
   justify-content: center;
-  align-items: center; /* for single line flex container */
-  align-content: center; /* for multi-line flex container */
+  align-items: center;
+  align-content: center;
   color: ${({ theme }) => theme.colors.white};
   grid-column: 2 / 2;
 
@@ -89,10 +88,13 @@ export const Profile = styled.nav`
     border-radius: 6px;
   }
   .Hamburger {
-    margin-left: 20px;
+    margin: 0 20px;
     cursor: pointer;
     font-size: 30px;
     display: none;
+    path {
+      stroke: white;
+    }
   }
   .bulbOn,
   .bulbOff {
@@ -137,9 +139,23 @@ export const DropDown = styled.div`
   border-radius: 6px;
   z-index: 2;
   top: 80px;
+  right: 0;
 
   &.activeAvatar {
     display: block;
+  }
+
+  button {
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+  }
+
+  path {
+    stroke: white;
   }
 
   h5 {

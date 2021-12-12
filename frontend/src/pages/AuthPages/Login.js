@@ -53,6 +53,7 @@ export default function Login() {
       setTimeout(() => {
         setErrorMsg(false)
       }, 5000)
+      return
     } else {
       setLoading(loading)
       history.push("/")

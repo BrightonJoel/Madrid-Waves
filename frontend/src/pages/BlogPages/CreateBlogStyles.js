@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Background = styled.div`
-  background-image: url(/img/${({ theme }) => theme.colors.Background});
+  background-image: url(/img/${({ theme }) => theme.backgrounds.Background});
   // background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: bottom;

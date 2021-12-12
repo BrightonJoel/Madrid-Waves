@@ -31,7 +31,8 @@ export default function SignUp() {
     e.preventDefault()
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setErrorMsg("Passwords did not match")
+      setErrorMsg("Passwords did not match")
+      return
     }
 
     const userDetails = {
@@ -45,10 +46,14 @@ export default function SignUp() {
 
     if (error) {
       setLoading(loading)
-      setErrorMsg(error)
+      setErrorMsg(error.message[0].messages[0].message)
+      setTimeout(() => {
+        setErrorMsg(false)
+      }, 5000)
+      return
     } else {
       setLoading(loading)
-      history.push("/login")
+      history.push("/email-confirmation")
     }
   }
 
@@ -73,6 +78,7 @@ export default function SignUp() {
                 type='submit'
                 bg={({ theme }) => theme.colors.blue}
                 clr={({ theme }) => theme.colors.white}
+                disabled={loading}
                 mt='30px'
                 w='100%'
               >

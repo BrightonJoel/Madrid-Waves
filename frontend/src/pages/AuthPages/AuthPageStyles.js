@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 export const Background = styled.div`
-  background-image: url(/img/${({ theme }) => theme.colors.headBackground});
+  background-image: url(/img/${({ theme }) =>
+    theme.backgrounds.headBackground});
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -97,4 +98,23 @@ export const LoginFooter = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
+`
+
+export const EmailImage = styled.img`
+  width: 100%;
+  height: 300px;
+  border-radius: 6px;
+`
+
+export const EmailContent = styled.div`
+  h2 {
+    margin: 20px 0;
+    text-align: center;
+  }
+  p {
+    line-height: 1.7;
+  }
+  a {
+    display: block;
+  }
 `

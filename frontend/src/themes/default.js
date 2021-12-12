@@ -16,11 +16,15 @@ export const lightTheme = {
     text: "#316B83",
     link: "#004797",
     title: "linear-gradient(45deg, #e72142, #004797)",
-    Background: "rose-petals.svg",
-    headBackground: "flat-mountains.svg",
     header:
       "rgba(0, 71, 151, 1) 0%, rgba(0, 71, 151, 1) 48%, rgba(0, 23, 151, 1) 100%",
     banner: "rgba(233, 162, 188, 0.1) 45%,rgba(233, 162, 188, 0.1) 45%",
+  },
+
+  // Backgrounds
+  backgrounds: {
+    Background: "rose-petals.svg",
+    headBackground: "flat-mountains.svg",
   },
 }
 
@@ -42,9 +46,13 @@ export const darkTheme = {
     text: "#FFFFFF",
     link: "#1d9bf0",
     title: "linear-gradient(45deg, #f1f1f1c7, #F1F1F1)",
-    Background: "rose-petals-dark.svg",
-    headBackground: "flat-mountains-dark.svg",
     header: "rgba(25,39,52,1) 0%, rgba(25,39,52,1) 100%",
     banner: "rgba(25, 39, 52, 1) 45%, rgba(25, 39, 52, 1) 45%",
+  },
+
+  // Backgrounds
+  backgrounds: {
+    Background: "rose-petals-dark.svg",
+    headBackground: "flat-mountains-dark.svg",
   },
 }

@@ -28,6 +28,10 @@ export const SearchResultContainer = styled.div`
   a {
     text-decoration: none;
     color: ${({ theme }) => theme.colors.text};
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   p {
