@@ -82,6 +82,12 @@ export const CategoryLinks = styled.div`
   align-items: center;
   justify-content: flex-end;
 
+  a {
+    &:hover {
+      text-decoration: overline;
+    }
+  }
+
   @media (max-width: 768px) {
     justify-content: center;
   }

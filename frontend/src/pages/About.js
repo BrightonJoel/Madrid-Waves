@@ -100,20 +100,13 @@ export default function About() {
           <div className='follow'>
             <h4>
               Created by
-              <a target='_blank' href='https://github.com/Gladson-Samuel-S'>
-                Gladson
-              </a>
+              <a href='https://github.com/Gladson-Samuel-S'>Gladson</a>
               and
-              <a target='_blank' href='https://github.com/BrightonJoel'>
-                Brighton
-              </a>
+              <a href='https://github.com/BrightonJoel'>Brighton</a>
             </h4>
             <div className='follow-footer'>
               <p>Follow the project on</p>
-              <a
-                target='_blank'
-                href='https://github.com/Gladson-Samuel-S/Madrid-Waves'
-              >
+              <a href='https://github.com/Gladson-Samuel-S/Madrid-Waves'>
                 <VscGithub />
               </a>
             </div>
