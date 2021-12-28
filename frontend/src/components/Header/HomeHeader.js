@@ -13,8 +13,9 @@ import {
   Avatar,
   DropDown,
 } from "./HomeHeaderStyles"
-import { FaBars } from "react-icons/fa"
+import { GiHamburgerMenu } from "react-icons/gi"
 import { BsSunFill, BsFillMoonFill } from "react-icons/bs"
+import { GrPowerReset, GrLogout, GrClose } from "react-icons/gr"
 import { Button } from "../../styles/GlobalComponents/Button"
 import Search from "./Search"
 
@@ -73,16 +74,31 @@ export default function HomeHeader() {
           <BsFillMoonFill className='bulbOff' onClick={() => themeToggler()} />
         )}
 
-        {currentUser && !loading ? (
+        {loading ? (
+          <p>Loading...</p>
+        ) : currentUser ? (
           <Avatar onClick={() => setIsAvatar(!isAvatar)}>
-            <h1>{currentUser.username.charAt(0)}</h1>
+            <h1>{currentUser.username.charAt(0).toUpperCase()}</h1>
             <DropDown className={isAvatar ? "activeAvatar" : ""}>
               <Button
                 onClick={logout}
                 bg={({ theme }) => theme.colors.red}
                 clr={({ theme }) => theme.colors.white}
               >
-                Logout
+                <span>
+                  <GrLogout />
+                </span>
+                <p>Logout</p>
+              </Button>
+              <Button
+                onClick={() => history.push("/forgotpassword")}
+                bg={({ theme }) => theme.colors.red}
+                clr={({ theme }) => theme.colors.white}
+              >
+                <span>
+                  <GrPowerReset />
+                </span>
+                <p>Reset Password</p>
               </Button>
             </DropDown>
           </Avatar>
@@ -96,12 +112,21 @@ export default function HomeHeader() {
           </Button>
         )}
 
-        <FaBars
-          className='Hamburger'
-          onClick={() => {
-            setIsOpen(!isOpen)
-          }}
-        />
+        {!isOpen ? (
+          <GiHamburgerMenu
+            className='Hamburger'
+            onClick={() => {
+              setIsOpen(!isOpen)
+            }}
+          />
+        ) : (
+          <GrClose
+            className='Hamburger'
+            onClick={() => {
+              setIsOpen(!isOpen)
+            }}
+          />
+        )}
       </Profile>
       <Search />
     </NavContainer>

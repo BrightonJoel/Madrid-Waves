@@ -16,7 +16,7 @@ export const registerApi = async (path, method, body) => {
     if (res.status >= 200 && res.status <= 299) {
       data = await res.json()
     } else {
-      error = "Please check your username and password"
+      error = await res.json()
     }
     loading = false
   } catch (err) {

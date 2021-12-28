@@ -7,19 +7,24 @@ export const lightTheme = {
 
   // Colors
   colors: {
-    primaryBlue: "#004797",
-    lightGrey: "#F1F1F1",
+    primary: "#F1F1F1",
+    secondary: "#FFFFFF",
+    blue: "#004797",
     red: "#E72142",
-    neutral: "#FFFFFF",
     white: "#FFFFFF",
     yellow: "#FCC000",
     text: "#316B83",
-    title: "linear-gradient(45deg, #e72142, #004797)",
     link: "#004797",
-    Background: "rose-petals.svg",
-    headBackground: "flat-mountains.svg",
+    title: "linear-gradient(45deg, #e72142, #004797)",
     header:
       "rgba(0, 71, 151, 1) 0%, rgba(0, 71, 151, 1) 48%, rgba(0, 23, 151, 1) 100%",
+    banner: "rgba(233, 162, 188, 0.1) 45%,rgba(233, 162, 188, 0.1) 45%",
+  },
+
+  // Backgrounds
+  backgrounds: {
+    Background: "rose-petals.svg",
+    headBackground: "flat-mountains.svg",
   },
 }
 
@@ -32,18 +37,22 @@ export const darkTheme = {
 
   // Colors
   colors: {
-    primaryBlue: "#004797",
-    lightGrey: "#2f326a",
-    red: "#E72142",
-    neutral: "#32407B",
-    yellow: "#FCC000",
+    primary: "#15202b",
+    secondary: "#192734",
+    blue: "#1a8cd8",
+    red: "#f91880",
+    yellow: "#57bb5c",
     white: "#FFFFFF",
     text: "#FFFFFF",
-    title: "linear-gradient(45deg, #FCC000, #fff)",
-    link: "#F1F1F1",
+    link: "#1d9bf0",
+    title: "linear-gradient(45deg, #f1f1f1c7, #F1F1F1)",
+    header: "rgba(25,39,52,1) 0%, rgba(25,39,52,1) 100%",
+    banner: "rgba(25, 39, 52, 1) 45%, rgba(25, 39, 52, 1) 45%",
+  },
+
+  // Backgrounds
+  backgrounds: {
     Background: "rose-petals-dark.svg",
     headBackground: "flat-mountains-dark.svg",
-    header:
-      "rgba(0,71,151,1) 0%, rgba(50,64,123,1) 100%, rgba(0,71,151,1) 100%",
   },
 }

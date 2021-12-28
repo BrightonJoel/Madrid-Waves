@@ -7,7 +7,6 @@ import { Share } from "../../pages/BlogPages/BlogDetailsStyles"
 export default function ShareButton() {
   const [isCopied, setIsCopied] = useState(false)
 
-  // This is the function we wrote earlier
   async function copyTextToClipboard(text) {
     if ("clipboard" in navigator) {
       return await navigator.clipboard.writeText(text)

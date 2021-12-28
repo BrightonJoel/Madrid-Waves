@@ -35,7 +35,10 @@ export default function CategoryBlogs() {
         <FilterButton />
         {data.blogs.map((blog) => (
           <Blog key={blog.id}>
-            <ImageContainer h='300px' bg={({ theme }) => theme.colors.neutral}>
+            <ImageContainer
+              h='300px'
+              bg={({ theme }) => theme.colors.secondary}
+            >
               {blog.CoverImage.map((u) => (
                 <img
                   key={u.id}
@@ -44,7 +47,7 @@ export default function CategoryBlogs() {
                 />
               ))}
             </ImageContainer>
-            <ContentArea p='20px' bg={({ theme }) => theme.colors.neutral}>
+            <ContentArea p='20px' bg={({ theme }) => theme.colors.secondary}>
               <h3>{blog.Title}</h3>
               <Category>
                 {blog.blogCategories.map((category) => (

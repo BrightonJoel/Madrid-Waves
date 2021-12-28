@@ -12,7 +12,7 @@ import { Button } from "../../styles/GlobalComponents/Button"
 import { useMutation } from "@apollo/client"
 import { RESETPASSWORD } from "../../queries/Forgotquery"
 
-export default function RestPassword() {
+export default function ResetPassword() {
   const data = useLocation()
   const password = useRef()
   const confirmPassword = useRef()
@@ -63,7 +63,7 @@ export default function RestPassword() {
               <Button
                 type='submit'
                 disabled={resettingPassword}
-                bg={({ theme }) => theme.colors.primaryBlue}
+                bg={({ theme }) => theme.colors.blue}
                 clr={({ theme }) => theme.colors.white}
                 mt='30px'
                 w='100%'
@@ -74,7 +74,7 @@ export default function RestPassword() {
               <Button
                 type='submit'
                 // disabled={loading}
-                bg={({ theme }) => theme.colors.primaryBlue}
+                bg={({ theme }) => theme.colors.blue}
                 clr={({ theme }) => theme.colors.white}
                 mt='30px'
                 w='100%'

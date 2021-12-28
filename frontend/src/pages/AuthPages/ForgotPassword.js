@@ -47,7 +47,7 @@ export default function Forgotpassword() {
               <Button
                 type='submit'
                 disabled={sendingEmail}
-                bg={({ theme }) => theme.colors.primaryBlue}
+                bg={({ theme }) => theme.colors.blue}
                 clr={({ theme }) => theme.colors.white}
                 mt='30px'
                 w='100%'
@@ -58,7 +58,7 @@ export default function Forgotpassword() {
               <Button
                 type='submit'
                 disabled={emailData}
-                bg={({ theme }) => theme.colors.primaryBlue}
+                bg={({ theme }) => theme.colors.blue}
                 clr={({ theme }) => theme.colors.white}
                 mt='30px'
                 w='100%'

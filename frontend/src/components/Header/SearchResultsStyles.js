@@ -5,18 +5,49 @@ export const SearchResultContainer = styled.div`
   z-index: 99;
   top: 80px;
   margin-top: 20px;
-  background-color: ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.primary};
   padding: 20px;
   width: 100%;
   border-radius: 6px;
+  animation: 100ms ease-in-out fadeIn 1;
 
   li {
     margin-top: 10px;
     list-style: none;
     border-radius: 6px;
     padding: 20px 10px;
-    background-color: ${({ theme }) => theme.colors.neutral};
+    background-color: ${({ theme }) => theme.colors.secondary};
+    transition: background-color 200ms ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(0 0 0 / 6%);
+    }
   }
+
+  a {
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.text};
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  p {
+    margin-top: 10px;
+    opacity: 0.7;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      visibility: hidden;
+    }
+    to {
+      opacity: 1;
+      visibility: visible;
+    }
 `
 export const Center = styled.div`
   display: flex;

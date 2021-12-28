@@ -12,26 +12,30 @@ export const Profile = styled.div`
     opacity: 0.7;
   }
 `
+export const ErrorText = styled.p`
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.red};
+`
 
 export const Avatar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.primaryBlue};
+  background-color: ${({ theme }) => theme.colors.blue};
   height: 65px;
   width: 65px;
   font-size: 24px;
   color: ${({ theme }) => theme.colors.yellow};
-  border: 2px solid ${({ theme }) => theme.colors.neutral};
+  border: 2px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 50%;
   cursor: pointer;
   user-select: none;
-  transition: 100ms;
 `
 
 export const CommentBox = styled.div`
   border-radius: 6px;
-  background-color: ${({ theme }) => theme.colors.neutral};
+  background-color: ${({ theme }) => theme.colors.secondary};
   padding: 30px 50px;
   margin-bottom: 30px;
 `

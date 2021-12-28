@@ -11,7 +11,10 @@ import { GETSINGLEBLOGWITHID } from "../../queries/BlogDetailsQuery"
 
 // Styles
 import {
-  MainDiv,
+  Container,
+  Banner,
+  BlogCover,
+  Description,
   Post,
   ActionContainer,
   BlogHead,
@@ -39,35 +42,46 @@ export default function BlogsDetails() {
   if (error) return <p>{error.message}</p>
 
   return (
-    <MainDiv>
-      <Title>{data.blog.Title}</Title>
-      <BlogHead>
-        <strong>By {data.blog.Author.username}</strong>
-        <p>
-          {new Date(data.blog.created_at).toLocaleDateString("en-us", {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </p>
-      </BlogHead>
+    <>
+      <Banner>
+        <BlogCover>
+          <img
+            src={`${process.env.REACT_APP_SHORT_URL}${data.blog.CoverImage[0].url}`}
+            alt='Thumbnail'
+          />
 
-      <Post>
-        <img
-          src={`${process.env.REACT_APP_SHORT_URL}${data.blog.CoverImage[0].url}`}
-          alt='Thumbnail'
-        />
-        <ReactMarkdown children={data.blog.Body} remarkPlugins={[remarkGfm]} />
+          <Description>
+            <Title>{data.blog.Title}</Title>
+            <BlogHead>
+              <strong>By {data.blog.Author.username}</strong>
+              <p>
+                {new Date(data.blog.created_at).toLocaleDateString("en-us", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
+            </BlogHead>
+            <ActionContainer>
+              <LikeButton id={id} likedUser={data.blog.likedUser} />
+              <Views id={id} view={data.blog.Views} />
+              <ShareButton />
+            </ActionContainer>
+          </Description>
+        </BlogCover>
+      </Banner>
 
-        <ActionContainer>
-          <LikeButton id={id} likedUser={data.blog.likedUser} />
-          <Views id={id} view={data.blog.Views} />
-          <ShareButton />
-        </ActionContainer>
-      </Post>
+      <Container>
+        <Post>
+          <ReactMarkdown
+            children={data.blog.Body}
+            remarkPlugins={[remarkGfm]}
+          />
+        </Post>
 
-      <Comment id={id} />
-    </MainDiv>
+        <Comment id={id} />
+      </Container>
+    </>
   )
 }

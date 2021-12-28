@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 export const Background = styled.div`
-  background-image: url(/img/${({ theme }) => theme.colors.headBackground});
+  background-image: url(/img/${({ theme }) =>
+    theme.backgrounds.headBackground});
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -17,7 +18,7 @@ export const Container = styled.main`
   margin: 48px auto;
   width: 600px;
   max-width: 90%;
-  background-color: ${({ theme }) => theme.colors.neutral};
+  background-color: ${({ theme }) => theme.colors.secondary};
   padding: 40px 20px;
   border-radius: 6px;
 
@@ -61,13 +62,13 @@ export const Label = styled.label`
 export const Input = styled.input`
   width: 100%;
   padding: 10px 20px;
-  background-color: ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.text};
   border: none;
   border-radius: 6px;
 
   &:focus {
-    outline: 2px dotted ${({ theme }) => theme.colors.primaryBlue};
+    outline: 2px dotted ${({ theme }) => theme.colors.blue};
   }
 `
 
@@ -97,4 +98,23 @@ export const LoginFooter = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
+`
+
+export const EmailImage = styled.img`
+  width: 100%;
+  height: 300px;
+  border-radius: 6px;
+`
+
+export const EmailContent = styled.div`
+  h2 {
+    margin: 20px 0;
+    text-align: center;
+  }
+  p {
+    line-height: 1.7;
+  }
+  a {
+    display: block;
+  }
 `

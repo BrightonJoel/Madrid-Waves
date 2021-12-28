@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        background: ${({ theme }) => theme.colors.lightGrey};
+        background: ${({ theme }) => theme.colors.primary};
         cursor: default;
     }
 

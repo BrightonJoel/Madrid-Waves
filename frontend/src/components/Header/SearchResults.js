@@ -9,9 +9,15 @@ import {
 } from "./SearchResultsStyles"
 import { CgCloseO } from "react-icons/cg"
 
-export default function SearchResults({ data, loading, setIsOpen }) {
+export default function SearchResults({
+  data,
+  loading,
+  setIsOpen,
+  searchQuery,
+}) {
   function handleClick() {
     setIsOpen(false)
+    searchQuery.current.value = ""
   }
 
   return (
@@ -40,7 +46,10 @@ export default function SearchResults({ data, loading, setIsOpen }) {
               data.blogs &&
               data.blogs.map((blog) => (
                 <li key={blog.id} onClick={handleClick}>
-                  <Link to={`/details/${blog.id}`}>{blog.Title}</Link>
+                  <Link to={`/details/${blog.id}`}>
+                    <h3>{blog.Title}</h3>
+                    <p>{blog.Body.substring(0, 100) + "..."}</p>
+                  </Link>
                 </li>
               ))}
           </ul>

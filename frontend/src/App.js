@@ -7,6 +7,9 @@ import ScrollToTop from "./hooks/ScrollToTop "
 // page and layout imports
 import SignUp from "./pages/AuthPages/SignUp"
 import Login from "./pages/AuthPages/Login"
+import Forgotpassword from "./pages/AuthPages/ForgotPassword"
+import ResetPassword from "./pages/AuthPages/Resetpassword"
+import EmailConfirmation from "./pages/AuthPages/EmailConfirmation"
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
 import HomeHeader from "./components/Header/HomeHeader"
@@ -19,8 +22,6 @@ import SearchPage from "./pages/SearchPage"
 import NotFound from "./pages/NotFound/NotFound"
 import About from "./pages/About"
 import Theme from "./styles/theme"
-import Forgotpassword from "./pages/AuthPages/ForgotPassword"
-import RestPassword from "./pages/AuthPages/Restpassword"
 
 const link = createUploadLink({
   uri: process.env.REACT_APP_GRAPHQL_URL,
@@ -41,12 +42,16 @@ function App() {
           <Theme>
             <Switch>
               <Route path='/signup'>
-                <Header />
-                <SignUp />
+                <ScrollToTop>
+                  <Header />
+                  <SignUp />
+                </ScrollToTop>
               </Route>
               <Route path='/login'>
-                <Header />
-                <Login />
+                <ScrollToTop>
+                  <Header />
+                  <Login />
+                </ScrollToTop>
               </Route>
               <Route path='/forgotpassword'>
                 <Header />
@@ -54,7 +59,11 @@ function App() {
               </Route>
               <Route path='/resetpassword'>
                 <Header />
-                <RestPassword />
+                <ResetPassword />
+              </Route>
+              <Route path='/email-confirmation'>
+                <Header />
+                <EmailConfirmation />
               </Route>
               <Route exact path='/'>
                 <HomeHeader />

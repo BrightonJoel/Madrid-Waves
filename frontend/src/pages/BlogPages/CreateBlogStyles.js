@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Background = styled.div`
-  background-image: url(/img/${({ theme }) => theme.colors.Background});
+  background-image: url(/img/${({ theme }) => theme.backgrounds.Background});
   // background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -21,8 +21,8 @@ export const Article = styled.article`
 
   h3 {
     background: ${({ theme }) => theme.colors.title};
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     text-align: center;
     font-size: 48px;
@@ -36,7 +36,7 @@ export const Article = styled.article`
   }
 `
 export const CreateForm = styled.div`
-  background-color: ${({ theme }) => theme.colors.neutral};
+  background-color: ${({ theme }) => theme.colors.secondary};
   border-radius: 12px;
   padding: 50px;
   font-weight: 500;
@@ -55,32 +55,33 @@ export const CreateForm = styled.div`
     border-radius: 6px;
     padding: 10px 20px;
     margin: 12px 0;
-    background-color: ${({ theme }) => theme.colors.lightGrey};
+    background-color: ${({ theme }) => theme.colors.primary};
     width: 100%;
     color: ${({ theme }) => theme.colors.text};
 
     &:focus {
-      outline: 2px dotted ${({ theme }) => theme.colors.primaryBlue};
+      outline: 2px dotted ${({ theme }) => theme.colors.blue};
     }
   }
 
   input[type="file"] {
     display: inline;
-    width: 300px;
+    width: 40%;
     margin-right: 20px;
   }
+
   select {
     appearance: none;
     border: none;
     border-radius: 6px;
     padding: 10px 20px;
     margin: 12px 0;
-    background-color: ${({ theme }) => theme.colors.lightGrey};
+    background-color: ${({ theme }) => theme.colors.primary};
     width: 50%;
     color: ${({ theme }) => theme.colors.text};
 
     &:focus {
-      outline: 2px dotted ${({ theme }) => theme.colors.primaryBlue};
+      outline: 2px dotted ${({ theme }) => theme.colors.blue};
     }
   }
 
@@ -90,12 +91,12 @@ export const CreateForm = styled.div`
     border-radius: 6px;
     padding: 20px 20px;
     margin: 12px 0;
-    background-color: ${({ theme }) => theme.colors.lightGrey};
+    background-color: ${({ theme }) => theme.colors.primary};
     width: 100%;
     color: ${({ theme }) => theme.colors.text};
 
     &:focus {
-      outline: 2px dotted ${({ theme }) => theme.colors.primaryBlue};
+      outline: 2px dotted ${({ theme }) => theme.colors.blue};
     }
   }
 

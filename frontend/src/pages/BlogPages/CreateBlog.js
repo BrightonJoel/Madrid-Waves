@@ -157,7 +157,7 @@ export default function CreateBlog() {
                 )}
                 <Button
                   bg={({ theme }) => theme.colors.yellow}
-                  clr={({ theme }) => theme.colors.primaryBlue}
+                  clr={({ theme }) => theme.colors.text}
                   type='submit'
                 >
                   {createBlogLoading ? "Creating" : "Create"}
@@ -167,7 +167,7 @@ export default function CreateBlog() {
                 </Button>
                 <Button
                   bg={({ theme }) => theme.colors.yellow}
-                  clr={({ theme }) => theme.colors.primaryBlue}
+                  clr={({ theme }) => theme.colors.text}
                   onClick={clearForm}
                 >
                   Clear

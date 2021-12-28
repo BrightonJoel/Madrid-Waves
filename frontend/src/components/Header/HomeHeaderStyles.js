@@ -2,21 +2,15 @@ import styled from "styled-components"
 
 export const NavContainer = styled.header`
   display: grid;
-  // background-color: ${({ theme }) => theme.colors.primaryBlue};
   background: rgb(0, 71, 151);
-  background: radial-gradient(
-    circle,
-    rgba(0, 71, 151, 1) 0%,
-    rgba(0, 71, 151, 1) 48%,
-    rgba(0, 23, 151, 1) 100%
-  );
-  height: 250px;
+  background: radial-gradient(circle, ${({ theme }) => theme.colors.header});
+  padding-top: 1rem;
+  padding-bottom: 3rem;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: auto, auto;
+  gap: 20px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto, auto, auto;
   }
 `
 export const Logo = styled.nav`
@@ -45,8 +39,8 @@ export const Logo = styled.nav`
 export const NavLinks = styled.nav`
   display: flex;
   justify-content: center;
-  align-items: center; /* for single line flex container */
-  align-content: center; /* for multi-line flex container */
+  align-items: center;
+  align-content: center;
   color: ${({ theme }) => theme.colors.white};
   grid-column: 2 / 2;
 
@@ -94,16 +88,23 @@ export const Profile = styled.nav`
     border-radius: 6px;
   }
   .Hamburger {
-    margin-left: 20px;
+    margin: 0 20px;
     cursor: pointer;
     font-size: 30px;
     display: none;
+    path {
+      stroke: white;
+    }
   }
   .bulbOn,
   .bulbOff {
     margin-right: 20px;
     font-size: 30px;
     cursor: pointer;
+    transition: transform 100ms ease-in-out;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
   @media (max-width: 768px) {
     grid-column: 2 / 4;
@@ -127,23 +128,34 @@ export const Avatar = styled.div`
   border-radius: 50%;
   cursor: pointer;
   user-select: none;
-  transition: 100ms;
 `
 
 export const DropDown = styled.div`
   display: none;
-  // height: 80px;
-  // width: 140px;
   position: absolute;
   padding: 20px;
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  background-color: ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 6px;
   z-index: 2;
   top: 80px;
+  right: 0;
 
   &.activeAvatar {
     display: block;
+  }
+
+  button {
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+  }
+
+  path {
+    stroke: white;
   }
 
   h5 {
@@ -155,32 +167,41 @@ export const SearchBar = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center; /* for single line flex container */
+  align-items: center;
+  width: 100%;
   grid-row: 2 / 2;
   grid-column: 2 / 2;
-  padding: 30px 0px;
+
+  @media (max-width: 768px) {
+    grid-row: 3 / 3;
+    grid-column: 1 / 4;
+  }
+`
+
+export const SearchBarContent = styled.form`
+  background-color: ${({ theme }) => theme.colors.primary};
+  display: flex;
+  align-items: center;
+  padding: 5px 0px;
+  border-radius: 6px;
 
   input {
-    width: 50%;
+    width: 400px;
     border-radius: 5px 0 0 5px;
-    background-color: ${({ theme }) => theme.colors.lightGrey};
+    background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.text};
     border: None;
     outline: None;
     padding: 11px 20px;
   }
-  button {
-    font-size: 18px;
-    border-radius: 0 5px 5px 0;
-    transform: translateY(0.5px);
-  }
+
   span {
-    padding: 0 5px;
-    display: inline-block;
-    transform: translateY(2px);
+    padding-left: 30px;
   }
+
   @media (max-width: 768px) {
-    grid-row: 3 / 3;
-    grid-column: 1 / 4;
+    input {
+      width: clamp(350px, 50%, 500px);
+    }
   }
 `

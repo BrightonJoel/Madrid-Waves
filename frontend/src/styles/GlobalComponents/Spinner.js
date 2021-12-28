@@ -8,19 +8,22 @@ export const SpinnerContainer = styled.div`
   img {
     height: 132px;
     width: 132px;
-    animation: spinner 0.9s linear infinite;
+    animation: spinner 0.7s linear infinite;
   }
 
   .loader {
     color: ${({ theme }) => theme.colors.yellow};
     height: 100px;
     width: 100px;
-    animation: spinner 0.9s linear infinite;
+    animation: spinner 0.7s linear infinite;
   }
 
   @keyframes spinner {
+    from {
+      transform: scale(1.1);
+    }
     to {
-      transform: rotate(360deg);
+      transform: scale(0.9);
     }
   }
 `
