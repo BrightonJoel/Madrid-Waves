@@ -4,9 +4,10 @@ import React from "react"
 import { FooterStyled } from "./FooterStyles"
 
 export default function Footer() {
+  const date = new Date()
   return (
     <FooterStyled>
-      <h3>© 2021 The Madrid Waves </h3>
+      <h3>© {date.getFullYear()} The Madrid Waves </h3>
     </FooterStyled>
   )
 }
