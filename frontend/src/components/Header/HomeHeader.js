@@ -15,7 +15,7 @@ import {
 } from "./HomeHeaderStyles"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { BsSunFill, BsFillMoonFill } from "react-icons/bs"
-import { GrPowerReset, GrLogout, GrClose } from "react-icons/gr"
+import { GrLogout, GrClose } from "react-icons/gr"
 import { Button } from "../../styles/GlobalComponents/Button"
 import Search from "./Search"
 
@@ -89,16 +89,6 @@ export default function HomeHeader() {
                   <GrLogout />
                 </span>
                 <p>Logout</p>
-              </Button>
-              <Button
-                onClick={() => history.push("/forgotpassword")}
-                bg={({ theme }) => theme.colors.red}
-                clr={({ theme }) => theme.colors.white}
-              >
-                <span>
-                  <GrPowerReset />
-                </span>
-                <p>Reset Password</p>
               </Button>
             </DropDown>
           </Avatar>
